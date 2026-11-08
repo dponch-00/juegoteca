@@ -1,0 +1,101 @@
+/* Damas: reutiliza el tablero de ajedrez (chess.css) y añade las fichas. */
+
+.checker-img {
+  width: 90%;
+  height: 90%;
+  display: block;
+}
+
+/* Fichas provisionales con CSS (hasta que lleguen las de Codex, T-005) */
+.disc {
+  position: relative;
+  width: 78%;
+  height: 78%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 0.5cqw 0.8cqw rgba(0, 0, 0, 0.35),
+    inset 0 0 0 0.9cqw rgba(0, 0, 0, 0.12),
+    inset 0 0 0 1.8cqw rgba(255, 255, 255, 0.08);
+}
+.disc-w {
+  background: radial-gradient(circle at 35% 30%, #fffaf0 0%, #f2e2c0 45%, #c9a46a 100%);
+  border: 0.35cqw solid #8a6a3e;
+}
+.disc-b {
+  background: radial-gradient(circle at 35% 30%, #7a5338 0%, #4b2d1d 50%, #24150c 100%);
+  border: 0.35cqw solid #d8b98a;
+}
+.disc::after {
+  /* Surco concéntrico */
+  content: '';
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  border: 0.3cqw solid rgba(0, 0, 0, 0.18);
+}
+.disc-king {
+  box-shadow:
+    0 0.5cqw 0.8cqw rgba(0, 0, 0, 0.35),
+    0 -0.9cqw 0 0.1cqw rgba(0, 0, 0, 0.25);
+}
+.disc-crown {
+  font-size: 5.6cqw;
+  line-height: 1;
+  color: var(--c-accent);
+  font-family: 'Segoe UI Symbol', 'Noto Sans Symbols 2', 'DejaVu Sans', 'Apple Symbols', serif;
+  text-shadow: 0 0.2cqw 0 rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+/* Pieza que se va a capturar a mitad de una captura múltiple */
+.piece.pending-capture {
+  opacity: 0.35;
+  transition:
+    opacity var(--t-fast),
+    transform var(--t-move) var(--ease-move);
+}
+
+/* Aterrizaje de captura: anillo más visible que el punto normal */
+.mark-capture-landing::after {
+  content: '';
+  position: absolute;
+  inset: 30%;
+  border-radius: 50%;
+  background: var(--c-accent);
+  opacity: 0.8;
+  animation: pop-in var(--t-fast) var(--ease-spring) both;
+}
+.checkers-board .mark-tone-hint {
+  border-radius: 50%;
+}
+
+/* Fichas restantes junto al nombre */
+.checker-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-text-dim);
+}
+.checker-count .mini {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  container-type: inline-size;
+}
+.checker-count .disc {
+  width: 100%;
+  height: 100%;
+}
+.checker-count .disc-crown {
+  font-size: 70cqw;
+}
+.checker-count .checker-img {
+  width: 100%;
+  height: 100%;
+}

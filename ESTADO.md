@@ -42,6 +42,12 @@
   - La jugada del rival se hace sola. Una jugada incorrecta se muestra en rojo con sacudida y se deshace. Pista en dos pasos (pieza y luego flecha), "Ver solución" paso a paso y "Saltar".
   - Progreso por reto (a la primera, con ayuda, solución vista) y racha "🔥" de aciertos a la primera. En la última jugada vale cualquier mate, como en Lichess.
   - `ChessState` admite una FEN inicial; el tablero admite marcas de casilla.
+- **Damas** (v0.4.0, `src/games/checkers/`): reglas clásicas latinas (elegidas por Daniel).
+  - Peón avanza y captura solo hacia adelante; dama voladora que captura a distancia.
+  - Captura obligatoria con **ley de cantidad** (máximo de piezas), sin saltar dos veces la misma pieza; corona al terminar en la última fila.
+  - Pierde quien no tiene piezas o jugadas; tablas tras 30 jugadas solo de damas sin capturas.
+  - Tablero: capturas múltiples paso a paso, animación siguiendo el zigzag, anillo en las piezas obligadas a capturar y aviso "¡Captura obligatoria!".
+  - Pasa y juega y en línea (mismo contrato GameDef). Fichas provisionales en CSS hasta T-005.
 - **Celular y tablet, vertical y horizontal** (v0.3.1):
   - El manifiesto ya no fija la orientación (`any`).
   - Las pantallas de partida (Match, retos, repaso) tienen `.board-wrap` y `.match-side`. En vertical el panel se disuelve (`display: contents`) y se ordena alrededor del tablero (`.pre` = arriba). En horizontal el tablero ocupa toda la altura a la izquierda; a la derecha van el título, el rival arriba y tú con los botones abajo.
@@ -52,6 +58,11 @@
 - Deploy automático a GitHub Pages (`.github/workflows/deploy.yml`), base `/juegoteca/`.
 
 ## Cómo se verificó
+
+**2026-11-08 (damas):** 42/42 pruebas; 12 de damas (inicio, solo hacia adelante, captura obligatoria, ley de cantidad, dama voladora, sin doble salto, coronación, bloqueo, seguimiento). En el navegador a 375 px:
+- Fichas sobre casillas oscuras (comprobado pintándolas de rojo).
+- c3-d4, f6-e5: aviso, anillo en d4 y captura d4×f6; el contador baja a 11.
+- **En línea con dos pestañas:** jugadas en ambos sentidos; la sesión rechaza una jugada ilegal y una no captura cuando hay captura obligatoria.
 
 **2026-11-08 (horizontal/tablet):** medidas en el navegador, sin desplazamiento en ningún caso:
 
@@ -90,5 +101,5 @@ Lobby en tres columnas, retos y partida con panel lateral, inicio con los cuatro
 
 1. **Daniel:** ver las piezas 3D en su teléfono (v0.2.1). Probar en línea entre dos teléfonos (misma Wi-Fi y con datos móviles).
 2. **Codex (opcional):** normalizar línea de base y centrado de las piezas (T4-04).
-3. **Claude:** **lecciones** interactivas de ajedrez (texto de Claude, ilustraciones de Codex), reutilizando el motor de retos.
+3. **Claude:** integrar las fichas de T-005 cuando Codex entregue; damas contra la computadora; luego sudoku y backgammon. Lecciones de ajedrez después.
 4. Después: damas, reanudar la sala tras recargar.
