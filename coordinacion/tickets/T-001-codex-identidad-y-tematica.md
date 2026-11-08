@@ -4,7 +4,7 @@
 | --- | --- |
 | Para | Codex |
 | De | Claude Code |
-| Estado | entregado |
+| Estado | revisado |
 | Creado | 2026-11-07 |
 | Depende de | — |
 
@@ -76,4 +76,39 @@ No edites `src/`, `public/`, `ESTADO.md` ni la configuración del proyecto.
 
 ## Revisión
 
-(la llena Claude Code)
+**Claude Code · 2026-11-08 · Veredicto: revisado. Conceptos aceptados como base; las muestras visuales no alcanzan para elegir con confianza. Daniel decide si elige concepto ya o pide segunda ronda.**
+
+- **Verificado:** pesos (muestras SVG 1.3–1.5 KB, maquetas 19–22 KB), fuentes con licencia OFL y enlace oficial, contrastes de texto declarados plausibles. Entrega honesta: declara lo que no pudo comprobar.
+- **Comprobación a 36 px (la hizo Claude en el navegador, sobre las casillas de cada paleta, en ambos colores):** en D1 y D3 se reconocen las 8 piezas; el caballo es la más débil (D1 parece una bota). En D2 se reconocen, pero las claras se leen cian, no blancas: blanco y negro se distinguen sobre todo por el tono (cian/violeta), no por la luminosidad.
+
+- [R-01] Severidad: alta
+  Ubicación: `design/render-mockups.ps1`, `mockup-*.png` de las tres direcciones
+  Evidencia: las seis maquetas salen de la misma plantilla con la misma composición, las mismas posiciones y las mismas fichas genéricas (`Token`); solo cambia la paleta. Las piezas de las maquetas no son las de `pieces-sample.svg` ni se usa la marca de cada dirección.
+  Consecuencia: incumple el criterio 1 ("no son variaciones de color de una misma idea"). Daniel no puede ver ni sentir la temática (fieltro, neón, papel) para elegir.
+  Corrección: maquetas propias por dirección, con sus piezas, su marca, sus texturas o tratamientos y su tipografía real (por ejemplo, HTML/SVG exportado a PNG).
+
+- [R-02] Severidad: alta
+  Ubicación: `D1-*/pieces-sample.svg`, `D3-*/pieces-sample.svg`
+  Evidencia: D1 y D3 comparten la misma estructura (base trapezoidal, cuerpo trapezoidal, cruz idéntica en el rey, peón de círculo). La "madera torneada" de D1 y el "papel recortado" de D3 no aparecen en la forma: son iconos planos con contorno.
+  Consecuencia: el pedido central de Daniel ("cada pieza diseñada acorde a la temática") no se cumple todavía.
+  Corrección: que la temática esté en la silueta y el tratamiento (perfiles torneados con anillos y luz de madera en D1; capas desplazadas con sombra de papel en D3; facetas y filete luminoso en D2).
+
+- [R-03] Severidad: media
+  Ubicación: `D2-*/pieces-sample.svg`
+  Evidencia: la pieza clara se ve cian a 36 y 72 px (el trazo cian de 5 u domina el relleno).
+  Consecuencia: depende del tono para separar bandos, con riesgo para daltonismo.
+  Corrección: separar los bandos por luminosidad (relleno claro real frente a oscuro) y dejar el color solo como acento.
+
+- [R-04] Severidad: media
+  Ubicación: `design/asset-manifest.json` → `explorationReferences`
+  Evidencia: las tres imágenes de atmósfera de `image_gen` no se guardaron.
+  Consecuencia: se perdió el material más útil para que Daniel compare atmósferas.
+  Corrección: guardarlas como `design/direcciones/Dn-*/mood.webp` (≤ 150 KB, sin texto).
+
+- [R-05] Severidad: baja
+  Ubicación: maquetas de ajedrez
+  Evidencia: muestran reloj "01:42" y "Deshacer" en partida en línea; la app no tiene reloj ni deshacer en línea.
+  Consecuencia: confusión menor.
+  Corrección: si se propone reloj, señalarlo como idea; si no, quitarlo.
+
+- **Sobre la pregunta de modo oscuro:** entra en T-002 si la dirección elegida es clara (D1, D3); en D2 es el modo base.

@@ -10,7 +10,7 @@
 
 | Ticket | Para | Tema | Estado |
 | --- | --- | --- | --- |
-| [T-001](coordinacion/tickets/T-001-codex-identidad-y-tematica.md) | Codex | Identidad y temática: tres direcciones | entregado (falta revisión de Claude) |
+| [T-001](coordinacion/tickets/T-001-codex-identidad-y-tematica.md) | Codex | Identidad y temática: tres direcciones | revisado: conceptos válidos; maquetas = misma plantilla recoloreada y piezas sin temática (R-01…R-05). Daniel decide: elegir concepto o segunda ronda |
 
 ## Publicación
 
@@ -45,7 +45,7 @@
 
 ## Siguiente acción
 
-1. **Claude:** revisar la entrega de T-001 (tres direcciones en `design/direcciones/`).
-2. **Daniel:** elegir dirección; luego Claude abre T-002 (producción de activos) e integra tokens y fuentes.
+1. **Daniel:** elegir concepto (D1 fieltro, D2 medianoche, D3 papel) o pedir segunda ronda de las tres.
+2. **Claude:** abrir T-002 según esa decisión, exigiendo piezas con la temática en la silueta y maquetas propias; después integrar tokens y fuentes.
 3. **Daniel:** probar en dos teléfonos con la URL publicada (misma Wi-Fi y con datos móviles).
 3. **Claude (en paralelo):** damas (mismo contrato GameDef), reanudar sala tras recarga, prueba en dos teléfonos.
