@@ -10,7 +10,13 @@
 
 | Ticket | Para | Tema | Estado |
 | --- | --- | --- | --- |
-| [T-001](coordinacion/tickets/T-001-codex-identidad-y-tematica.md) | Codex | Identidad y temática: tres direcciones | abierto |
+| [T-001](coordinacion/tickets/T-001-codex-identidad-y-tematica.md) | Codex | Identidad y temática: tres direcciones | entregado (falta revisión de Claude) |
+
+## Publicación
+
+- Repo: https://github.com/dponch-00/juegoteca (público, rama `main`).
+- App: https://dponch-00.github.io/juegoteca/ — cada push a `main` la vuelve a publicar (Actions → Pages).
+- Primera publicación 2026-11-08: workflow correcto; verificado en el sitio real que carga, registra el service worker y sirve manifiesto e iconos.
 
 ## Qué existe
 
@@ -39,6 +45,7 @@
 
 ## Siguiente acción
 
-1. **Daniel:** pasar T-001 a Codex. Crear el repo `juegoteca` en GitHub y activar Pages → "GitHub Actions".
-2. **Claude:** al recibir T-001, revisar las direcciones; cuando Daniel elija, abrir T-002 (producción de activos) e integrar tokens y fuentes.
+1. **Claude:** revisar la entrega de T-001 (tres direcciones en `design/direcciones/`).
+2. **Daniel:** elegir dirección; luego Claude abre T-002 (producción de activos) e integra tokens y fuentes.
+3. **Daniel:** probar en dos teléfonos con la URL publicada (misma Wi-Fi y con datos móviles).
 3. **Claude (en paralelo):** damas (mismo contrato GameDef), reanudar sala tras recarga, prueba en dos teléfonos.
