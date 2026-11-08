@@ -19,8 +19,14 @@ const cell = (i: number, flipped: boolean) => {
   return { transform: `translate(${x * 100}%, ${y * 100}%)` }
 }
 
-export function CheckersBoard({ state, viewSeat, controls, onMove }: BoardProps<CheckersState, CheckersMove>) {
+/** Marcas sobre casillas (índice 0..63): pistas de la computadora, etc. */
+export interface CheckersAnnotations {
+  marks?: { square: number; tone: 'hint' | 'wrong' | 'good' }[]
+}
+
+export function CheckersBoard({ state, viewSeat, controls, onMove, annotations }: BoardProps<CheckersState, CheckersMove>) {
   const flipped = viewSeat === 1
+  const marks = (annotations as CheckersAnnotations | undefined)?.marks ?? []
   const pos = position(state)
   const tracked = useMemo(() => track(state), [state])
   const turnSeat = pos.turn === 'w' ? 0 : 1
@@ -112,6 +118,9 @@ export function CheckersBoard({ state, viewSeat, controls, onMove }: BoardProps<
       )}
       {mustCapture && canAct && partial.length === 0 &&
         [...movable].map((sq) => <div key={`must-${sq}`} class="mark mark-tone-hint" style={cell(sq, flipped)} />)}
+      {marks.map((m) => (
+        <div key={`am-${m.square}-${m.tone}`} class={`mark mark-tone-${m.tone}`} style={cell(m.square, flipped)} />
+      ))}
       {partial.map((sq, i) => (
         <div key={`p-${sq}-${i}`} class="mark mark-select" style={cell(sq, flipped)} />
       ))}

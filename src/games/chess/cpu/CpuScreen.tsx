@@ -14,6 +14,7 @@ import { moveNumberLabel, toSpanishSan } from '../notation'
 import { PieceArt } from '../pieces'
 import { accuracy, reviewMoves, VERDICT_LABEL, type MoveReview, type PositionEval } from '../review'
 import '../../../ui/match.css'
+import '../../../ui/cpu.css'
 import './cpu.css'
 
 /* ---------- Datos guardados ---------- */

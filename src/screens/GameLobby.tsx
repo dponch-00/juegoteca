@@ -9,6 +9,8 @@ export function GameLobby({ game }: { game: GameDef }) {
   const savedPly = saved != null ? game.ply(saved) : 0
   const resumable = saved != null && savedPly > 0 && !game.outcome(saved)
   const st = getStats(game.id)
+  const soloModes =
+    game.soloModes ?? (game.ai ? [{ id: 'cpu', label: 'Contra la computadora', sub: `${game.ai.levels.length} niveles, de ${game.ai.levels[0].name} a ${game.ai.levels.at(-1)!.name}` }] : [])
 
   function newLocal() {
     remove(`local:${game.id}`)
@@ -33,10 +35,10 @@ export function GameLobby({ game }: { game: GameDef }) {
       </div>
 
       <div class="lobby-grid">
-        {game.soloModes && game.soloModes.length > 0 && (
+        {soloModes.length > 0 && (
           <section class="stack stagger">
             <h2 class="section-title">Un jugador</h2>
-            {game.soloModes.map((m, i) => (
+            {soloModes.map((m, i) => (
               <button key={m.id} class={`btn btn-col${i === 0 ? ' btn-solo' : ''}`} onClick={() => navigate(`g/${game.id}/${m.id}`)}>
                 {m.label}
                 <span class="sub">{m.sub}</span>

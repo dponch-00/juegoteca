@@ -1,6 +1,9 @@
 import type { GameDef } from '../../core/types'
 import { CheckersBoard } from './CheckersBoard'
 import { Remaining } from './Remaining'
+import { checkersAI } from './aiClient'
+import { CheckerArt } from './art'
+import { h } from 'preact'
 import { apply, hint, initialState, outcome, turn, undo, type CheckersMove, type CheckersState } from './logic'
 
 export const checkers: GameDef<CheckersState, CheckersMove> = {
@@ -18,4 +21,6 @@ export const checkers: GameDef<CheckersState, CheckersMove> = {
   hint,
   Board: CheckersBoard,
   PlayerExtra: Remaining,
+  ai: checkersAI,
+  SeatIcon: ({ seat }) => h(CheckerArt, { color: seat === 0 ? 'w' : 'b', king: false }),
 }

@@ -12,6 +12,7 @@ Fuente única de reglas compartidas. Codex la lee como instrucciones del reposit
 
 ## Reglas duras
 
+- **Todo juego de dos tiene modo contra la computadora** (pedido de Daniel), además de pasa y juega y en línea. Los juegos de un jugador (sudoku) no aplican.
 - **Todo combina.** Logo, colores, tipografía, tablero, piezas, iconos y animaciones salen de una misma identidad. Nada de recursos sueltos de estilos distintos.
 - **Original.** Sin copiar piezas, logos ni estilos reconocibles de otros productos (chess.com, Lichess, etc.). Sin marcas de terceros.
 - **No simular.** Si no puedes generar una imagen o verificar algo, dilo en la Entrega. Nunca entregues un placeholder como si fuera final.

@@ -48,6 +48,8 @@
   - Pierde quien no tiene piezas o jugadas; tablas tras 30 jugadas solo de damas sin capturas.
   - Tablero: capturas múltiples paso a paso, animación siguiendo el zigzag, anillo en las piezas obligadas a capturar y aviso "¡Captura obligatoria!".
   - Pasa y juega y en línea (mismo contrato GameDef). Fichas 3D de Codex (T-005) desde v0.4.1; el CSS queda de respaldo.
+- **Contra la computadora genérico** (v0.5.0, `src/ui/AiScreen.tsx`): cualquier juego con `game.ai` (contrato `GameAI` en `src/core/types.ts`: niveles, `move`, `hint`, `hintAnnotations`) obtiene sin código extra el modo en el lobby, la elección de nivel y color, la partida con "pensando…", pista, deshacer, rendirse, partida guardada y estadísticas por nivel. **Regla de Daniel: todo juego de dos tiene modo contra la computadora** (también en `AGENTS.md`). El ajedrez conserva su pantalla propia (Stockfish y repaso).
+- **Damas contra la computadora** (`src/games/checkers/ai.ts`): negamax con alfa-beta y profundización iterativa. Evalúa material, avance, fila de atrás, bordes y damas al centro; no corta la búsqueda a mitad de una captura. Corre en un Web Worker (`ai.worker.ts`, 4.6 KB, offline). Seis niveles, de Aprendiz (azar 60 %, profundidad 1) a Experto (profundidad 14, 2 s).
 - **Celular y tablet, vertical y horizontal** (v0.3.1):
   - El manifiesto ya no fija la orientación (`any`).
   - Las pantallas de partida (Match, retos, repaso) tienen `.board-wrap` y `.match-side`. En vertical el panel se disuelve (`display: contents`) y se ordena alrededor del tablero (`.pre` = arriba). En horizontal el tablero ocupa toda la altura a la izquierda; a la derecha van el título, el rival arriba y tú con los botones abajo.
@@ -58,6 +60,12 @@
 - Deploy automático a GitHub Pages (`.github/workflows/deploy.yml`), base `/juegoteca/`.
 
 ## Cómo se verificó
+
+**2026-11-08 (damas contra la computadora):** 48/48 pruebas; 6 del motor: posición equilibrada, jugada legal, no regala una ficha, prefiere coronar, respeta el límite de tiempo y azar por nivel. En el navegador a 375 px:
+- El lobby de damas muestra el modo solo; la selección de nivel y color usa las fichas 3D.
+- Con negras en nivel 5, el worker juega primero (e3-f4) con los puntos de "pensando" y el tablero girado.
+- La respuesta llega tras mi jugada; la pista marca origen y destino; deshacer vuelve a mi turno.
+- El ajedrez sigue con su pantalla propia.
 
 **2026-11-08 (damas):** 42/42 pruebas; 12 de damas (inicio, solo hacia adelante, captura obligatoria, ley de cantidad, dama voladora, sin doble salto, coronación, bloqueo, seguimiento). En el navegador a 375 px:
 - Fichas sobre casillas oscuras (comprobado pintándolas de rojo).
@@ -101,5 +109,5 @@ Lobby en tres columnas, retos y partida con panel lateral, inicio con los cuatro
 
 1. **Daniel:** ver las piezas 3D en su teléfono (v0.2.1). Probar en línea entre dos teléfonos (misma Wi-Fi y con datos móviles).
 2. **Codex (opcional):** normalizar línea de base y centrado de las piezas (T4-04).
-3. **Claude:** integrar las fichas de T-005 cuando Codex entregue; damas contra la computadora; luego sudoku y backgammon. Lecciones de ajedrez después.
+3. **Claude:** sudoku (un jugador) y backgammon (con motor contra la computadora desde el inicio, usando las fichas y dados de T-005). Lecciones de ajedrez después.
 4. Después: damas, reanudar la sala tras recargar.

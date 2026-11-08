@@ -1,7 +1,7 @@
 {
   "name": "juegoteca",
   "private": true,
-  "version": "0.4.1",
+  "version": "0.5.0",
   "type": "module",
   "description": "Juegoteca: PWA de juegos de mesa offline con salas en línea",
   "scripts": {

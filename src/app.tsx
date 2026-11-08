@@ -7,6 +7,7 @@ import { Join } from './screens/Join'
 import { LocalMatch } from './screens/LocalMatch'
 import { Room } from './screens/Room'
 import { About } from './screens/About'
+import { AiScreen } from './ui/AiScreen'
 
 export function App() {
   const path = useRoute()
@@ -34,6 +35,7 @@ function Screen({ path }: { path: string }) {
       if (parts[2] === 'local') return <LocalMatch game={game} />
       const Extra = parts[2] ? game.screens?.[parts[2]] : undefined
       if (Extra) return <Extra />
+      if (parts[2] === 'cpu' && game.ai) return <AiScreen game={game} />
       return <GameLobby game={game} />
     }
   }

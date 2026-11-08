@@ -55,8 +55,29 @@ export interface GameDef<S = any, M = any> {
   PlayerExtra?: ComponentType<{ state: S; seat: Seat }>
   /** Modos de un jugador que se muestran en el lobby. */
   soloModes?: GameMode[]
+  /** Motor para jugar contra la computadora (pantalla genérica si el juego no trae una propia). */
+  ai?: GameAI<S, M>
+  /** Ícono pequeño de cada bando (para elegir color contra la computadora). */
+  SeatIcon?: ComponentType<{ seat: Seat }>
   /** Pantallas propias del juego, por id de modo. */
   screens?: Record<string, ComponentType>
+}
+
+export interface AiLevel {
+  id: number
+  name: string
+  blurb: string
+}
+
+/** Contrato de un motor de juego: la pantalla genérica "contra la computadora" solo usa esto. */
+export interface GameAI<S = any, M = any> {
+  levels: AiLevel[]
+  /** Jugada de la computadora para el bando que mueve, según el nivel. */
+  move(state: S, level: number): Promise<M>
+  /** Mejor jugada para quien pide la pista. */
+  hint?(state: S): Promise<M>
+  /** Cómo mostrar la pista sobre el tablero (se pasa como `annotations`). */
+  hintAnnotations?(state: S, move: M): unknown
 }
 
 export interface ComingSoon {
