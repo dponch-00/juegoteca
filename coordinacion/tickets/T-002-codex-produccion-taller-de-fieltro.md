@@ -4,7 +4,7 @@
 | --- | --- |
 | Para | Codex |
 | De | Claude Code |
-| Estado | entregado |
+| Estado | revisado |
 | Creado | 2026-11-08 |
 | Depende de | T-001 (Daniel eligió **D1 · Taller de fieltro**) |
 
@@ -123,4 +123,36 @@ No edites `src/`, `index.html`, `vite.config.ts`, `package.json` ni `ESTADO.md`.
 
 ## Revisión
 
-(la llena Claude Code)
+**Claude Code · 2026-11-08 · Veredicto: aceptado e integrado en la app. Queda un pulido opcional de piezas (T2-01) que decide Daniel al verlas en su teléfono.**
+
+- **Verificado en la app real:**
+  - Las 12 piezas se ven a 36 px y a 64 px sobre ambas casillas, en modo claro y oscuro, y en escala de grises: los bandos se separan por luminosidad y el caballo se reconoce.
+  - Tablero, menú y barras de jugador a 375 px en claro y oscuro.
+  - Fuentes servidas con el prefijo `/juegoteca/` en el build.
+  - Las 12 piezas, las fuentes y los iconos quedan en la caché offline (54 entradas).
+  - Pesos: piezas de 1.0–1.1 KB y fuentes de 48 KB en total.
+- **Aciertos:** la familia de madera torneada es clara frente a T-001; la decisión de no hacer `hero` está justificada; los scripts reproducibles quedan en `design/`.
+- **Integración (Claude):**
+  - `src/styles/tokens.css` con modo claro por omisión y oscuro según el sistema; `@font-face` locales.
+  - Movimiento según `docs/identity.md`: 180 ms al mover, captura que baja 3 px y encoge, jaque con dos pulsos y entrada escalonada de 45 ms.
+  - Marco de fieltro verde en el tablero; manifiesto con `design/brand.json`.
+  - Barra de estado de iOS en `default`, porque la de texto blanco no se leía en fondo claro.
+  - Fraunces solo trae peso 600, así que la app ya no pide 800/900 (evita negritas sintéticas).
+
+- [T2-01] Severidad: media
+  Ubicación: `public/assets/chess/pieces/*.svg`
+  Evidencia: todas las piezas tienen casi la misma altura (el rey no sobresale del peón) y la base de tres niveles ocupa cerca del 40 % del alto. La identidad de cada pieza recae en una cabeza pequeña.
+  Consecuencia: a 36 px se distinguen, pero cuesta más que con una jerarquía de alturas, que es la pista que usa un jugador al mirar el tablero.
+  Corrección: escalonar alturas (rey > dama > alfil > caballo > torre > peón), base de dos niveles más baja y cabezas más grandes.
+
+- [T2-02] Severidad: baja
+  Ubicación: `design/tokens.json`
+  Evidencia: en `light`, `p0` es verde oscuro y `p1` marfil; en `dark` es al revés. `p0` es el asiento 0 (blancas).
+  Consecuencia: el avatar de las blancas saldría verde oscuro en modo claro.
+  Corrección: Claude ya lo normalizó en `tokens.css` (`p0` = bando claro); conviene corregir `tokens.json` para que la fuente coincida.
+
+- [T2-03] Severidad: baja (gusto, decide Daniel)
+  Ubicación: `logo-mark.svg` e iconos de la PWA
+  Evidencia: la cruz central sobre cuatro casillas puede leerse como un botón "+" (agregar).
+  Consecuencia: la marca es menos propia de lo que podría ser.
+  Corrección: solo si Daniel lo pide.

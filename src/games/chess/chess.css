@@ -4,7 +4,7 @@
   aspect-ratio: 1;
   border-radius: var(--r-sm);
   overflow: hidden;
-  box-shadow: var(--shadow-2), 0 0 0 4px var(--c-surface-2);
+  box-shadow: var(--shadow-2), 0 0 0 6px var(--c-board-frame);
   touch-action: none;
   user-select: none;
   -webkit-user-select: none;
@@ -60,7 +60,7 @@
 }
 .mark-check {
   background: radial-gradient(circle, var(--c-sq-check) 0%, transparent 72%);
-  animation: check-pulse 900ms var(--ease-out) infinite alternate;
+  animation: check-pulse var(--t-check) ease-in-out 4 alternate both;
 }
 .mark-hint::after {
   content: '';
@@ -86,7 +86,7 @@
   display: grid;
   place-items: center;
   z-index: 2;
-  transition: transform var(--t-move) var(--ease-out);
+  transition: transform var(--t-move) var(--ease-move);
   animation: piece-in var(--t-enter) var(--ease-spring) both;
   will-change: transform;
 }
@@ -95,7 +95,7 @@
 }
 .piece-captured {
   z-index: 1;
-  animation: piece-out 260ms var(--ease-out) forwards;
+  animation: piece-out var(--t-capture) ease-in forwards;
 }
 .piece-img {
   width: 92%;
@@ -136,7 +136,7 @@
   z-index: 10;
   display: grid;
   place-items: center;
-  background: rgba(10, 6, 24, 0.55);
+  background: var(--c-scrim);
   animation: fade-in var(--t-fast) ease both;
 }
 .promo {
@@ -186,15 +186,16 @@
 @keyframes piece-out {
   to {
     opacity: 0;
-    scale: 1.5;
-    rotate: 14deg;
+    scale: 0.7;
+    translate: 0 3px;
   }
 }
+/* Jaque: dos pulsos y queda fijo (4 medias oscilaciones). */
 @keyframes check-pulse {
   from {
-    opacity: 0.55;
+    opacity: 1;
   }
   to {
-    opacity: 1;
+    opacity: 0.45;
   }
 }

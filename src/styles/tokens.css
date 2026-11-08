@@ -1,65 +1,135 @@
 /*
- * Tokens PROVISIONALES de Juegoteca.
- * Se reemplazan con los de la identidad que elija Daniel (design/tokens.json, ticket T-001/T-002).
- * Todo el CSS de la app debe usar estas variables, nunca colores sueltos.
+ * Tokens de Juegoteca · identidad "Taller de fieltro" (T-002).
+ * Fuente: design/tokens.json (Codex). Todo el CSS usa estas variables, nunca colores sueltos.
+ * Modo claro por omisión; el oscuro sigue la preferencia del sistema.
+ *
+ * Nota: en tokens.json el modo claro trae p0/p1 invertidos respecto al oscuro.
+ * Aquí p0 es siempre el bando claro (asiento 0 = blancas) y p1 el oscuro.
  */
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/fonts/fraunces-latin.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  src: url('/fonts/atkinson-hyperlegible-next-latin.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  color-scheme: light;
+
   /* Superficies */
-  --c-bg: #1b1530;
-  --c-bg-2: #241c40;
-  --c-surface: #2e2551;
-  --c-surface-2: #3a2f66;
-  --c-line: rgba(255, 255, 255, 0.1);
+  --c-bg: #f5f0e5;
+  --c-bg-2: #ede4d2;
+  --c-surface: #fffdf6;
+  --c-surface-2: #efe6d4;
+  --c-line: #bdae98;
 
   /* Texto */
-  --c-text: #f4efff;
-  --c-text-dim: #b9add9;
+  --c-text: #1f2a22;
+  --c-text-dim: #526056;
 
-  /* Acentos */
-  --c-accent: #ffb547;
-  --c-accent-ink: #2a1a00;
-  --c-accent-2: #5ee0c1;
-  --c-danger: #ff6b81;
+  /* Acentos: coral para la acción, verde fieltro como ancla */
+  --c-accent: #b9473b;
+  --c-accent-ink: #fff8e7;
+  --c-accent-2: #2e6b52;
+  --c-accent-2-ink: #fff8e7;
+  --c-danger: #9e2f2f;
 
   /* Jugadores */
-  --c-p0: #fff6e6;
-  --c-p1: #2a2238;
+  --c-p0: #fff8e7;
+  --c-p1: #294536;
 
   /* Tablero */
-  --c-sq-light: #e9dcc4;
-  --c-sq-dark: #9a7bb8;
-  --c-sq-last: rgba(255, 196, 71, 0.55);
-  --c-sq-select: rgba(94, 224, 193, 0.65);
-  --c-sq-hint: rgba(27, 21, 48, 0.32);
-  --c-sq-check: #ff4d6d;
-  --c-coord: rgba(27, 21, 48, 0.55);
+  --c-sq-light: #e9d9bb;
+  --c-sq-dark: #967253;
+  --c-sq-last: rgba(238, 201, 104, 0.78);
+  --c-sq-select: rgba(185, 71, 59, 0.28);
+  --c-sq-hint: rgba(76, 152, 116, 0.68);
+  --c-sq-check: rgba(158, 47, 47, 0.54);
+  --c-coord: #506253;
+  --c-board-frame: #2e6b52;
 
-  /* Tipografía (se cambiará por las fuentes locales de la identidad) */
-  --f-display: ui-rounded, 'SF Pro Rounded', 'Nunito', system-ui, sans-serif;
-  --f-ui: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  /* Velos (diálogos sobre el tablero o la pantalla) */
+  --c-scrim: rgba(31, 42, 34, 0.42);
+
+  /* Tipografía */
+  --f-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --f-ui: 'Atkinson Hyperlegible Next', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   /* Forma */
   --r-sm: 10px;
   --r-md: 16px;
   --r-lg: 24px;
-  --shadow-1: 0 2px 8px rgba(0, 0, 0, 0.25);
-  --shadow-2: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-1: 0 2px 8px rgba(31, 42, 34, 0.12);
+  --shadow-2: 0 10px 28px rgba(31, 42, 34, 0.18);
 
-  /* Movimiento */
+  /* Movimiento (docs/identity.md § Movimiento) */
   --t-fast: 120ms;
-  --t-move: 190ms;
-  --t-enter: 320ms;
-  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-move: 180ms;
+  --t-enter: 220ms;
+  --t-capture: 110ms;
+  --t-check: 140ms;
+  --t-stagger: 45ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-move: cubic-bezier(0.2, 0.75, 0.25, 1);
+  --ease-spring: cubic-bezier(0.2, 0.8, 0.2, 1);
 
   /* Espaciado */
   --gutter: 16px;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --c-bg: #18221b;
+    --c-bg-2: #111a14;
+    --c-surface: #263329;
+    --c-surface-2: #314236;
+    --c-line: #607565;
+
+    --c-text: #fff8e7;
+    --c-text-dim: #cad4c7;
+
+    --c-accent: #ea7464;
+    --c-accent-ink: #251511;
+    --c-accent-2: #78b991;
+    --c-accent-2-ink: #111a14;
+    --c-danger: #ff9088;
+
+    --c-p0: #fff8e7;
+    --c-p1: #1b2a21;
+
+    --c-sq-light: #b99470;
+    --c-sq-dark: #5d432e;
+    --c-sq-last: rgba(238, 201, 104, 0.78);
+    --c-sq-select: rgba(234, 116, 100, 0.36);
+    --c-sq-hint: rgba(120, 185, 145, 0.64);
+    --c-sq-check: rgba(255, 144, 136, 0.52);
+    --c-coord: #d4e0d0;
+    --c-board-frame: #2e6b52;
+
+    --c-scrim: rgba(8, 12, 9, 0.55);
+
+    --shadow-1: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-2: 0 10px 28px rgba(0, 0, 0, 0.4);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root {
-    --t-fast: 0ms;
+    --t-fast: 80ms;
     --t-move: 0ms;
-    --t-enter: 0ms;
+    --t-enter: 80ms;
+    --t-capture: 80ms;
+    --t-stagger: 0ms;
   }
 }
