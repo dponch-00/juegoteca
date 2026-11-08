@@ -216,14 +216,17 @@ function AiMatch({
   }
 
   function takeback() {
-    if (!game.undo) return
+    if (!game.undo && !game.takeback) return
     token.current++
     setThinking(false)
     setHint(null)
     let s = saved.state
-    // Quitar la respuesta de la computadora y nuestra jugada.
-    const times = toMove === saved.seat ? 2 : 1
-    for (let i = 0; i < times && game.ply(s) > 0; i++) s = game.undo(s)
+    if (game.takeback) s = game.takeback(s, saved.seat)
+    else {
+      // Quitar la respuesta de la computadora y nuestra jugada.
+      const times = toMove === saved.seat ? 2 : 1
+      for (let i = 0; i < times && game.ply(s) > 0; i++) s = game.undo!(s)
+    }
     setSaved({ ...saved, state: s, takebacks: saved.takebacks + 1, resigned: false, recorded: false })
   }
 
@@ -285,7 +288,7 @@ function AiMatch({
               {hintBusy ? <span class="spinner" /> : '💡'} Pista
             </button>
           )}
-          {game.undo && (
+          {(game.undo || game.takeback) && (
             <button class="btn btn-sm" disabled={myMoves === 0 || saved.resigned} onClick={takeback}>
               ↶ Deshacer
             </button>

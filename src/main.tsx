@@ -7,11 +7,12 @@ import { initPwa } from './core/pwa'
 import { requestPersistence } from './core/storage'
 import { probePieceArt } from './games/chess/pieces'
 import { probeCheckersArt } from './games/checkers/art'
+import { probeBackgammonArt } from './games/backgammon/BackgammonBoard'
 
 initPwa()
 requestPersistence()
 
 // Esperamos a saber si existe el arte final de las piezas (máx. ~1 ms si está en caché).
-void Promise.all([probePieceArt(), probeCheckersArt()]).then(() => {
+void Promise.all([probePieceArt(), probeCheckersArt(), probeBackgammonArt()]).then(() => {
   render(<App />, document.getElementById('app')!)
 })

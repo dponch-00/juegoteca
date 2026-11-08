@@ -48,6 +48,15 @@
   - Pierde quien no tiene piezas o jugadas; tablas tras 30 jugadas solo de damas sin capturas.
   - Tablero: capturas múltiples paso a paso, animación siguiendo el zigzag, anillo en las piezas obligadas a capturar y aviso "¡Captura obligatoria!".
   - Pasa y juega y en línea (mismo contrato GameDef). Fichas 3D de Codex (T-005) desde v0.4.1; el CSS queda de respaldo.
+- **Backgammon** (v0.6.0, `src/games/backgammon/`): reglas estándar sin cubo de doblar.
+  - Puntas 1–24 desde la vista de blancas; cada turno son dos entradas en la partida (`r:a,b` tirada, `m:24/21,…` jugadas, `m:` pasa).
+  - Obliga a usar el máximo de dados (el mayor si solo cabe uno); barra primero; sacar fichas exacto o mayor sin fichas más lejos; golpe a fichas solas.
+  - Al final anuncia gammon o backgammon.
+  - Tablero SVG con los colores de T-005 y fichas y dados 3D de Codex. Cada ficha tiene identidad y se desliza al moverse; los dados se animan al tirar y se atenúan al usarse.
+  - Las puntas posibles se iluminan; hay deshacer parcial (↶) y paso automático sin jugadas.
+  - **Negras ven el tablero espejado en vertical** (casa abajo a la derecha, como blancas).
+  - Pasa y juega, en línea (cada jugador tira sus dados: suficiente entre amigos) y contra la computadora: 4 niveles, heurística de pips, puntas, primas, anclas y riesgo de golpe; Experto promedia las 21 tiradas del rival. Corre en un worker.
+  - Simplificación: empiezan blancas, sin tirada inicial.
 - **Contra la computadora genérico** (v0.5.0, `src/ui/AiScreen.tsx`): cualquier juego con `game.ai` (contrato `GameAI` en `src/core/types.ts`: niveles, `move`, `hint`, `hintAnnotations`) obtiene sin código extra el modo en el lobby, la elección de nivel y color, la partida con "pensando…", pista, deshacer, rendirse, partida guardada y estadísticas por nivel. **Regla de Daniel: todo juego de dos tiene modo contra la computadora** (también en `AGENTS.md`). El ajedrez conserva su pantalla propia (Stockfish y repaso).
 - **Damas contra la computadora** (`src/games/checkers/ai.ts`): negamax con alfa-beta y profundización iterativa. Evalúa material, avance, fila de atrás, bordes y damas al centro; no corta la búsqueda a mitad de una captura. Corre en un Web Worker (`ai.worker.ts`, 4.6 KB, offline). Seis niveles, de Aprendiz (azar 60 %, profundidad 1) a Experto (profundidad 14, 2 s).
 - **Celular y tablet, vertical y horizontal** (v0.3.1):
@@ -60,6 +69,13 @@
 - Deploy automático a GitHub Pages (`.github/workflows/deploy.yml`), base `/juegoteca/`.
 
 ## Cómo se verificó
+
+**2026-11-08 (backgammon):** 66/66 pruebas; 13 de reglas y 5 del motor, que en la apertura 3-1 elige solo 8/5 6/5. En el navegador:
+- Posición inicial correcta (8 pilas, 167 pips).
+- Turno completo tocando las puntas: tirar, elegir y mover; las puntas destino se iluminan y los pips bajan.
+- Contra Experto: la computadora tira y mueve sola en 0.7 s; deshacer vuelve a mi tirada sin volver a tirar; la pista marca 13→11→8.
+- Con negras en tablet horizontal: tablero espejado, toques correctos y la computadora golpea una ficha sola.
+- En línea no se probó aparte: usa el mismo camino genérico que ajedrez y damas.
 
 **2026-11-08 (damas contra la computadora):** 48/48 pruebas; 6 del motor: posición equilibrada, jugada legal, no regala una ficha, prefiere coronar, respeta el límite de tiempo y azar por nivel. En el navegador a 375 px:
 - El lobby de damas muestra el modo solo; la selección de nivel y color usa las fichas 3D.
@@ -109,5 +125,5 @@ Lobby en tres columnas, retos y partida con panel lateral, inicio con los cuatro
 
 1. **Daniel:** ver las piezas 3D en su teléfono (v0.2.1). Probar en línea entre dos teléfonos (misma Wi-Fi y con datos móviles).
 2. **Codex (opcional):** normalizar línea de base y centrado de las piezas (T4-04).
-3. **Claude:** sudoku (un jugador) y backgammon (con motor contra la computadora desde el inicio, usando las fichas y dados de T-005). Lecciones de ajedrez después.
+3. **Claude:** sudoku (un jugador, con niveles y notas). Lecciones de ajedrez después. Pendiente de backgammon: tirada inicial y, si Daniel lo pide, cubo de doblar.
 4. Después: damas, reanudar la sala tras recargar.

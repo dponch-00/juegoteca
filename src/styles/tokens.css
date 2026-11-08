@@ -59,6 +59,14 @@
   --c-coord: #506253;
   --c-board-frame: #2e6b52;
 
+  /* Backgammon (design/tokens.json → backgammon) */
+  --bg-board: #477d62;
+  --bg-frame: #6f4529;
+  --bg-bar: #e9d9bb;
+  --bg-point-a: #8f5a3b;
+  --bg-point-b: #5d8a70;
+  --bg-point-hl: #eec968;
+
   /* Velos (diálogos sobre el tablero o la pantalla) */
   --c-scrim: rgba(31, 42, 34, 0.42);
 
@@ -121,6 +129,13 @@
     --c-board-frame: #2e6b52;
 
     --c-scrim: rgba(8, 12, 9, 0.55);
+
+    --bg-board: #385e4b;
+    --bg-frame: #392216;
+    --bg-bar: #b99470;
+    --bg-point-a: #b76c4c;
+    --bg-point-b: #6f987e;
+    --bg-point-hl: #f2ce76;
 
     --shadow-1: 0 2px 8px rgba(0, 0, 0, 0.3);
     --shadow-2: 0 10px 28px rgba(0, 0, 0, 0.4);

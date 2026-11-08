@@ -48,6 +48,8 @@ export interface GameDef<S = any, M = any> {
   /** Número de jugadas hechas; sirve para ordenar y detectar desincronía. */
   ply(state: S): number
   undo?(state: S): S
+  /** Deshacer contra la computadora: volver al último turno propio (si el juego necesita algo distinto a quitar 1–2 jugadas). */
+  takeback?(state: S, seat: Seat): S
   /** Texto corto de estado ("Jaque", etc.) o null. */
   hint?(state: S): string | null
   Board: ComponentType<BoardProps<S, M>>
