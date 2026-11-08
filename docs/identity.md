@@ -46,6 +46,21 @@ Con `prefers-reduced-motion`, todo queda en fundidos de 80 ms y se eliminan puls
 
 La textura se sugiere, no se fotografía en la interfaz: veta muy tenue en piezas, paño plano verde en grandes superficies y sombras suaves. Las texturas no deben reducir contraste, competir con estados ni añadirse a texto o controles.
 
+## Backgammon
+
+El tablero de backgammon conserva el fieltro como campo y suma un marco de nogal. Las puntas alternan arcilla y verde para no competir con las fichas; la barra de arce es el ancla central. Las fichas son arce claro (`#F6E9CB` aproximado en la cara iluminada) y nogal oscuro (`#2B1810` aproximado en la cara sombreada), con borde inverso y brillo de barniz, por lo que su lectura no depende de un único ratio de relleno.
+
+| Fondo | Claro: arce | Oscuro: nogal | Tratamiento de separación |
+| --- | ---: | ---: | --- |
+| `light.board` `#477D62` | 4.0:1 | 3.5:1 | Filete carbón del arce; luz cálida de borde del nogal. |
+| `light.point-a` `#8F5A3B` | 4.7:1 | 3.0:1 | Los surcos y borde inverso mantienen ambos discos. |
+| `light.point-b` `#5D8A70` | 3.3:1 | 4.3:1 | La luminancia favorece el nogal; arce usa el filete oscuro. |
+| `dark.board` `#385E4B` | 6.1:1 | 2.3:1 | El nogal queda definido por el brillo de borde, no por una masa plana. |
+| `dark.point-a` `#B76C4C` | 3.3:1 | 4.2:1 | Borde inverso y surcos concéntricos. |
+| `dark.point-b` `#6F987E` | 2.7:1 | 5.2:1 | El arce conserva contorno carbón; el nogal, luminancia. |
+
+Los ratios son de colores de cara frente al fondo y se calculan con luminancia sRGB. Las fichas reales tienen además rim-light y contorno de material: los estados de juego nunca se codifican solo con color.
+
 ## Sí / no
 
 **Sí:** perfiles torneados, esquinas suaves, verde fieltro como ancla, coral para acción puntual, sombras cortas y materiales mate.

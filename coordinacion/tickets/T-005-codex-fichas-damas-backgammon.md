@@ -4,7 +4,7 @@
 | --- | --- |
 | Para | Codex |
 | De | Claude Code (a pedido de Daniel) |
-| Estado | abierto |
+| Estado | entregado |
 | Creado | 2026-11-08 |
 | Depende de | T-004 (piezas de ajedrez 3D, cerrado) |
 
@@ -116,13 +116,13 @@ No edites `src/`, `scripts/`, `package.json` ni `ESTADO.md`.
 
 ## Entrega
 
-- **Qué hice:**
-- **Archivos:**
-- **Qué vi en las hojas de contacto (damas y backgammon):**
-- **Pesos:**
-- **Herramientas/modelos usados:**
-- **Limitaciones o bloqueos:**
-- **Preguntas abiertas:**
+- **Qué hice:** Produje fichas 3D de la misma familia que el ajedrez: arce marfil barnizado y nogal oscuro, luz suave desde arriba a la izquierda, veta discreta, brillo de borde y sombra de contacto. Para damas hice fichas normales y damas visibles por dos discos completos apilados y una banda coral; para backgammon, discos cenitales con surcos concéntricos; y seis dados de arce con puntos de nogal. Normalicé todas las salidas a 512 px con centro, baseline y margen comunes para no repetir T4-04.
+- **Archivos:** Masters: `design/masters/checkers/{wman,bman,wking,bking}.png` y `design/masters/backgammon/{w-checker,b-checker,dice-1..6}.png`. Servidos WebP: `public/assets/checkers/*.webp` y `public/assets/backgammon/*.webp`. También `design/process-tabletop-renders.py`, `design/tokens.json`, `docs/identity.md` y `design/asset-manifest.json`.
+- **Qué vi en las hojas de contacto (damas y backgammon):** `npm run pieces:sheet -- checkers` generó una hoja desde los masters PNG: a 36 px se separan arce/nogal por luminosidad y la dama se identifica por el segundo disco y la franja coral; a 64 px se distinguen los surcos. `npm run pieces:sheet -- backgammon` confirmó fichas cenitales legibles medio superpuestas y los seis dados distinguibles por los puntos ya a 32–36 px. En claro, oscuro y grises los discos mantienen borde y brillo; los dados preservan sus seis patrones de puntos.
+- **Pesos:** 12 masters PNG RGBA de 512 × 512; 12 WebP RGBA de 256 × 256, máximo **21,196 bytes** (límite 30 KB). Validé 4 masters/4 WebP de damas y 8/8 de backgammon; todos tienen alfa en la esquina, dimensiones correctas y margen mínimo de **42 px** al medir alfa ≥8 %, superior al mínimo de 4 %. El manifiesto registra 24 entradas nuevas (master + servido) sin desajustes de tamaño.
+- **Herramientas/modelos usados:** `image_gen` para tres hojas de renders originales con transparencia (damas, fichas de backgammon y dados); Pillow 3.14 en `design/process-tabletop-renders.py` para corte, normalización, limpieza de alfa y WebP; scripts existentes `npm run pieces:sheet -- checkers` y `-- backgammon` para revisión. Prompts resumidos constan en el manifiesto.
+- **Limitaciones o bloqueos:** No hay bloqueo. Las hojas verifican los tamaños y fondos de prueba; Claude debe hacer la revisión cruzada en la interacción real cuando conecte cada juego. No modifiqué las piezas de ajedrez: T4-04 ya queda prevenido en los nuevos activos mediante normalización explícita.
+- **Preguntas abiertas:** Ninguna para integrar. El tablero de backgammon puede usar directamente el objeto `backgammon` de `design/tokens.json`; sus contrastes de cara, punto y borde están documentados en `docs/identity.md`.
 
 ## Revisión
 

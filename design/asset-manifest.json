@@ -509,6 +509,246 @@
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
       "bytes": 9382
+    },
+    {
+      "id": "tabletop-master-wman",
+      "path": "design/masters/checkers/wman.png",
+      "purpose": "Master PNG ficha de damas 3D de madera",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Cuatro fichas de damas de arce/nogal: normales y coronadas con dos discos e inlay coral, luz suave arriba-izquierda, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 294308
+    },
+    {
+      "id": "tabletop-wman",
+      "path": "public/assets/checkers/wman.webp",
+      "purpose": "Activo móvil ficha de damas 3D de madera",
+      "tool": "Pillow 3.14",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 19512
+    },
+    {
+      "id": "tabletop-master-bman",
+      "path": "design/masters/checkers/bman.png",
+      "purpose": "Master PNG ficha de damas 3D de madera",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Cuatro fichas de damas de arce/nogal: normales y coronadas con dos discos e inlay coral, luz suave arriba-izquierda, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 311645
+    },
+    {
+      "id": "tabletop-bman",
+      "path": "public/assets/checkers/bman.webp",
+      "purpose": "Activo móvil ficha de damas 3D de madera",
+      "tool": "Pillow 3.14",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 19968
+    },
+    {
+      "id": "tabletop-master-wking",
+      "path": "design/masters/checkers/wking.png",
+      "purpose": "Master PNG ficha de damas 3D de madera",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Cuatro fichas de damas de arce/nogal: normales y coronadas con dos discos e inlay coral, luz suave arriba-izquierda, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 341662
+    },
+    {
+      "id": "tabletop-wking",
+      "path": "public/assets/checkers/wking.webp",
+      "purpose": "Activo móvil ficha de damas 3D de madera",
+      "tool": "Pillow 3.14",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 20334
+    },
+    {
+      "id": "tabletop-master-bking",
+      "path": "design/masters/checkers/bking.png",
+      "purpose": "Master PNG ficha de damas 3D de madera",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Cuatro fichas de damas de arce/nogal: normales y coronadas con dos discos e inlay coral, luz suave arriba-izquierda, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 351551
+    },
+    {
+      "id": "tabletop-bking",
+      "path": "public/assets/checkers/bking.webp",
+      "purpose": "Activo móvil ficha de damas 3D de madera",
+      "tool": "Pillow 3.14",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 21196
+    },
+    {
+      "id": "tabletop-master-w-checker",
+      "path": "design/masters/backgammon/w-checker.png",
+      "purpose": "Master PNG ficha cenital de backgammon 3D de madera",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Dos fichas cenitales de backgammon, arce claro y nogal oscuro, surcos concéntricos, luz arriba-izquierda, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 287959
+    },
+    {
+      "id": "tabletop-w-checker",
+      "path": "public/assets/backgammon/w-checker.webp",
+      "purpose": "Activo móvil ficha cenital de backgammon 3D de madera",
+      "tool": "Pillow 3.14",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 15318
+    },
+    {
+      "id": "tabletop-master-b-checker",
+      "path": "design/masters/backgammon/b-checker.png",
+      "purpose": "Master PNG ficha cenital de backgammon 3D de madera",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Dos fichas cenitales de backgammon, arce claro y nogal oscuro, surcos concéntricos, luz arriba-izquierda, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 288512
+    },
+    {
+      "id": "tabletop-b-checker",
+      "path": "public/assets/backgammon/b-checker.webp",
+      "purpose": "Activo móvil ficha cenital de backgammon 3D de madera",
+      "tool": "Pillow 3.14",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 15400
+    },
+    {
+      "id": "tabletop-master-dice-1",
+      "path": "design/masters/backgammon/dice-1.png",
+      "purpose": "Master PNG cara de dado 3D de marfil",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Seis caras de dado de arce marfil, puntos de nogal correctos, bordes redondeados, luz arriba-izquierda, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 254510
+    },
+    {
+      "id": "tabletop-dice-1",
+      "path": "public/assets/backgammon/dice-1.webp",
+      "purpose": "Activo móvil cara de dado 3D de marfil",
+      "tool": "Pillow 3.14",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 11172
+    },
+    {
+      "id": "tabletop-master-dice-2",
+      "path": "design/masters/backgammon/dice-2.png",
+      "purpose": "Master PNG cara de dado 3D de marfil",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Seis caras de dado de arce marfil, puntos de nogal correctos, bordes redondeados, luz arriba-izquierda, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 257815
+    },
+    {
+      "id": "tabletop-dice-2",
+      "path": "public/assets/backgammon/dice-2.webp",
+      "purpose": "Activo móvil cara de dado 3D de marfil",
+      "tool": "Pillow 3.14",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 11720
+    },
+    {
+      "id": "tabletop-master-dice-3",
+      "path": "design/masters/backgammon/dice-3.png",
+      "purpose": "Master PNG cara de dado 3D de marfil",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Seis caras de dado de arce marfil, puntos de nogal correctos, bordes redondeados, luz arriba-izquierda, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 258232
+    },
+    {
+      "id": "tabletop-dice-3",
+      "path": "public/assets/backgammon/dice-3.webp",
+      "purpose": "Activo móvil cara de dado 3D de marfil",
+      "tool": "Pillow 3.14",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 11454
+    },
+    {
+      "id": "tabletop-master-dice-4",
+      "path": "design/masters/backgammon/dice-4.png",
+      "purpose": "Master PNG cara de dado 3D de marfil",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Seis caras de dado de arce marfil, puntos de nogal correctos, bordes redondeados, luz arriba-izquierda, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 258611
+    },
+    {
+      "id": "tabletop-dice-4",
+      "path": "public/assets/backgammon/dice-4.webp",
+      "purpose": "Activo móvil cara de dado 3D de marfil",
+      "tool": "Pillow 3.14",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 11108
+    },
+    {
+      "id": "tabletop-master-dice-5",
+      "path": "design/masters/backgammon/dice-5.png",
+      "purpose": "Master PNG cara de dado 3D de marfil",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Seis caras de dado de arce marfil, puntos de nogal correctos, bordes redondeados, luz arriba-izquierda, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 261509
+    },
+    {
+      "id": "tabletop-dice-5",
+      "path": "public/assets/backgammon/dice-5.webp",
+      "purpose": "Activo móvil cara de dado 3D de marfil",
+      "tool": "Pillow 3.14",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 11882
+    },
+    {
+      "id": "tabletop-master-dice-6",
+      "path": "design/masters/backgammon/dice-6.png",
+      "purpose": "Master PNG cara de dado 3D de marfil",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Seis caras de dado de arce marfil, puntos de nogal correctos, bordes redondeados, luz arriba-izquierda, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 263909
+    },
+    {
+      "id": "tabletop-dice-6",
+      "path": "public/assets/backgammon/dice-6.webp",
+      "purpose": "Activo móvil cara de dado 3D de marfil",
+      "tool": "Pillow 3.14",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 12072
     }
   ],
   "explorationReferences": [
