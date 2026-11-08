@@ -4,7 +4,7 @@
 | --- | --- |
 | Para | Codex |
 | De | Claude Code (a pedido de Daniel) |
-| Estado | entregado |
+| Estado | devuelto: ronda 2 abierta |
 | Creado | 2026-11-08 |
 | Depende de | T-002 (identidad Taller de fieltro). **Reemplaza a T-003**, que queda cancelado. |
 
@@ -135,4 +135,49 @@ No edites `src/`, `scripts/`, `package.json` ni `ESTADO.md`.
 
 ## Revisión
 
-(la llena Claude Code)
+**Claude Code · 2026-11-08 · Veredicto: ronda 1 aceptada como avance de silueta; devuelto para ronda 2 (realismo 3D, color de las blancas, caballo). No se publica todavía.**
+
+- **Verificado (hoja de contacto y tablero real a 375 px):** siluetas Staunton distintas por pieza (cruz, corona de bolitas, almenas, mitra con corte, bola), jerarquía de alturas, misma línea de apoyo, 12 SVG de 1.5–1.7 KB, ids únicos y tokens `p0`/`p1` corregidos. Es una mejora real de identificación respecto a T-002.
+
+- [T4-01] Severidad: alta
+  Ubicación: los 12 SVG (`*-wood`, degradado lineal horizontal)
+  Evidencia: no hay volumen 3D. El degradado va claro, oscuro, claro de izquierda a derecha, con el punto más oscuro (`#9A693D`) cerca del centro de la pieza. Se lee como pieza plana a rayas, no como cilindro iluminado.
+  Consecuencia: no cumple el pedido central de Daniel ("que se vean realistas en 3D").
+  Corrección: ver Ronda 2.
+
+- [T4-02] Severidad: alta
+  Ubicación: piezas blancas
+  Evidencia: por ese degradado, el cuerpo de las blancas queda tostado o marrón. En el tablero real se confunden con la casilla oscura `#967253` (alfil y caballo blancos en c3/c4/f3 casi desaparecen). Antes el arce era `#FFF3D6` liso.
+  Consecuencia: peor contraste que la versión anterior en la mitad de las casillas.
+  Corrección: las blancas deben leerse marfil o crema (luminosidad media alta), con sombras suaves, no marrones.
+
+- [T4-03] Severidad: alta
+  Ubicación: `wn.svg`, `bn.svg`
+  Evidencia: a 36 px y a 64 px el caballo se ve como una bota o un bloque curvo; no se reconoce hocico ni crin.
+  Consecuencia: sigue siendo la pieza más confusa, justo lo que Daniel reportó.
+  Corrección: cabeza de caballo inconfundible de perfil (frente, hocico, ojo, oreja levantada, crin en el cuello).
+
+## Ronda 2 (abierta · 2026-11-08)
+
+Daniel pidió piezas **realistas en 3D**. Con degradados planos no se llega: pasa a la **Ruta B (render raster)**, que la app ya soporta. Conserva las siluetas de la ronda 1, que funcionan, como punto de partida.
+
+1. **Render real con luz.** Opciones (elige la que dé mejor resultado):
+   - **a)** Renderizador propio en Python/numpy de **sólidos de revolución** (las 5 piezas torneadas son perfiles de torno: radio en función de la altura), con sombreado Lambert más especular, oclusión ambiental aproximada y sombra de contacto. El caballo puede ser un perfil extruido y redondeado, o hacerse con la opción b.
+   - **b)** La herramienta de imagen generando **todas las piezas de un color en una sola imagen** (las 6 en fila, misma luz, cámara y escala, fondo transparente real) y recortándolas después. Así salen coherentes. Repite con el otro color, o con ambos en la misma imagen.
+   - **c)** Blender u otro motor 3D si está disponible en tu entorno.
+2. **Material:** blancas de **arce o marfil claro barnizado** (luminosidad media ≥ 70 en L\*), negras de **nogal o ébano** (≤ 30 en L\*). Brillo especular suave, veta sutil y la misma luz desde arriba a la izquierda en las 12.
+3. **Caballo inconfundible** (T4-03), reconocible a 36 px solo por su silueta.
+4. **Contorno o luz de borde** para que ambas piezas se despeguen de las dos casillas (T4-02).
+5. **Entrega según la Ruta B del Pedido 4:** masters PNG 512×512 en `design/masters/pieces/`, WebP 256×256 ≤ 30 KB en `public/assets/chess/pieces/` y **borrar los `.svg`**. Encuadre: vista frontal con ligera elevación, base al 92 % del alto y misma escala.
+6. **Verifica** con `npm run pieces:sheet` (usa los masters PNG) y describe lo que ves: a 36 px, ¿se reconoce cada pieza y cada bando sobre ambas casillas?
+
+Llena la Entrega de la ronda 2 debajo de esta sección y cambia el estado a "entregado (ronda 2)".
+
+### Entrega ronda 2
+
+- **Opción elegida (a/b/c) y por qué:**
+- **Qué hice:**
+- **Qué vi en `pieces-sheet.png`:**
+- **Pesos:**
+- **Herramientas/modelos usados:**
+- **Limitaciones o bloqueos:**

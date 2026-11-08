@@ -13,7 +13,7 @@
 | [T-001](coordinacion/tickets/T-001-codex-identidad-y-tematica.md) | Codex | Identidad y temática: tres direcciones | cerrado: Daniel eligió **D1 · Taller de fieltro** |
 | [T-002](coordinacion/tickets/T-002-codex-produccion-taller-de-fieltro.md) | Codex | Producción de Taller de fieltro: identidad, tokens, fuentes, 12 piezas, logo, iconos | revisado e integrado |
 | [T-003](coordinacion/tickets/T-003-codex-pulido-piezas.md) | Codex | Pulido de piezas | cancelado: reemplazado por T-004 |
-| [T-004](coordinacion/tickets/T-004-codex-piezas-3d-staunton.md) | Codex | Piezas con aspecto 3D realista, estilo Staunton (SVG con volumen o render WebP) | abierto |
+| [T-004](coordinacion/tickets/T-004-codex-piezas-3d-staunton.md) | Codex | Piezas con aspecto 3D realista, estilo Staunton | ronda 1 (SVG) revisada: mejor silueta, sin 3D, blancas marrones, caballo confuso. **Ronda 2 (render WebP) abierta**; ronda 1 sin publicar |
 
 ## Publicación
 
@@ -62,7 +62,7 @@
 
 ## Siguiente acción
 
-1. **Daniel:** pasar T-004 a Codex. Probar en línea entre dos teléfonos (misma Wi-Fi y con datos móviles).
+1. **Daniel:** pasar la ronda 2 de T-004 a Codex. Probar en línea entre dos teléfonos (misma Wi-Fi y con datos móviles).
 2. **Claude:** revisar T-004 con `npm run pieces:sheet` y en la app (la app acepta `.svg` o `.webp`).
 3. **Claude:** **retos** de ajedrez (mate en 1/2/3 y mejor jugada) con una selección de la base de problemas de Lichess (CC0); después, **lecciones** interactivas (texto de Claude, ilustraciones de Codex).
 4. Después: damas, reanudar la sala tras recargar.
