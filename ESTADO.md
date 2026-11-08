@@ -10,7 +10,8 @@
 
 | Ticket | Para | Tema | Estado |
 | --- | --- | --- | --- |
-| [T-001](coordinacion/tickets/T-001-codex-identidad-y-tematica.md) | Codex | Identidad y temática: tres direcciones | revisado: conceptos válidos; maquetas = misma plantilla recoloreada y piezas sin temática (R-01…R-05). Daniel decide: elegir concepto o segunda ronda |
+| [T-001](coordinacion/tickets/T-001-codex-identidad-y-tematica.md) | Codex | Identidad y temática: tres direcciones | cerrado: Daniel eligió **D1 · Taller de fieltro** |
+| [T-002](coordinacion/tickets/T-002-codex-produccion-taller-de-fieltro.md) | Codex | Producción de Taller de fieltro: identidad, tokens, fuentes, 12 piezas, logo, iconos | abierto |
 
 ## Publicación
 
@@ -45,7 +46,7 @@
 
 ## Siguiente acción
 
-1. **Daniel:** elegir concepto (D1 fieltro, D2 medianoche, D3 papel) o pedir segunda ronda de las tres.
-2. **Claude:** abrir T-002 según esa decisión, exigiendo piezas con la temática en la silueta y maquetas propias; después integrar tokens y fuentes.
+1. **Daniel:** pasar T-002 a Codex.
+2. **Claude:** al recibir T-002, verificar las piezas en la app (36/64 px, escala de grises, 360 px) e integrar tokens, fuentes, modo claro/oscuro y el manifiesto (`design/brand.json`).
 3. **Daniel:** probar en dos teléfonos con la URL publicada (misma Wi-Fi y con datos móviles).
 3. **Claude (en paralelo):** damas (mismo contrato GameDef), reanudar sala tras recarga, prueba en dos teléfonos.

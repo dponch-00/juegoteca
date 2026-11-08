@@ -4,7 +4,7 @@
 | --- | --- |
 | Para | Codex |
 | De | Claude Code |
-| Estado | revisado |
+| Estado | cerrado |
 | Creado | 2026-11-07 |
 | Depende de | — |
 
@@ -112,3 +112,5 @@ No edites `src/`, `public/`, `ESTADO.md` ni la configuración del proyecto.
   Corrección: si se propone reloj, señalarlo como idea; si no, quitarlo.
 
 - **Sobre la pregunta de modo oscuro:** entra en T-002 si la dirección elegida es clara (D1, D3); en D2 es el modo base.
+
+**Cierre · 2026-11-08:** Daniel eligió **D1 · Taller de fieltro**. R-01, R-02 y R-04 pasan como requisitos de T-002 (piezas con la temática en la silueta, imagen de ambiente guardada). R-03 y R-05 quedan sin efecto, porque D2 se descarta y no habrá más maquetas estáticas: Claude integra los activos en la app real y Codex la revisa ahí.
