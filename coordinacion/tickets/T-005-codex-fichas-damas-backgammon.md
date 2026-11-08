@@ -4,7 +4,7 @@
 | --- | --- |
 | Para | Codex |
 | De | Claude Code (a pedido de Daniel) |
-| Estado | entregado |
+| Estado | cerrado |
 | Creado | 2026-11-08 |
 | Depende de | T-004 (piezas de ajedrez 3D, cerrado) |
 
@@ -126,4 +126,20 @@ No edites `src/`, `scripts/`, `package.json` ni `ESTADO.md`.
 
 ## Revisión
 
-(la llena Claude Code)
+**Claude Code · 2026-11-08 · Veredicto: aceptado. Damas integradas y publicadas (v0.4.1); fichas, dados y colores de backgammon listos para cuando se programe ese juego.**
+
+- **Verificado:**
+  - Hojas de contacto de damas y backgammon a 36 y 64 px en claro, oscuro y grises.
+  - Misma madera, luz y acabado que el ajedrez. La dama se distingue de inmediato (dos discos apilados).
+  - Los seis dados se leen a 36 px. Las fichas cenitales de backgammon son claras.
+  - Encuadre homogéneo: centros en 255–256 (los dados en 263–265 en vertical, coherente entre caras) y margen ≥ 43 px; **T4-04 no se repitió**.
+  - WebP de 11–21 KB.
+  - En el tablero real de damas a 375 px: la app carga los `.webp` sola (0 fichas CSS) y se leen bien sobre la casilla oscura.
+
+- [T5-01] Severidad: baja
+  Ubicación: `design/masters/checkers/{wman,bman}.png` (y sus WebP)
+  Evidencia: debajo de la ficha simple aparece un arco anaranjado separado del disco, como una sombra o reflejo recortado; a 36 px se ve como una rayita bajo la ficha (fila "claro", columnas 1 y 3 de la hoja).
+  Consecuencia: detalle visual menor; no afecta la lectura.
+  Corrección (opcional): fundir esa sombra con la base del disco o quitarla, igual que en las damas, donde no aparece.
+
+- **Nota (sin hallazgo):** la ficha clara de damas es más tostada que el marfil de las piezas de ajedrez; se distingue bien de la oscura, así que se acepta.

@@ -14,7 +14,7 @@
 | [T-002](coordinacion/tickets/T-002-codex-produccion-taller-de-fieltro.md) | Codex | Producción de Taller de fieltro: identidad, tokens, fuentes, 12 piezas, logo, iconos | revisado e integrado |
 | [T-003](coordinacion/tickets/T-003-codex-pulido-piezas.md) | Codex | Pulido de piezas | cancelado: reemplazado por T-004 |
 | [T-004](coordinacion/tickets/T-004-codex-piezas-3d-staunton.md) | Codex | Piezas con aspecto 3D realista, estilo Staunton | cerrado: ronda 2 (render WebP) aceptada y publicada en v0.2.1; pendiente menor T4-04 (alinear base y centrado) |
-| [T-005](coordinacion/tickets/T-005-codex-fichas-damas-backgammon.md) | Codex | Fichas de damas (con dama coronada), fichas de backgammon, dados y colores del tablero de backgammon | abierto |
+| [T-005](coordinacion/tickets/T-005-codex-fichas-damas-backgammon.md) | Codex | Fichas de damas (con dama coronada), fichas de backgammon, dados y colores del tablero de backgammon | cerrado: aceptado; damas con fichas 3D en v0.4.1; menor T5-01 (arco bajo la ficha simple) |
 
 ## Publicación
 
@@ -47,7 +47,7 @@
   - Captura obligatoria con **ley de cantidad** (máximo de piezas), sin saltar dos veces la misma pieza; corona al terminar en la última fila.
   - Pierde quien no tiene piezas o jugadas; tablas tras 30 jugadas solo de damas sin capturas.
   - Tablero: capturas múltiples paso a paso, animación siguiendo el zigzag, anillo en las piezas obligadas a capturar y aviso "¡Captura obligatoria!".
-  - Pasa y juega y en línea (mismo contrato GameDef). Fichas provisionales en CSS hasta T-005.
+  - Pasa y juega y en línea (mismo contrato GameDef). Fichas 3D de Codex (T-005) desde v0.4.1; el CSS queda de respaldo.
 - **Celular y tablet, vertical y horizontal** (v0.3.1):
   - El manifiesto ya no fija la orientación (`any`).
   - Las pantallas de partida (Match, retos, repaso) tienen `.board-wrap` y `.match-side`. En vertical el panel se disuelve (`display: contents`) y se ordena alrededor del tablero (`.pre` = arriba). En horizontal el tablero ocupa toda la altura a la izquierda; a la derecha van el título, el rival arriba y tú con los botones abajo.
