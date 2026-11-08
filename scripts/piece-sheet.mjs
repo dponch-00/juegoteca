@@ -6,7 +6,7 @@
 // Filas: modo claro, modo oscuro y modo claro en escala de grises.
 // En cada fila: las 6 piezas blancas y las 6 negras a 36 px y a 64 px,
 // alternando casilla clara y oscura (como en un tablero real).
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
 import { Resvg } from '@resvg/resvg-js'
 
 const PIECES = ['k', 'q', 'r', 'b', 'n', 'p']
@@ -21,9 +21,21 @@ const LABEL_W = 120
 const GAP = 24
 const FILL = 0.92 // la app dibuja la pieza al 92 % de la casilla
 
+// Acepta el juego en SVG o como render raster, igual que la app.
+// resvg no decodifica WebP: para el render se usan los masters PNG de Codex
+// (design/masters/pieces/*.png), de los que sale el WebP que sirve la app.
+const DIR = 'public/assets/chess/pieces'
+const MASTERS = 'design/masters/pieces'
+const RASTER = existsSync(`${DIR}/wk.webp`)
+if (RASTER && !existsSync(`${MASTERS}/wk.png`)) {
+  console.error(`Hay piezas WebP pero faltan los masters PNG en ${MASTERS}/`)
+  process.exit(1)
+}
+const FORMAT = RASTER ? 'png (masters del webp)' : 'svg'
 const uri = (color, type) => {
-  const svg = readFileSync(`public/assets/chess/pieces/${color}${type}.svg`)
-  return `data:image/svg+xml;base64,${svg.toString('base64')}`
+  const file = RASTER ? `${MASTERS}/${color}${type}.png` : `${DIR}/${color}${type}.svg`
+  const mime = RASTER ? 'image/png' : 'image/svg+xml'
+  return `data:${mime};base64,${readFileSync(file).toString('base64')}`
 }
 
 // Ancho: etiqueta + por cada tamaño 12 casillas (6 blancas + 6 negras) + separación
@@ -63,4 +75,4 @@ const sheet = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="
 mkdirSync('design/review', { recursive: true })
 const png = new Resvg(sheet, { fitTo: { mode: 'original' }, font: { loadSystemFonts: true } }).render().asPng()
 writeFileSync('design/review/pieces-sheet.png', png)
-console.log(`design/review/pieces-sheet.png (${width}×${height}, ${png.length} bytes)`)
+console.log(`design/review/pieces-sheet.png (${FORMAT}, ${width}×${height}, ${png.length} bytes)`)

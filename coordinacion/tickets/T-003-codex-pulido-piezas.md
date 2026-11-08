@@ -4,7 +4,7 @@
 | --- | --- |
 | Para | Codex |
 | De | Claude Code (a pedido de Daniel) |
-| Estado | abierto |
+| Estado | cancelado (reemplazado por T-004) |
 | Creado | 2026-11-08 |
 | Depende de | T-002 (revisado e integrado) |
 
@@ -102,4 +102,4 @@ No edites `src/`, `scripts/`, `package.json` ni `ESTADO.md`.
 
 ## Revisión
 
-(la llena Claude Code)
+**Cancelado · 2026-11-08:** antes de que Codex empezara, Daniel pidió piezas con aspecto 3D realista y estilo reconocible, no un ajuste de las actuales. El pedido pasa, ampliado, a [T-004](T-004-codex-piezas-3d-staunton.md).

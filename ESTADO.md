@@ -12,7 +12,8 @@
 | --- | --- | --- | --- |
 | [T-001](coordinacion/tickets/T-001-codex-identidad-y-tematica.md) | Codex | Identidad y temática: tres direcciones | cerrado: Daniel eligió **D1 · Taller de fieltro** |
 | [T-002](coordinacion/tickets/T-002-codex-produccion-taller-de-fieltro.md) | Codex | Producción de Taller de fieltro: identidad, tokens, fuentes, 12 piezas, logo, iconos | revisado e integrado |
-| [T-003](coordinacion/tickets/T-003-codex-pulido-piezas.md) | Codex | Pulido de piezas: jerarquía de alturas, base más baja, cabezas más grandes; tokens p0/p1 | abierto |
+| [T-003](coordinacion/tickets/T-003-codex-pulido-piezas.md) | Codex | Pulido de piezas | cancelado: reemplazado por T-004 |
+| [T-004](coordinacion/tickets/T-004-codex-piezas-3d-staunton.md) | Codex | Piezas con aspecto 3D realista, estilo Staunton (SVG con volumen o render WebP) | abierto |
 
 ## Publicación
 
@@ -56,12 +57,12 @@
 
 - **Aún no se prueba en dos teléfonos reales.** En la misma Wi-Fi debería conectar; con datos móviles algunas operadoras bloquean conexiones directas (NAT simétrico) y haría falta un servidor TURN. Si pasa, se añade uno.
 - Si se recarga la página o el sistema cierra la app durante una partida en línea, la sala se pierde (falta reanudar desde `sessionStorage`).
-- Las piezas tienen casi la misma altura (T2-01); Daniel pidió pulirlas (T-003).
+- Daniel encuentra confusas las piezas actuales (todas comparten cuerpo y base); se rediseñan en T-004.
 - Avisos de `npm audit` (6, moderados/bajos): están en dependencias de compilación de Workbox (glob/minimatch); no llegan a la app publicada.
 
 ## Siguiente acción
 
-1. **Daniel:** pasar T-003 a Codex. Probar en línea entre dos teléfonos (misma Wi-Fi y con datos móviles).
-2. **Claude:** revisar T-003 con `npm run pieces:sheet` y en la app.
+1. **Daniel:** pasar T-004 a Codex. Probar en línea entre dos teléfonos (misma Wi-Fi y con datos móviles).
+2. **Claude:** revisar T-004 con `npm run pieces:sheet` y en la app (la app acepta `.svg` o `.webp`).
 3. **Claude:** **retos** de ajedrez (mate en 1/2/3 y mejor jugada) con una selección de la base de problemas de Lichess (CC0); después, **lecciones** interactivas (texto de Claude, ilustraciones de Codex).
 4. Después: damas, reanudar la sala tras recargar.
