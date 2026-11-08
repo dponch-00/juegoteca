@@ -19,6 +19,10 @@ interface MatchProps {
   banner?: ComponentChildren
   actions?: ComponentChildren
   resultActions: ComponentChildren
+  /** Marcas del juego sobre el tablero (flechas de pista, etc.). */
+  annotations?: unknown
+  /** Asiento que está "pensando" (la computadora): muestra puntos animados. */
+  thinkingSeat?: Seat | null
 }
 
 export function Match(p: MatchProps) {
@@ -37,10 +41,10 @@ export function Match(p: MatchProps) {
 
       {p.banner}
 
-      <PlayerBar game={game} state={state} seat={top} name={p.names[top]} active={!p.outcome && turn === top} isMe={p.me === top} />
+      <PlayerBar game={game} state={state} seat={top} name={p.names[top]} active={!p.outcome && turn === top} isMe={p.me === top} thinking={p.thinkingSeat === top} />
 
       <div class="board-wrap">
-        <Board state={state} viewSeat={viewSeat} controls={p.outcome ? null : p.controls} onMove={p.onMove} />
+        <Board state={state} viewSeat={viewSeat} controls={p.outcome ? null : p.controls} onMove={p.onMove} annotations={p.annotations} />
         {hint && (
           <div key={`${hint}-${game.ply(state)}`} class="board-hint">
             {hint}
@@ -48,7 +52,7 @@ export function Match(p: MatchProps) {
         )}
       </div>
 
-      <PlayerBar game={game} state={state} seat={viewSeat} name={p.names[viewSeat]} active={!p.outcome && turn === viewSeat} isMe={p.me === viewSeat} />
+      <PlayerBar game={game} state={state} seat={viewSeat} name={p.names[viewSeat]} active={!p.outcome && turn === viewSeat} isMe={p.me === viewSeat} thinking={p.thinkingSeat === viewSeat} />
 
       {p.actions && <div class="row match-actions">{p.actions}</div>}
 
@@ -57,7 +61,7 @@ export function Match(p: MatchProps) {
   )
 }
 
-function PlayerBar({ game, state, seat, name, active, isMe }: { game: GameDef; state: unknown; seat: Seat; name: string; active: boolean; isMe: boolean }) {
+function PlayerBar({ game, state, seat, name, active, isMe, thinking }: { game: GameDef; state: unknown; seat: Seat; name: string; active: boolean; isMe: boolean; thinking?: boolean }) {
   const Extra = game.PlayerExtra
   return (
     <div class={`player-bar seat-${seat}${active ? ' active' : ''}`}>
@@ -70,7 +74,15 @@ function PlayerBar({ game, state, seat, name, active, isMe }: { game: GameDef; s
         {name !== game.seatNames[seat] && <div class="player-seat">{game.seatNames[seat]}</div>}
       </div>
       {Extra && <Extra state={state} seat={seat} />}
-      {active && <div class="turn-dot" aria-label="Su turno" />}
+      {thinking ? (
+        <div class="thinking" aria-label="Pensando">
+          <i />
+          <i />
+          <i />
+        </div>
+      ) : (
+        active && <div class="turn-dot" aria-label="Su turno" />
+      )}
     </div>
   )
 }

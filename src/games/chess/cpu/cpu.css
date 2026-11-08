@@ -1,0 +1,217 @@
+/* ---------- Elegir nivel ---------- */
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.level-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  align-items: center;
+  text-align: left;
+  padding: 12px;
+  border: 0;
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+  box-shadow: var(--shadow-1), inset 0 0 0 2px transparent;
+  cursor: pointer;
+  transition:
+    box-shadow var(--t-fast) var(--ease-out),
+    transform var(--t-fast) var(--ease-out);
+}
+.level-card:active {
+  transform: scale(0.97);
+}
+.level-card.selected {
+  box-shadow: var(--shadow-1), inset 0 0 0 2px var(--c-accent);
+  background: color-mix(in srgb, var(--c-accent) 8%, var(--c-surface));
+}
+.level-num {
+  grid-row: span 2;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--c-accent-2);
+  color: var(--c-accent-2-ink);
+  font: 600 17px/1 var(--f-display);
+}
+.level-card.selected .level-num {
+  background: var(--c-accent);
+  color: var(--c-accent-ink);
+}
+.level-name {
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.level-won {
+  color: var(--c-accent-2);
+  font-size: 14px;
+}
+.level-blurb {
+  font-size: 12.5px;
+  line-height: 1.3;
+  color: var(--c-text-dim);
+}
+
+/* ---------- Elegir color ---------- */
+.color-pick {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.color-opt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 6px 12px;
+  border: 0;
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+  box-shadow: var(--shadow-1), inset 0 0 0 2px transparent;
+  font-weight: 650;
+  cursor: pointer;
+  transition: box-shadow var(--t-fast) var(--ease-out);
+}
+.color-opt.selected {
+  box-shadow: var(--shadow-1), inset 0 0 0 2px var(--c-accent);
+}
+.color-piece {
+  display: flex;
+  justify-content: center;
+  height: 44px;
+  padding: 2px;
+  border-radius: var(--r-sm);
+  background: var(--c-sq-light);
+  width: 100%;
+}
+.color-piece .piece-img {
+  width: 40px;
+  height: 40px;
+}
+
+/* ---------- Partida ---------- */
+.title-sub {
+  font: 400 15px var(--f-ui);
+}
+.result-note {
+  margin: 0;
+  font-size: 13px;
+}
+.btn-solo {
+  background: var(--c-accent-2);
+  color: var(--c-accent-2-ink);
+}
+
+/* ---------- Repaso ---------- */
+.progress {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--c-bg-2);
+  overflow: hidden;
+}
+.progress span {
+  display: block;
+  height: 100%;
+  background: var(--c-accent-2);
+  transition: width var(--t-enter) var(--ease-out);
+}
+
+.review-summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+}
+.accuracy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+}
+.accuracy-num {
+  font: 600 30px/1 var(--f-display);
+  color: var(--c-accent-2);
+}
+.verdicts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px 12px;
+  font-size: 13px;
+}
+.verdicts li::before {
+  content: '';
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.v-best {
+  color: var(--c-accent-2);
+}
+.v-inaccuracy {
+  color: var(--c-warn);
+}
+.v-mistake {
+  color: var(--c-accent);
+}
+.v-blunder {
+  color: var(--c-danger);
+}
+
+.review-note {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  color: var(--c-text);
+  border-left: 5px solid currentColor;
+  animation: rise-in var(--t-enter) var(--ease-out) both;
+}
+.review-note.v-inaccuracy {
+  border-left-color: var(--c-warn);
+}
+.review-note.v-mistake {
+  border-left-color: var(--c-accent);
+}
+.review-note.v-blunder {
+  border-left-color: var(--c-danger);
+}
+.review-note p {
+  margin: 0;
+}
+.review-title strong {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 18px;
+}
+.san {
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.san.played {
+  background: color-mix(in srgb, var(--c-accent) 18%, transparent);
+}
+.san.best {
+  background: color-mix(in srgb, var(--c-accent-2) 20%, transparent);
+}
+.review-count {
+  align-self: center;
+  text-align: center;
+  font-size: 13px;
+  flex: 0 0 auto;
+}

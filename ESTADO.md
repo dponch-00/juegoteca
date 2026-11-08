@@ -4,7 +4,7 @@
 
 ## Fase actual
 
-**Fase 1 — Base jugable con identidad.** Ajedrez pasa y juega y en línea con código de sala, ya con la identidad **Taller de fieltro** (T-002) integrada y publicada.
+**Fase 2 — Ajedrez para aprender.** Hecho: contra la computadora (Stockfish) con 8 niveles, pistas, deshacer y repaso de errores. Siguen: retos (mate en N, mejor jugada) y lecciones.
 
 ## Tickets
 
@@ -29,11 +29,19 @@
 - **En línea** (`src/net/session.ts`): código de 4 caracteres, conexión directa WebRTC con PeerJS (su servidor público solo presenta a los dos dispositivos). El anfitrión reparte colores al azar y es la autoridad. Rendirse, revancha con cambio de colores, reconexión automática y resincronización.
 - **Contrato GameDef** (`src/core/types.ts`): un juego nuevo solo implementa `create/apply/turn/outcome/ply` y un `Board`; la red no cambia.
 - **Identidad Taller de fieltro:** tokens en `src/styles/tokens.css` (claro por omisión, oscuro según el sistema), Fraunces + Atkinson Hyperlegible Next locales, 12 piezas de madera torneada, logo, iconos de juegos y de la PWA, marco de fieltro en el tablero y movimiento según `docs/identity.md`.
+- **Contra la computadora** (`src/games/chess/cpu/`, `#/g/chess/cpu`):
+  - Motor Stockfish 19 lite (un hilo) en un Web Worker (`src/games/chess/engine/`). Se copia de `node_modules` a `public/engine/` en cada dev/build (`scripts/copy-engine.mjs`), fuera de git. Queda en la caché offline (~1.8 MB).
+  - 8 niveles, de Aprendiz a Gran maestro. Los bajos añaden azar entre las candidatas (MultiPV), porque el Skill 0 de Stockfish es demasiado fuerte para quien empieza.
+  - Pista con flecha, deshacer, rendirse, partida guardada y estadísticas por nivel.
+  - **Repaso:** evalúa cada posición (profundidad 11) y clasifica tus jugadas en buena, imprecisión, error o error grave, con flechas de lo jugado y lo mejor, en notación española.
+- **Licencia GPL-3.0-or-later** (por Stockfish). Créditos y enlace al código en `#/acerca`.
 - Estadísticas por juego en `localStorage`.
 - `npm run pieces:sheet`: hoja de contacto PNG de las 12 piezas a 36/64 px en claro, oscuro y grises (`design/review/`, fuera de git), para revisar sin navegador.
 - Deploy automático a GitHub Pages (`.github/workflows/deploy.yml`), base `/juegoteca/`.
 
 ## Cómo se verificó
+
+**2026-11-08 (contra la computadora):** 22/22 pruebas (parser UCI, niveles, clasificación del repaso, notación). En el navegador a 375 px: Stockfish carga en el worker y responde, aparecen los puntos de "pensando", la pista dibuja su flecha, el mate detecta victoria y suma estadística, y el repaso de una partida con errores marca "Imprecisión" (Dh5, mejor Cf3) y "Error grave" (Dxf7+, mejor Ac4) con ambas flechas. El build precachea `engine/stockfish.{js,wasm}`.
 
 **2026-11-08 (T-002):** piezas a 36/64 px sobre ambas casillas en claro, oscuro y gris; app a 375 px en claro y oscuro; build con fuentes en `/juegoteca/fonts/`; caché offline de 54 entradas con piezas, fuentes e iconos; 11/11 pruebas.
 
@@ -54,4 +62,6 @@
 ## Siguiente acción
 
 1. **Daniel:** pasar T-003 a Codex. Probar en línea entre dos teléfonos (misma Wi-Fi y con datos móviles).
-2. **Claude:** revisar T-003 con `npm run pieces:sheet` y en la app; después, damas (mismo contrato GameDef) con su ticket de fichas y reanudar la sala tras recargar.
+2. **Claude:** revisar T-003 con `npm run pieces:sheet` y en la app.
+3. **Claude:** **retos** de ajedrez (mate en 1/2/3 y mejor jugada) con una selección de la base de problemas de Lichess (CC0); después, **lecciones** interactivas (texto de Claude, ilustraciones de Codex).
+4. Después: damas, reanudar la sala tras recargar.

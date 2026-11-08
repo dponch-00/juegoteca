@@ -84,7 +84,9 @@ export function Home() {
             Instalar app
           </button>
         )}
-        <span class="dim">v{__APP_VERSION__} · funciona sin internet</span>
+        <a class="dim foot-link" href="#/acerca">
+          v{__APP_VERSION__} · software libre
+        </a>
       </footer>
     </div>
   )

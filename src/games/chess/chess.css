@@ -129,6 +129,36 @@
   color: #6f6488;
 }
 
+/* Flechas (pistas y repaso) */
+.arrows {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  pointer-events: none;
+  animation: fade-in var(--t-enter) var(--ease-out) both;
+}
+.arrow {
+  stroke-width: 0.17;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+line.arrow-best,
+line.arrow-hint {
+  stroke: var(--c-accent-2);
+}
+line.arrow-played {
+  stroke: var(--c-accent);
+}
+path.arrow-best,
+path.arrow-hint {
+  fill: var(--c-accent-2);
+}
+path.arrow-played {
+  fill: var(--c-accent);
+}
+
 /* Coronación */
 .promo-backdrop {
   position: absolute;

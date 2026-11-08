@@ -9,12 +9,15 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host",
     "test": "vitest run",
-    "pieces:sheet": "node scripts/piece-sheet.mjs"
+    "pieces:sheet": "node scripts/piece-sheet.mjs",
+    "predev": "node scripts/copy-engine.mjs",
+    "prebuild": "node scripts/copy-engine.mjs"
   },
   "dependencies": {
     "chess.js": "^1.4.0",
     "peerjs": "^1.5.5",
-    "preact": "^11.2.0"
+    "preact": "^11.2.0",
+    "stockfish": "19.0.1"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.6",
@@ -24,5 +27,6 @@
     "vite": "^8.3.6",
     "vite-plugin-pwa": "^2.0.0",
     "vitest": "^5.1.0"
-  }
+  },
+  "license": "GPL-3.0-or-later"
 }

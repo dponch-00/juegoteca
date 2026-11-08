@@ -16,6 +16,16 @@ export interface BoardProps<S, M> {
   /** Qué asientos puede mover este dispositivo: 'both' en pasa-y-juega. */
   controls: Seat | 'both' | null
   onMove: (move: M) => void
+  /** Marcas propias de cada juego (p. ej. flechas de pista en ajedrez). */
+  annotations?: unknown
+}
+
+/** Modo extra que un juego ofrece en su lobby (p. ej. "Contra la computadora"). */
+export interface GameMode {
+  /** Ruta dentro del juego: #/g/<juego>/<id> */
+  id: string
+  label: string
+  sub: string
 }
 
 /**
@@ -43,6 +53,10 @@ export interface GameDef<S = any, M = any> {
   Board: ComponentType<BoardProps<S, M>>
   /** Detalle opcional junto al nombre de cada jugador (p. ej. piezas capturadas). */
   PlayerExtra?: ComponentType<{ state: S; seat: Seat }>
+  /** Modos de un jugador que se muestran en el lobby. */
+  soloModes?: GameMode[]
+  /** Pantallas propias del juego, por id de modo. */
+  screens?: Record<string, ComponentType>
 }
 
 export interface ComingSoon {

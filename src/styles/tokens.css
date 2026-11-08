@@ -42,6 +42,8 @@
   --c-accent-2: #2e6b52;
   --c-accent-2-ink: #fff8e7;
   --c-danger: #9e2f2f;
+  /* Aviso intermedio (imprecisiones del repaso) */
+  --c-warn: #8a6510;
 
   /* Jugadores */
   --c-p0: #fff8e7;
@@ -104,6 +106,7 @@
     --c-accent-2: #78b991;
     --c-accent-2-ink: #111a14;
     --c-danger: #ff9088;
+    --c-warn: #e2b64b;
 
     --c-p0: #fff8e7;
     --c-p1: #1b2a21;

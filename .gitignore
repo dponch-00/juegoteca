@@ -8,3 +8,6 @@ design/raw/
 
 # Hojas de revisión generadas (npm run pieces:sheet)
 design/review/
+
+# Motor Stockfish copiado desde node_modules (scripts/copy-engine.mjs)
+public/engine/

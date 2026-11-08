@@ -17,7 +17,13 @@ interface Drag {
 
 const PROMOS: PieceSymbol[] = ['q', 'r', 'b', 'n']
 
-export function ChessBoard({ state, viewSeat, controls, onMove }: BoardProps<ChessState, ChessMove>) {
+export type ArrowTone = 'best' | 'played' | 'hint'
+export interface ChessAnnotations {
+  arrows?: { from: string; to: string; tone: ArrowTone }[]
+}
+
+export function ChessBoard({ state, viewSeat, controls, onMove, annotations }: BoardProps<ChessState, ChessMove>) {
+  const arrows = (annotations as ChessAnnotations | undefined)?.arrows ?? []
   const flipped = viewSeat === 1
   const chess = engine(state)
   const tracked = useMemo(() => track(state), [state])
@@ -184,6 +190,8 @@ export function ChessBoard({ state, viewSeat, controls, onMove }: BoardProps<Che
         <div key={`t-${sq}`} class={`mark ${capture ? 'mark-capture' : 'mark-hint'}`} style={cellStyle(sq)} />
       ))}
 
+      {arrows.length > 0 && <Arrows arrows={arrows} flipped={flipped} />}
+
       {promo && (
         <PromotionPicker
           color={turnColor}
@@ -195,6 +203,44 @@ export function ChessBoard({ state, viewSeat, controls, onMove }: BoardProps<Che
         />
       )}
     </div>
+  )
+}
+
+/** Flechas de casilla a casilla (coordenadas en unidades de casilla, 8×8). */
+function Arrows({ arrows, flipped }: { arrows: NonNullable<ChessAnnotations['arrows']>; flipped: boolean }) {
+  return (
+    <svg class="arrows" viewBox="0 0 8 8" aria-hidden="true">
+      <defs>
+        {(['best', 'played', 'hint'] as const).map((tone) => (
+          <marker key={tone} id={`head-${tone}`} viewBox="0 0 4 4" refX="2" refY="2" markerWidth="2.6" markerHeight="2.6" orient="auto">
+            <path d="M0 0 4 2 0 4z" class={`arrow-${tone}`} />
+          </marker>
+        ))}
+      </defs>
+      {arrows.map((a, i) => {
+        const f = squareXY(a.from, flipped)
+        const t = squareXY(a.to, flipped)
+        const x1 = f.x + 0.5
+        const y1 = f.y + 0.5
+        // Acortamos la línea para que la punta no tape la pieza de destino.
+        const dx = t.x - f.x
+        const dy = t.y - f.y
+        const len = Math.hypot(dx, dy) || 1
+        const x2 = t.x + 0.5 - (dx / len) * 0.32
+        const y2 = t.y + 0.5 - (dy / len) * 0.32
+        return (
+          <line
+            key={`${a.from}${a.to}${i}`}
+            class={`arrow arrow-${a.tone}`}
+            x1={x1}
+            y1={y1}
+            x2={x2}
+            y2={y2}
+            marker-end={`url(#head-${a.tone})`}
+          />
+        )
+      })}
+    </svg>
   )
 }
 

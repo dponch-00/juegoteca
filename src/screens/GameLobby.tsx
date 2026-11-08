@@ -32,6 +32,18 @@ export function GameLobby({ game }: { game: GameDef }) {
         <p class="dim">{game.tagline}</p>
       </div>
 
+      {game.soloModes && game.soloModes.length > 0 && (
+        <section class="stack stagger">
+          <h2 class="section-title">Un jugador</h2>
+          {game.soloModes.map((m, i) => (
+            <button key={m.id} class={`btn btn-col${i === 0 ? ' btn-solo' : ''}`} onClick={() => navigate(`g/${game.id}/${m.id}`)}>
+              {m.label}
+              <span class="sub">{m.sub}</span>
+            </button>
+          ))}
+        </section>
+      )}
+
       <section class="stack stagger">
         <h2 class="section-title">En línea</h2>
         <button class="btn btn-primary btn-col" onClick={createRoom}>

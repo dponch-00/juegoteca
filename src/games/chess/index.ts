@@ -1,21 +1,11 @@
 import type { GameDef } from '../../core/types'
-import { ChessBoard } from './ChessBoard'
-import { Captured } from './Captured'
-import { apply, hint, initialState, outcome, turn, undo, type ChessMove, type ChessState } from './logic'
+import { CpuScreen } from './cpu/CpuScreen'
+import { chessBase } from './def'
+import type { ChessMove, ChessState } from './logic'
 
+/** Ajedrez completo: la definición base más sus modos de un jugador. */
 export const chess: GameDef<ChessState, ChessMove> = {
-  id: 'chess',
-  name: 'Ajedrez',
-  tagline: 'El clásico: jaque mate al rey rival.',
-  glyph: '♞',
-  seatNames: ['Blancas', 'Negras'],
-  create: initialState,
-  apply,
-  turn,
-  outcome,
-  ply: (s) => s.moves.length,
-  undo,
-  hint,
-  Board: ChessBoard,
-  PlayerExtra: Captured,
+  ...chessBase,
+  soloModes: [{ id: 'cpu', label: 'Contra la computadora', sub: '8 niveles, de Aprendiz a Gran maestro' }],
+  screens: { cpu: CpuScreen },
 }

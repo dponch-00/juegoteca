@@ -129,3 +129,6 @@
 .home-foot > .dim:only-child {
   margin: 0 auto;
 }
+.foot-link {
+  text-decoration: none;
+}

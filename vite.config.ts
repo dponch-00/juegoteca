@@ -37,7 +37,9 @@ export default defineConfig(({ command }) => ({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,webp,avif,woff2}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,webp,avif,woff2,wasm}'],
+        // El motor de ajedrez (stockfish.wasm) pesa ~1.8 MB; Workbox omite por defecto lo que pase de 2 MB.
+        maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         navigateFallback: 'index.html',
       },
     }),
