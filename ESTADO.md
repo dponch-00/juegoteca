@@ -4,7 +4,7 @@
 
 ## Fase actual
 
-**Fase 2 — Ajedrez para aprender.** Hecho: contra la computadora (Stockfish) con 8 niveles, pistas, deshacer y repaso de errores. Siguen: retos (mate en N, mejor jugada) y lecciones.
+**Fase 2 — Ajedrez para aprender.** Hecho: contra la computadora (Stockfish) con 8 niveles, pistas, deshacer y repaso de errores; **retos** (600 problemas de Lichess en 8 categorías). Sigue: lecciones.
 
 ## Tickets
 
@@ -35,12 +35,23 @@
   - 8 niveles, de Aprendiz a Gran maestro. Los bajos añaden azar entre las candidatas (MultiPV), porque el Skill 0 de Stockfish es demasiado fuerte para quien empieza.
   - Pista con flecha, deshacer, rendirse, partida guardada y estadísticas por nivel.
   - **Repaso:** evalúa cada posición (profundidad 11) y clasifica tus jugadas en buena, imprecisión, error o error grave, con flechas de lo jugado y lo mejor, en notación española.
+- **Retos** (`src/games/chess/puzzles/`, `#/g/chess/retos`):
+  - 600 problemas de la base de Lichess (CC0) en 8 categorías: mate en 1/2/3, pieza colgada, horquilla, clavada, ensartada y ataque descubierto. Cada categoría va de fácil a difícil.
+  - Selección con `scripts/build-puzzles.mjs` a partir de un tramo del `.csv.zst` de Lichess (popularidad ≥ 80, ≥ 300 partidas, desviación ≤ 90). Se cargan aparte (~27 KB gzip) y quedan offline.
+  - La jugada del rival se hace sola. Una jugada incorrecta se muestra en rojo con sacudida y se deshace. Pista en dos pasos (pieza y luego flecha), "Ver solución" paso a paso y "Saltar".
+  - Progreso por reto (a la primera, con ayuda, solución vista) y racha "🔥" de aciertos a la primera. En la última jugada vale cualquier mate, como en Lichess.
+  - `ChessState` admite una FEN inicial; el tablero admite marcas de casilla.
 - **Licencia GPL-3.0-or-later** (por Stockfish). Créditos y enlace al código en `#/acerca`.
 - Estadísticas por juego en `localStorage`.
 - `npm run pieces:sheet`: hoja de contacto PNG de las 12 piezas a 36/64 px en claro, oscuro y grises (`design/review/`, fuera de git), para revisar sin navegador.
 - Deploy automático a GitHub Pages (`.github/workflows/deploy.yml`), base `/juegoteca/`.
 
 ## Cómo se verificó
+
+**2026-11-08 (retos):** 30/30 pruebas, incluida una que reproduce los 600 retos completos sin jugadas inválidas y comprueba el orden de dificultad. En el navegador a 375 px:
+- Mate en 1: el rival juega solo; una jugada incorrecta se ve en rojo, sacude el tablero y se deshace; la pista marca la pieza; al resolver se guarda "con ayuda".
+- Mate en 2 con negras: tablero girado, respuesta automática del rival y coronación con selector; se guarda "a la primera" y la racha sube a 1.
+- "Ver solución" la reproduce, se guarda como vista y reinicia la racha.
 
 **2026-11-08 (contra la computadora):** 22/22 pruebas (parser UCI, niveles, clasificación del repaso, notación). En el navegador a 375 px: Stockfish carga en el worker y responde, aparecen los puntos de "pensando", la pista dibuja su flecha, el mate detecta victoria y suma estadística, y el repaso de una partida con errores marca "Imprecisión" (Dh5, mejor Cf3) y "Error grave" (Dxf7+, mejor Ac4) con ambas flechas. El build precachea `engine/stockfish.{js,wasm}`.
 
@@ -63,5 +74,5 @@
 
 1. **Daniel:** ver las piezas 3D en su teléfono (v0.2.1). Probar en línea entre dos teléfonos (misma Wi-Fi y con datos móviles).
 2. **Codex (opcional):** normalizar línea de base y centrado de las piezas (T4-04).
-3. **Claude:** **retos** de ajedrez (mate en 1/2/3 y mejor jugada) con una selección de la base de problemas de Lichess (CC0); después, **lecciones** interactivas (texto de Claude, ilustraciones de Codex).
+3. **Claude:** **lecciones** interactivas de ajedrez (texto de Claude, ilustraciones de Codex), reutilizando el motor de retos.
 4. Después: damas, reanudar la sala tras recargar.

@@ -18,12 +18,16 @@ interface Drag {
 const PROMOS: PieceSymbol[] = ['q', 'r', 'b', 'n']
 
 export type ArrowTone = 'best' | 'played' | 'hint'
+export type MarkTone = 'hint' | 'wrong' | 'good'
 export interface ChessAnnotations {
   arrows?: { from: string; to: string; tone: ArrowTone }[]
+  /** Casillas resaltadas (pista, jugada incorrecta, acierto). */
+  marks?: { square: string; tone: MarkTone }[]
 }
 
 export function ChessBoard({ state, viewSeat, controls, onMove, annotations }: BoardProps<ChessState, ChessMove>) {
   const arrows = (annotations as ChessAnnotations | undefined)?.arrows ?? []
+  const marks = (annotations as ChessAnnotations | undefined)?.marks ?? []
   const flipped = viewSeat === 1
   const chess = engine(state)
   const tracked = useMemo(() => track(state), [state])
@@ -158,6 +162,9 @@ export function ChessBoard({ state, viewSeat, controls, onMove, annotations }: B
       )}
       {checkSquare && <div class="mark mark-check" style={cellStyle(checkSquare)} />}
       {selected && <div class="mark mark-select" style={cellStyle(selected)} />}
+      {marks.map((m) => (
+        <div key={`m-${m.square}-${m.tone}`} class={`mark mark-tone-${m.tone}`} style={cellStyle(m.square)} />
+      ))}
 
       {tracked.lastCaptured && (
         <div

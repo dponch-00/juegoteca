@@ -111,18 +111,6 @@
 }
 
 /* ---------- Repaso ---------- */
-.progress {
-  height: 10px;
-  border-radius: 999px;
-  background: var(--c-bg-2);
-  overflow: hidden;
-}
-.progress span {
-  display: block;
-  height: 100%;
-  background: var(--c-accent-2);
-  transition: width var(--t-enter) var(--ease-out);
-}
 
 .review-summary {
   display: flex;

@@ -129,6 +129,26 @@
   color: #6f6488;
 }
 
+/* Marcas de casilla (retos) */
+.mark-tone-hint {
+  box-shadow: inset 0 0 0 0.9cqw var(--c-accent-2);
+  background: color-mix(in srgb, var(--c-accent-2) 22%, transparent);
+  animation: hint-pulse 900ms ease-in-out infinite alternate;
+}
+.mark-tone-wrong {
+  background: color-mix(in srgb, var(--c-danger) 45%, transparent);
+  animation: fade-in var(--t-fast) ease both;
+}
+.mark-tone-good {
+  background: color-mix(in srgb, var(--c-accent-2) 45%, transparent);
+  animation: fade-in var(--t-fast) ease both;
+}
+@keyframes hint-pulse {
+  to {
+    background: color-mix(in srgb, var(--c-accent-2) 40%, transparent);
+  }
+}
+
 /* Flechas (pistas y repaso) */
 .arrows {
   position: absolute;

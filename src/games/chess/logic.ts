@@ -1,9 +1,13 @@
 import { Chess, type Move, type Square, type PieceSymbol, type Color } from 'chess.js'
 import type { Outcome, Seat } from '../../core/types'
 
-/** Estado serializable: solo la lista de jugadas en notación UCI (e2e4, e7e8q). */
+/**
+ * Estado serializable: la lista de jugadas en notación UCI (e2e4, e7e8q) y,
+ * opcionalmente, la posición de partida (FEN) para retos que no empiezan desde cero.
+ */
 export interface ChessState {
   moves: string[]
+  fen?: string
 }
 
 export type ChessMove = string // UCI
@@ -15,7 +19,7 @@ export const initialState = (): ChessState => ({ moves: [] })
  * Guardamos la última instancia y, si el estado nuevo la extiende, solo
  * aplicamos las jugadas que faltan.
  */
-let cached: { chess: Chess; moves: string[] } | null = null
+let cached: { chess: Chess; moves: string[]; fen?: string } | null = null
 
 function sameMoves(a: string[], b: string[], n: number): boolean {
   for (let i = 0; i < n; i++) if (a[i] !== b[i]) return false
@@ -24,16 +28,16 @@ function sameMoves(a: string[], b: string[], n: number): boolean {
 
 export function engine(state: ChessState): Chess {
   const m = state.moves
-  if (cached && cached.moves.length <= m.length && sameMoves(cached.moves, m, cached.moves.length)) {
+  if (cached && cached.fen === state.fen && cached.moves.length <= m.length && sameMoves(cached.moves, m, cached.moves.length)) {
     if (cached.moves.length === m.length) return cached.chess
     const chess = cached.chess
     for (let i = cached.moves.length; i < m.length; i++) playUci(chess, m[i])
-    cached = { chess, moves: m.slice() }
+    cached = { chess, moves: m.slice(), fen: state.fen }
     return chess
   }
-  const chess = new Chess()
+  const chess = state.fen ? new Chess(state.fen) : new Chess()
   for (const uci of m) playUci(chess, uci)
-  cached = { chess, moves: m.slice() }
+  cached = { chess, moves: m.slice(), fen: state.fen }
   return chess
 }
 
@@ -56,7 +60,7 @@ export function apply(state: ChessState, move: ChessMove): ChessState | null {
   } catch {
     return null
   }
-  return { moves: [...state.moves, move] }
+  return { ...state, moves: [...state.moves, move] }
 }
 
 export function turn(state: ChessState): Seat {
@@ -74,7 +78,7 @@ export function outcome(state: ChessState): Outcome | null {
 }
 
 export function undo(state: ChessState): ChessState {
-  return { moves: state.moves.slice(0, -1) }
+  return { ...state, moves: state.moves.slice(0, -1) }
 }
 
 export function hint(state: ChessState): string | null {
@@ -106,7 +110,7 @@ const FILES = 'abcdefgh'
 export function track(state: ChessState): Tracked {
   const history = engine(state).history({ verbose: true })
   const bySquare = new Map<string, TrackedPiece>()
-  const start = new Chess()
+  const start = state.fen ? new Chess(state.fen) : new Chess()
   for (const row of start.board()) {
     for (const p of row) {
       if (p) bySquare.set(p.square, { id: `${p.color}${p.type}-${p.square}`, type: p.type, color: p.color, square: p.square })

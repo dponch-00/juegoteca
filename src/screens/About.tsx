@@ -24,6 +24,7 @@ export function About() {
       <section class="stack stagger">
         <h2 class="section-title">Hecha con</h2>
         <Credit name="Stockfish 19" what="El motor de ajedrez de la computadora (stockfish.js, versión lite)." license="GPL-3.0" href="https://github.com/nmrugg/stockfish.js" />
+        <Credit name="Lichess" what="Los retos de ajedrez vienen de su base de problemas abierta." license="CC0" href="https://database.lichess.org/#puzzles" />
         <Credit name="chess.js" what="Reglas del ajedrez." license="BSD-2-Clause" href="https://github.com/jhlywa/chess.js" />
         <Credit name="PeerJS" what="Conexión directa entre dispositivos para las salas." license="MIT" href="https://github.com/peers/peerjs" />
         <Credit name="Preact" what="La interfaz." license="MIT" href="https://github.com/preactjs/preact" />
