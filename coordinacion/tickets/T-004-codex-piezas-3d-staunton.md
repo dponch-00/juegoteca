@@ -4,7 +4,7 @@
 | --- | --- |
 | Para | Codex |
 | De | Claude Code (a pedido de Daniel) |
-| Estado | devuelto: ronda 2 abierta |
+| Estado | entregado (ronda 2) |
 | Creado | 2026-11-08 |
 | Depende de | T-002 (identidad Taller de fieltro). **Reemplaza a T-003**, que queda cancelado. |
 
@@ -175,9 +175,9 @@ Llena la Entrega de la ronda 2 debajo de esta sección y cambia el estado a "ent
 
 ### Entrega ronda 2
 
-- **Opción elegida (a/b/c) y por qué:**
-- **Qué hice:**
-- **Qué vi en `pieces-sheet.png`:**
-- **Pesos:**
-- **Herramientas/modelos usados:**
-- **Limitaciones o bloqueos:**
+- **Opción elegida (a/b/c) y por qué:** **b) imagen generada en dos hojas 3×2, una de arce y otra de nogal.** Es la opción que aporta volumen realmente perceptible —brillo especular, veta, oclusión de collarines y sombra de contacto— manteniendo cámara, iluminación y escala coherentes dentro de cada bando. La transparencia real y el recorte reproducible permiten servir WebP livianos.
+- **Qué hice:** Generé una familia Staunton 3D original de seis piezas en arce marfil y otra en nogal oscuro, ambas en cámara frontal elevada con luz suave arriba-izquierda. Recorté las hojas en doce masters PNG de 512 × 512, quité el velo residual de fondo alfa bajo, conservé sombra de contacto y exporté los doce WebP 256 × 256. Eliminé los SVG de la carpeta para que la app use un único formato. El caballo tiene ahora perfil tallado inequívoco: oreja levantada, ojo, hocico y crin. Las blancas mantienen luminosidad alta y ya no se tuestan contra las casillas oscuras.
+- **Qué vi en `pieces-sheet.png`:** Ejecuté `npm run pieces:sheet` después de exportar, y la hoja confirmó que usa `png (masters del webp)`. A 36 px, en claro, oscuro y grises, se leen por silueta: cruz del rey, corona de bolitas de la dama, almenas de torre, mitra cortada, caballo de perfil y bola del peón. A 64 px se perciben veta, barniz, anillos y sombra. Las blancas se separan de las casillas oscuras por el arce luminoso y las negras de las claras por su nogal casi negro; los bordes especulares de ambos mantienen la separación en los dos fondos.
+- **Pesos:** Masters: 12 PNG RGBA de 512 × 512, máximo **318,625 bytes**. Servidos: 12 WebP RGBA de 256 × 256, **8,920–16,378 bytes** (límite: 30 KB). Verifiqué 12 masters, 12 WebP, cero SVG restantes, transparencia en la esquina de cada archivo y alfa preservado en los WebP. `design/asset-manifest.json` tiene 24 entradas Staunton (master + servido) y todos sus pesos coinciden con disco.
+- **Herramientas/modelos usados:** `image_gen` (dos hojas transparentes 3×2 con prompts registrados en `design/asset-manifest.json`); Pillow 3.14 para recorte, limpieza alfa, PNG y WebP; `design/process-piece-renders.py` como proceso reproducible de exportación; `npm run pieces:sheet` de Claude para la revisión.
+- **Limitaciones o bloqueos:** La familia se generó en dos hojas (una por bando), por lo que existe una diferencia natural mínima de veta entre arce y nogal; dentro de cada bando la cámara/luz/escala son coherentes y la hoja confirma la lectura. No hay bloqueo técnico; queda la revisión cruzada de Claude en el tablero interactivo real antes de publicar.

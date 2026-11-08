@@ -271,124 +271,244 @@
       "bytes": 4431
     },
     {
+      "id": "staunton-master-wk",
+      "path": "design/masters/pieces/wk.png",
+      "purpose": "Master PNG render 3D Staunton wk",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 270847
+    },
+    {
       "id": "staunton-piece-wk",
-      "path": "public/assets/chess/pieces/wk.svg",
-      "purpose": "Pieza Staunton volumétrica wk",
-      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "path": "public/assets/chess/pieces/wk.webp",
+      "purpose": "Pieza móvil render 3D Staunton wk",
+      "tool": "Pillow 3.14",
       "prompt": null,
       "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1550
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 11716
+    },
+    {
+      "id": "staunton-master-wq",
+      "path": "design/masters/pieces/wq.png",
+      "purpose": "Master PNG render 3D Staunton wq",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 271939
     },
     {
       "id": "staunton-piece-wq",
-      "path": "public/assets/chess/pieces/wq.svg",
-      "purpose": "Pieza Staunton volumétrica wq",
-      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "path": "public/assets/chess/pieces/wq.webp",
+      "purpose": "Pieza móvil render 3D Staunton wq",
+      "tool": "Pillow 3.14",
       "prompt": null,
       "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1746
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 10936
+    },
+    {
+      "id": "staunton-master-wr",
+      "path": "design/masters/pieces/wr.png",
+      "purpose": "Master PNG render 3D Staunton wr",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 256941
     },
     {
       "id": "staunton-piece-wr",
-      "path": "public/assets/chess/pieces/wr.svg",
-      "purpose": "Pieza Staunton volumétrica wr",
-      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "path": "public/assets/chess/pieces/wr.webp",
+      "purpose": "Pieza móvil render 3D Staunton wr",
+      "tool": "Pillow 3.14",
       "prompt": null,
       "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1465
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 8920
+    },
+    {
+      "id": "staunton-master-wb",
+      "path": "design/masters/pieces/wb.png",
+      "purpose": "Master PNG render 3D Staunton wb",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 270049
     },
     {
       "id": "staunton-piece-wb",
-      "path": "public/assets/chess/pieces/wb.svg",
-      "purpose": "Pieza Staunton volumétrica wb",
-      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "path": "public/assets/chess/pieces/wb.webp",
+      "purpose": "Pieza móvil render 3D Staunton wb",
+      "tool": "Pillow 3.14",
       "prompt": null,
       "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1567
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 10988
+    },
+    {
+      "id": "staunton-master-wn",
+      "path": "design/masters/pieces/wn.png",
+      "purpose": "Master PNG render 3D Staunton wn",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 314095
     },
     {
       "id": "staunton-piece-wn",
-      "path": "public/assets/chess/pieces/wn.svg",
-      "purpose": "Pieza Staunton volumétrica wn",
-      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "path": "public/assets/chess/pieces/wn.webp",
+      "purpose": "Pieza móvil render 3D Staunton wn",
+      "tool": "Pillow 3.14",
       "prompt": null,
       "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1552
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 14714
+    },
+    {
+      "id": "staunton-master-wp",
+      "path": "design/masters/pieces/wp.png",
+      "purpose": "Master PNG render 3D Staunton wp",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 255777
     },
     {
       "id": "staunton-piece-wp",
-      "path": "public/assets/chess/pieces/wp.svg",
-      "purpose": "Pieza Staunton volumétrica wp",
-      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "path": "public/assets/chess/pieces/wp.webp",
+      "purpose": "Pieza móvil render 3D Staunton wp",
+      "tool": "Pillow 3.14",
       "prompt": null,
       "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1539
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 9034
+    },
+    {
+      "id": "staunton-master-bk",
+      "path": "design/masters/pieces/bk.png",
+      "purpose": "Master PNG render 3D Staunton bk",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 268259
     },
     {
       "id": "staunton-piece-bk",
-      "path": "public/assets/chess/pieces/bk.svg",
-      "purpose": "Pieza Staunton volumétrica bk",
-      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "path": "public/assets/chess/pieces/bk.webp",
+      "purpose": "Pieza móvil render 3D Staunton bk",
+      "tool": "Pillow 3.14",
       "prompt": null,
       "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1549
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 12138
+    },
+    {
+      "id": "staunton-master-bq",
+      "path": "design/masters/pieces/bq.png",
+      "purpose": "Master PNG render 3D Staunton bq",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 267922
     },
     {
       "id": "staunton-piece-bq",
-      "path": "public/assets/chess/pieces/bq.svg",
-      "purpose": "Pieza Staunton volumétrica bq",
-      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "path": "public/assets/chess/pieces/bq.webp",
+      "purpose": "Pieza móvil render 3D Staunton bq",
+      "tool": "Pillow 3.14",
       "prompt": null,
       "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1745
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 12234
+    },
+    {
+      "id": "staunton-master-br",
+      "path": "design/masters/pieces/br.png",
+      "purpose": "Master PNG render 3D Staunton br",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 256195
     },
     {
       "id": "staunton-piece-br",
-      "path": "public/assets/chess/pieces/br.svg",
-      "purpose": "Pieza Staunton volumétrica br",
-      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "path": "public/assets/chess/pieces/br.webp",
+      "purpose": "Pieza móvil render 3D Staunton br",
+      "tool": "Pillow 3.14",
       "prompt": null,
       "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1464
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 9734
+    },
+    {
+      "id": "staunton-master-bb",
+      "path": "design/masters/pieces/bb.png",
+      "purpose": "Master PNG render 3D Staunton bb",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 267258
     },
     {
       "id": "staunton-piece-bb",
-      "path": "public/assets/chess/pieces/bb.svg",
-      "purpose": "Pieza Staunton volumétrica bb",
-      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "path": "public/assets/chess/pieces/bb.webp",
+      "purpose": "Pieza móvil render 3D Staunton bb",
+      "tool": "Pillow 3.14",
       "prompt": null,
       "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1566
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 11694
+    },
+    {
+      "id": "staunton-master-bn",
+      "path": "design/masters/pieces/bn.png",
+      "purpose": "Master PNG render 3D Staunton bn",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 318625
     },
     {
       "id": "staunton-piece-bn",
-      "path": "public/assets/chess/pieces/bn.svg",
-      "purpose": "Pieza Staunton volumétrica bn",
-      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "path": "public/assets/chess/pieces/bn.webp",
+      "purpose": "Pieza móvil render 3D Staunton bn",
+      "tool": "Pillow 3.14",
       "prompt": null,
       "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1551
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 16378
+    },
+    {
+      "id": "staunton-master-bp",
+      "path": "design/masters/pieces/bp.png",
+      "purpose": "Master PNG render 3D Staunton bp",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
+      "date": "2026-11-08",
+      "dimensions": "512x512 RGBA",
+      "bytes": 244701
     },
     {
       "id": "staunton-piece-bp",
-      "path": "public/assets/chess/pieces/bp.svg",
-      "purpose": "Pieza Staunton volumétrica bp",
-      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "path": "public/assets/chess/pieces/bp.webp",
+      "purpose": "Pieza móvil render 3D Staunton bp",
+      "tool": "Pillow 3.14",
       "prompt": null,
       "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1538
+      "dimensions": "256x256 WebP con alfa",
+      "bytes": 9382
     }
   ],
   "explorationReferences": [
