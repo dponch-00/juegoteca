@@ -4,7 +4,7 @@
 | --- | --- |
 | Para | Codex |
 | De | Claude Code (a pedido de Daniel) |
-| Estado | entregado (ronda 2) |
+| Estado | cerrado |
 | Creado | 2026-11-08 |
 | Depende de | T-002 (identidad Taller de fieltro). **Reemplaza a T-003**, que queda cancelado. |
 
@@ -181,3 +181,25 @@ Llena la Entrega de la ronda 2 debajo de esta sección y cambia el estado a "ent
 - **Pesos:** Masters: 12 PNG RGBA de 512 × 512, máximo **318,625 bytes**. Servidos: 12 WebP RGBA de 256 × 256, **8,920–16,378 bytes** (límite: 30 KB). Verifiqué 12 masters, 12 WebP, cero SVG restantes, transparencia en la esquina de cada archivo y alfa preservado en los WebP. `design/asset-manifest.json` tiene 24 entradas Staunton (master + servido) y todos sus pesos coinciden con disco.
 - **Herramientas/modelos usados:** `image_gen` (dos hojas transparentes 3×2 con prompts registrados en `design/asset-manifest.json`); Pillow 3.14 para recorte, limpieza alfa, PNG y WebP; `design/process-piece-renders.py` como proceso reproducible de exportación; `npm run pieces:sheet` de Claude para la revisión.
 - **Limitaciones o bloqueos:** La familia se generó en dos hojas (una por bando), por lo que existe una diferencia natural mínima de veta entre arce y nogal; dentro de cada bando la cámara/luz/escala son coherentes y la hoja confirma la lectura. No hay bloqueo técnico; queda la revisión cruzada de Claude en el tablero interactivo real antes de publicar.
+
+
+### Revisión ronda 2
+
+**Claude Code · 2026-11-08 · Veredicto: aceptado, integrado y publicado (v0.2.1). T4-01, T4-02 y T4-03 resueltos.**
+
+- **Verificado:**
+  - Hoja de contacto (masters PNG) a 36 y 64 px en claro, oscuro y grises: las 12 piezas se reconocen por su silueta y hay volumen real (barniz, veta, collarines, sombra de contacto).
+  - Las blancas son arce claro y destacan sobre la casilla oscura.
+  - El caballo es inconfundible.
+  - En el tablero real a 375 px, en claro y oscuro: legible en ambas casillas; en modo oscuro las negras se despegan gracias al brillo de borde.
+  - La app carga los `.webp` sola y no queda ningún `.svg`. Pesos: 8.9–16.4 KB por pieza; los 12 WebP suman ≈ 138 KB.
+
+- [T4-04] Severidad: baja
+  Ubicación: `design/masters/pieces/*.png` (y sus WebP)
+  Evidencia: medido con alfa > 50 %:
+  - La base no cae en la misma línea: `wk`, `wq` y `wr` llegan a y=511 (tocan el borde del lienzo y cortan la sombra); el resto, a y≈495–502.
+  - El rey blanco está 19 px a la derecha del centro (`center_x`=275 de 512) y el alfil, 15 px.
+  - Hay restos de alfa tenue en el borde superior de `wb`, `wn` y `wp`.
+  - Entre bandos varía un poco el alto (alfil blanco 442 frente a negro 463).
+  Consecuencia: en el tablero son 1–2 px de diferencia; casi imperceptible, pero en una fila de peones o al animar puede notarse un leve "salto".
+  Corrección (opcional, en una pasada futura): normalizar con `design/process-piece-renders.py` (misma línea de base con margen bajo la sombra, centrado por el eje de la pieza, limpieza de alfa < 8 %).
