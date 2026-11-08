@@ -41,9 +41,10 @@ Rutas fijas; si un archivo no existe, la app usa un sustituto provisional.
 
 | Activo | Ruta | Formato |
 | --- | --- | --- |
-| Piezas de ajedrez | `public/assets/chess/pieces/{w,b}{k,q,r,b,n,p}.svg` (ej. `wk.svg` = rey blanco) | SVG, `viewBox="0 0 100 100"`, fondo transparente, pieza centrada apoyada en y≈92 |
-| Fichas de damas | `public/assets/checkers/{w,b}{man,king}.svg` | SVG, `viewBox="0 0 100 100"` |
-| Fichas de backgammon | `public/assets/backgammon/{w,b}-checker.svg` | SVG |
+| Piezas de ajedrez | `public/assets/chess/pieces/{w,b}{k,q,r,b,n,p}.webp` (ej. `wk` = rey blanco) | WebP 256×256 con transparencia (masters PNG 512 en `design/masters/pieces/`). La app también acepta `.svg` |
+| Fichas de damas | `public/assets/checkers/{w,b}{man,king}.webp` | WebP 256×256 (masters en `design/masters/checkers/`) |
+| Fichas de backgammon y dados | `public/assets/backgammon/{w,b}-checker.webp`, `dice-{1..6}.webp` | WebP 256×256 (masters en `design/masters/backgammon/`) |
+| Hoja de contacto | `npm run pieces:sheet [-- checkers\|backgammon]` → `design/review/*-sheet.png` | Verificación a 36/64 px, claro, oscuro y grises |
 | Iconos de juegos (menú) | `public/assets/games/{chess,checkers,backgammon,sudoku}.svg` | SVG |
 | Logo | `public/assets/brand/logo.svg`, `logo-mark.svg` | SVG |
 | Iconos PWA | `public/icons/icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png` (180), `favicon.svg` | PNG/SVG |

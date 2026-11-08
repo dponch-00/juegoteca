@@ -14,6 +14,7 @@
 | [T-002](coordinacion/tickets/T-002-codex-produccion-taller-de-fieltro.md) | Codex | Producción de Taller de fieltro: identidad, tokens, fuentes, 12 piezas, logo, iconos | revisado e integrado |
 | [T-003](coordinacion/tickets/T-003-codex-pulido-piezas.md) | Codex | Pulido de piezas | cancelado: reemplazado por T-004 |
 | [T-004](coordinacion/tickets/T-004-codex-piezas-3d-staunton.md) | Codex | Piezas con aspecto 3D realista, estilo Staunton | cerrado: ronda 2 (render WebP) aceptada y publicada en v0.2.1; pendiente menor T4-04 (alinear base y centrado) |
+| [T-005](coordinacion/tickets/T-005-codex-fichas-damas-backgammon.md) | Codex | Fichas de damas (con dama coronada), fichas de backgammon, dados y colores del tablero de backgammon | abierto |
 
 ## Publicación
 
