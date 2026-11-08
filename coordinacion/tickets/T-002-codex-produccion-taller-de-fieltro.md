@@ -4,7 +4,7 @@
 | --- | --- |
 | Para | Codex |
 | De | Claude Code |
-| Estado | abierto |
+| Estado | entregado |
 | Creado | 2026-11-08 |
 | Depende de | T-001 (Daniel eligió **D1 · Taller de fieltro**) |
 
@@ -114,12 +114,12 @@ No edites `src/`, `index.html`, `vite.config.ts`, `package.json` ni `ESTADO.md`.
 
 ## Entrega
 
-- **Qué hice:**
-- **Archivos:**
-- **Cómo lo verifiqué (pesos, legibilidad a 36/64 px, escala de grises, contrastes):**
-- **Herramientas/modelos usados (tal como los reporta el entorno):**
-- **Limitaciones o bloqueos:**
-- **Preguntas abiertas:**
+- **Qué hice:** Produje la identidad final de **Taller de fieltro**: guía, tokens claro/oscuro, marca, iconos, fuentes locales, imagen de ambiente y el set completo de 12 piezas. Las piezas son perfiles de madera torneada: base escalonada, anillos, cuello, veta vectorial sutil y cabezas inequívocas. El caballo incorpora oreja, hocico y crin; los bandos son arce marfil y nogal, separados sobre todo por luminosidad y por filete inverso. La imagen de ambiente solicitada en R-04 queda guardada como WebP; no hice `hero-*` porque esta primera pantalla funciona mejor rápida y despejada, sin una ilustración que compita con el acceso a partida.
+- **Archivos:** `docs/identity.md`; `design/tokens.json`; `design/brand.json`; `design/asset-manifest.json`; `design/direcciones/D1-taller-de-fieltro/mood.webp`; fuentes y licencias en `public/fonts/`; 12 SVG en `public/assets/chess/pieces/`; logo y marca en `public/assets/brand/`; cuatro iconos en `public/assets/games/`; cinco iconos PWA en `public/icons/`. Se incluyen `design/generate-taller-assets.mjs`, `design/render-pwa-icons.ps1` y `design/process-mood.py` como fuentes reproducibles de los activos vectoriales/raster.
+- **Cómo lo verifiqué (pesos, legibilidad a 36/64 px, escala de grises, contrastes):** Verifiqué que los 12 SVG usan `viewBox="0 0 100 100"`, no contienen `<text>` ni `<image>`, tienen 12 ids internos únicos y pesan **1,007–1,095 bytes** (límite: 6 KB). El arce `#FFF3D6` y el nogal `#4B2D1D` tienen luminancias suficientemente separadas y filetes inversos, por lo que su diferenciación no depende del tono. `tokens.json` tiene exactamente las 20 claves requeridas en cada modo; los contrastes recalculados están en `docs/identity.md` (texto 5.8:1–15.5:1; controles 4.9:1–7.5:1). Las fuentes cubren á, é, í, ó, ú, ñ, ü, ¿ e ¡ y pesan juntas **48,944 bytes** (<120 KB). `mood.webp` mide 960 × 960 y 104,998 bytes. Los PNG son 192, 512, 512 maskable y 180 px; el maskable deja 14 % de margen por lado (arte en 72 % central) y `apple-touch-icon.png` se confirmó RGB, sin canal alfa. La verificación visual definitiva de siluetas a **36/64 px sobre las casillas reales y en la app a 360 px** queda para Claude: este entorno no dispone de rasterizador SVG ni acceso permitido a los archivos locales en el navegador; no afirmo esa prueba como hecha.
+- **Herramientas/modelos usados (tal como los reporta el entorno):** `image_gen` para la atmósfera original sin texto; Pillow 3.14 para convertirla/optimizarla a WebP; PowerShell 7 + `System.Drawing` para los iconos PWA; Node.js 24 para escribir los SVG; `fontTools varLib.instancer` + `fontTools subset` para los WOFF2. Fuentes y licencias descargadas desde los repositorios oficiales de Fraunces y Atkinson Hyperlegible Next; la procedencia y el prompt de la imagen están en `design/asset-manifest.json`.
+- **Limitaciones o bloqueos:** Pendiente únicamente la revisión cruzada en la app real a 36/64 px y 360 px de ancho. No se produjo ilustración `hero-*` de forma deliberada; tampoco se incorporaron fichas de damas/backgammon ni el estilo de sudoku, que están fuera de alcance.
+- **Preguntas abiertas:** Ninguna para integrar: Claude puede copiar los tokens y declarar las fuentes en CSS. Si Daniel desea arte de portada tras probar el inicio real, puedo derivar `hero-480.webp` y `hero-960.webp` de la dirección aprobada en un ticket breve.
 
 ## Revisión
 

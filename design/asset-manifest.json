@@ -1,23 +1,411 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-07",
+  "generatedAt": "2026-11-08",
   "assets": [
-    { "id": "d1-logo-mark", "path": "design/direcciones/D1-taller-de-fieltro/logo-mark.svg", "purpose": "Marca de exploración para Taller de fieltro", "tool": "SVG escrito por Codex", "prompt": null, "dimensions": "100x100", "bytes": 439 },
-    { "id": "d1-pieces-sample", "path": "design/direcciones/D1-taller-de-fieltro/pieces-sample.svg", "purpose": "Muestra de rey, dama, caballo y peón claros y oscuros", "tool": "SVG escrito por Codex", "prompt": null, "dimensions": "800x100; ocho símbolos con base y=92", "bytes": 1493 },
-    { "id": "d1-menu-mockup", "path": "design/direcciones/D1-taller-de-fieltro/mockup-menu.png", "purpose": "Maqueta móvil del menú", "tool": "PowerShell 7 + System.Drawing (composición vectorial local)", "prompt": null, "dimensions": "360x780", "bytes": 19282 },
-    { "id": "d1-chess-mockup", "path": "design/direcciones/D1-taller-de-fieltro/mockup-chess.png", "purpose": "Maqueta móvil de ajedrez en curso", "tool": "PowerShell 7 + System.Drawing (composición vectorial local)", "prompt": null, "dimensions": "360x780", "bytes": 22283 },
-    { "id": "d2-logo-mark", "path": "design/direcciones/D2-club-de-medianoche/logo-mark.svg", "purpose": "Marca de exploración para Club de medianoche", "tool": "SVG escrito por Codex", "prompt": null, "dimensions": "100x100", "bytes": 383 },
-    { "id": "d2-pieces-sample", "path": "design/direcciones/D2-club-de-medianoche/pieces-sample.svg", "purpose": "Muestra de rey, dama, caballo y peón claros y oscuros", "tool": "SVG escrito por Codex", "prompt": null, "dimensions": "800x100; ocho símbolos con base y=92", "bytes": 1340 },
-    { "id": "d2-menu-mockup", "path": "design/direcciones/D2-club-de-medianoche/mockup-menu.png", "purpose": "Maqueta móvil del menú", "tool": "PowerShell 7 + System.Drawing (composición vectorial local)", "prompt": null, "dimensions": "360x780", "bytes": 19092 },
-    { "id": "d2-chess-mockup", "path": "design/direcciones/D2-club-de-medianoche/mockup-chess.png", "purpose": "Maqueta móvil de ajedrez en curso", "tool": "PowerShell 7 + System.Drawing (composición vectorial local)", "prompt": null, "dimensions": "360x780", "bytes": 21010 },
-    { "id": "d3-logo-mark", "path": "design/direcciones/D3-papel-en-juego/logo-mark.svg", "purpose": "Marca de exploración para Papel en juego", "tool": "SVG escrito por Codex", "prompt": null, "dimensions": "100x100", "bytes": 402 },
-    { "id": "d3-pieces-sample", "path": "design/direcciones/D3-papel-en-juego/pieces-sample.svg", "purpose": "Muestra de rey, dama, caballo y peón claros y oscuros", "tool": "SVG escrito por Codex", "prompt": null, "dimensions": "800x100; ocho símbolos con base y=92", "bytes": 1336 },
-    { "id": "d3-menu-mockup", "path": "design/direcciones/D3-papel-en-juego/mockup-menu.png", "purpose": "Maqueta móvil del menú", "tool": "PowerShell 7 + System.Drawing (composición vectorial local)", "prompt": null, "dimensions": "360x780", "bytes": 19246 },
-    { "id": "d3-chess-mockup", "path": "design/direcciones/D3-papel-en-juego/mockup-chess.png", "purpose": "Maqueta móvil de ajedrez en curso", "tool": "PowerShell 7 + System.Drawing (composición vectorial local)", "prompt": null, "dimensions": "360x780", "bytes": 22049 }
+    {
+      "id": "d1-logo-mark",
+      "path": "design/direcciones/D1-taller-de-fieltro/logo-mark.svg",
+      "purpose": "Marca de exploración para Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "dimensions": "100x100",
+      "bytes": 439
+    },
+    {
+      "id": "d1-pieces-sample",
+      "path": "design/direcciones/D1-taller-de-fieltro/pieces-sample.svg",
+      "purpose": "Muestra de rey, dama, caballo y peón claros y oscuros",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "dimensions": "800x100; ocho símbolos con base y=92",
+      "bytes": 1493
+    },
+    {
+      "id": "d1-menu-mockup",
+      "path": "design/direcciones/D1-taller-de-fieltro/mockup-menu.png",
+      "purpose": "Maqueta móvil del menú",
+      "tool": "PowerShell 7 + System.Drawing (composición vectorial local)",
+      "prompt": null,
+      "dimensions": "360x780",
+      "bytes": 19282
+    },
+    {
+      "id": "d1-chess-mockup",
+      "path": "design/direcciones/D1-taller-de-fieltro/mockup-chess.png",
+      "purpose": "Maqueta móvil de ajedrez en curso",
+      "tool": "PowerShell 7 + System.Drawing (composición vectorial local)",
+      "prompt": null,
+      "dimensions": "360x780",
+      "bytes": 22283
+    },
+    {
+      "id": "d2-logo-mark",
+      "path": "design/direcciones/D2-club-de-medianoche/logo-mark.svg",
+      "purpose": "Marca de exploración para Club de medianoche",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "dimensions": "100x100",
+      "bytes": 383
+    },
+    {
+      "id": "d2-pieces-sample",
+      "path": "design/direcciones/D2-club-de-medianoche/pieces-sample.svg",
+      "purpose": "Muestra de rey, dama, caballo y peón claros y oscuros",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "dimensions": "800x100; ocho símbolos con base y=92",
+      "bytes": 1340
+    },
+    {
+      "id": "d2-menu-mockup",
+      "path": "design/direcciones/D2-club-de-medianoche/mockup-menu.png",
+      "purpose": "Maqueta móvil del menú",
+      "tool": "PowerShell 7 + System.Drawing (composición vectorial local)",
+      "prompt": null,
+      "dimensions": "360x780",
+      "bytes": 19092
+    },
+    {
+      "id": "d2-chess-mockup",
+      "path": "design/direcciones/D2-club-de-medianoche/mockup-chess.png",
+      "purpose": "Maqueta móvil de ajedrez en curso",
+      "tool": "PowerShell 7 + System.Drawing (composición vectorial local)",
+      "prompt": null,
+      "dimensions": "360x780",
+      "bytes": 21010
+    },
+    {
+      "id": "d3-logo-mark",
+      "path": "design/direcciones/D3-papel-en-juego/logo-mark.svg",
+      "purpose": "Marca de exploración para Papel en juego",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "dimensions": "100x100",
+      "bytes": 402
+    },
+    {
+      "id": "d3-pieces-sample",
+      "path": "design/direcciones/D3-papel-en-juego/pieces-sample.svg",
+      "purpose": "Muestra de rey, dama, caballo y peón claros y oscuros",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "dimensions": "800x100; ocho símbolos con base y=92",
+      "bytes": 1336
+    },
+    {
+      "id": "d3-menu-mockup",
+      "path": "design/direcciones/D3-papel-en-juego/mockup-menu.png",
+      "purpose": "Maqueta móvil del menú",
+      "tool": "PowerShell 7 + System.Drawing (composición vectorial local)",
+      "prompt": null,
+      "dimensions": "360x780",
+      "bytes": 19246
+    },
+    {
+      "id": "d3-chess-mockup",
+      "path": "design/direcciones/D3-papel-en-juego/mockup-chess.png",
+      "purpose": "Maqueta móvil de ajedrez en curso",
+      "tool": "PowerShell 7 + System.Drawing (composición vectorial local)",
+      "prompt": null,
+      "dimensions": "360x780",
+      "bytes": 22049
+    },
+    {
+      "id": "taller-piece-wk",
+      "path": "public/assets/chess/pieces/wk.svg",
+      "purpose": "Pieza de ajedrez torneada wk",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1053
+    },
+    {
+      "id": "taller-piece-wq",
+      "path": "public/assets/chess/pieces/wq.svg",
+      "purpose": "Pieza de ajedrez torneada wq",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1068
+    },
+    {
+      "id": "taller-piece-wr",
+      "path": "public/assets/chess/pieces/wr.svg",
+      "purpose": "Pieza de ajedrez torneada wr",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1007
+    },
+    {
+      "id": "taller-piece-wb",
+      "path": "public/assets/chess/pieces/wb.svg",
+      "purpose": "Pieza de ajedrez torneada wb",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1075
+    },
+    {
+      "id": "taller-piece-wn",
+      "path": "public/assets/chess/pieces/wn.svg",
+      "purpose": "Pieza de ajedrez torneada wn",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1094
+    },
+    {
+      "id": "taller-piece-wp",
+      "path": "public/assets/chess/pieces/wp.svg",
+      "purpose": "Pieza de ajedrez torneada wp",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1010
+    },
+    {
+      "id": "taller-piece-bk",
+      "path": "public/assets/chess/pieces/bk.svg",
+      "purpose": "Pieza de ajedrez torneada bk",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1054
+    },
+    {
+      "id": "taller-piece-bq",
+      "path": "public/assets/chess/pieces/bq.svg",
+      "purpose": "Pieza de ajedrez torneada bq",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1069
+    },
+    {
+      "id": "taller-piece-br",
+      "path": "public/assets/chess/pieces/br.svg",
+      "purpose": "Pieza de ajedrez torneada br",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1008
+    },
+    {
+      "id": "taller-piece-bb",
+      "path": "public/assets/chess/pieces/bb.svg",
+      "purpose": "Pieza de ajedrez torneada bb",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1076
+    },
+    {
+      "id": "taller-piece-bn",
+      "path": "public/assets/chess/pieces/bn.svg",
+      "purpose": "Pieza de ajedrez torneada bn",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1095
+    },
+    {
+      "id": "taller-piece-bp",
+      "path": "public/assets/chess/pieces/bp.svg",
+      "purpose": "Pieza de ajedrez torneada bp",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1011
+    },
+    {
+      "id": "taller-logo-mark",
+      "path": "public/assets/brand/logo-mark.svg",
+      "purpose": "Marca de Juegoteca",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100",
+      "bytes": 425
+    },
+    {
+      "id": "taller-logo",
+      "path": "public/assets/brand/logo.svg",
+      "purpose": "Logotipo en trazos de Juegoteca",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "390x100",
+      "bytes": 824
+    },
+    {
+      "id": "taller-game-chess",
+      "path": "public/assets/games/chess.svg",
+      "purpose": "Icono de juego chess",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "56x56",
+      "bytes": 567
+    },
+    {
+      "id": "taller-game-checkers",
+      "path": "public/assets/games/checkers.svg",
+      "purpose": "Icono de juego checkers",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "56x56",
+      "bytes": 603
+    },
+    {
+      "id": "taller-game-backgammon",
+      "path": "public/assets/games/backgammon.svg",
+      "purpose": "Icono de juego backgammon",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "56x56",
+      "bytes": 594
+    },
+    {
+      "id": "taller-game-sudoku",
+      "path": "public/assets/games/sudoku.svg",
+      "purpose": "Icono de juego sudoku",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "56x56",
+      "bytes": 656
+    },
+    {
+      "id": "taller-favicon",
+      "path": "public/icons/favicon.svg",
+      "purpose": "Favicon de Juegoteca",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100",
+      "bytes": 425
+    },
+    {
+      "id": "taller-icon-192",
+      "path": "public/icons/icon-192.png",
+      "purpose": "Icono instalable PWA",
+      "tool": "PowerShell 7 + System.Drawing",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "192x192",
+      "bytes": 2136
+    },
+    {
+      "id": "taller-icon-512",
+      "path": "public/icons/icon-512.png",
+      "purpose": "Icono instalable PWA",
+      "tool": "PowerShell 7 + System.Drawing",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "512x512",
+      "bytes": 7586
+    },
+    {
+      "id": "taller-icon-maskable-512",
+      "path": "public/icons/icon-maskable-512.png",
+      "purpose": "Icono instalable PWA",
+      "tool": "PowerShell 7 + System.Drawing",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "512x512; contenido dentro del 72% central",
+      "bytes": 7171
+    },
+    {
+      "id": "taller-apple-touch-icon",
+      "path": "public/icons/apple-touch-icon.png",
+      "purpose": "Icono instalable PWA",
+      "tool": "PowerShell 7 + System.Drawing",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "180x180; RGB sin transparencia",
+      "bytes": 1852
+    },
+    {
+      "id": "taller-mood",
+      "path": "design/direcciones/D1-taller-de-fieltro/mood.webp",
+      "purpose": "Referencia de atmósfera del Taller de fieltro",
+      "tool": "image_gen + Pillow 3.14",
+      "prompt": "Original premium handcrafted tabletop-game workshop, seen from directly above: warm walnut tabletop, a forest-green felt game board, a simple open wooden game box, original turned wooden chess pieces in ivory maple and dark walnut; no text, logos, brands, watermark or people.",
+      "date": "2026-11-08",
+      "dimensions": "960x960",
+      "bytes": 104998
+    },
+    {
+      "id": "taller-fraunces-font",
+      "path": "public/fonts/fraunces-latin.woff2",
+      "purpose": "Fraunces 600 estática, subconjunto latino",
+      "tool": "fontTools varLib.instancer + subset",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "WOFF2; U+0000-00FF, U+0131, U+0152-0153, U+0178, U+20AC",
+      "bytes": 18268
+    },
+    {
+      "id": "taller-atkinson-font",
+      "path": "public/fonts/atkinson-hyperlegible-next-latin.woff2",
+      "purpose": "Atkinson Hyperlegible Next variable, subconjunto latino",
+      "tool": "fontTools subset",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "WOFF2; U+0000-00FF, U+0131, U+0152-0153, U+0178, U+20AC",
+      "bytes": 30676
+    },
+    {
+      "id": "taller-fraunces-license",
+      "path": "public/fonts/fraunces-OFL.txt",
+      "purpose": "Licencia OFL de Fraunces",
+      "tool": "Descarga desde fuente oficial",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "texto",
+      "bytes": 4391
+    },
+    {
+      "id": "taller-atkinson-license",
+      "path": "public/fonts/atkinson-hyperlegible-next-OFL.txt",
+      "purpose": "Licencia OFL de Atkinson Hyperlegible Next",
+      "tool": "Descarga desde fuente oficial",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "texto",
+      "bytes": 4431
+    }
   ],
   "explorationReferences": [
-    { "direction": "D1", "tool": "image_gen", "prompt": "text-free cozy tabletop game library with walnut, cream felt, forest green and coral" },
-    { "direction": "D2", "tool": "image_gen", "prompt": "text-free midnight arcade board-game club with indigo, cyan and magenta" },
-    { "direction": "D3", "tool": "image_gen", "prompt": "text-free layered paper-cut tabletop atelier with terracotta and cobalt" }
+    {
+      "direction": "D1",
+      "tool": "image_gen",
+      "prompt": "text-free cozy tabletop game library with walnut, cream felt, forest green and coral"
+    },
+    {
+      "direction": "D2",
+      "tool": "image_gen",
+      "prompt": "text-free midnight arcade board-game club with indigo, cyan and magenta"
+    },
+    {
+      "direction": "D3",
+      "tool": "image_gen",
+      "prompt": "text-free layered paper-cut tabletop atelier with terracotta and cobalt"
+    }
   ]
 }
