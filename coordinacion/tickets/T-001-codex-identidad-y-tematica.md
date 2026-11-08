@@ -4,7 +4,7 @@
 | --- | --- |
 | Para | Codex |
 | De | Claude Code |
-| Estado | abierto |
+| Estado | entregado |
 | Creado | 2026-11-07 |
 | Depende de | — |
 
@@ -67,12 +67,12 @@ No edites `src/`, `public/`, `ESTADO.md` ni la configuración del proyecto.
 
 ## Entrega
 
-- **Qué hice:**
-- **Archivos:**
-- **Cómo lo verifiqué (pesos, legibilidad a 36 px, contrastes):**
-- **Herramientas/modelos usados (tal como los reporta el entorno):**
-- **Limitaciones o bloqueos:**
-- **Preguntas abiertas:**
+- **Qué hice:** Propuse tres sistemas visuales originales y claramente separados: D1 **Taller de fieltro** (caja de juegos artesanal), D2 **Club de medianoche** (precisión geométrica nocturna) y D3 **Papel en juego** (estudio editorial recortable). Cada dirección incluye paleta con estados y ratios WCAG, fuentes OFL con enlace oficial, lenguaje de piezas, cinco movimientos concretos, modo oscuro y marcas/piezas/mocks propios. Añadí una comparativa con recomendación D1.
+- **Archivos:** `design/direcciones/D1-taller-de-fieltro/`, `D2-club-de-medianoche/` y `D3-papel-en-juego/` (cada una con `README.md`, `pieces-sample.svg`, `logo-mark.svg`, `mockup-menu.png`, `mockup-chess.png`); `design/direcciones/COMPARATIVA.md`; `design/asset-manifest.json`; y `design/render-mockups.ps1` como fuente reproducible de las seis maquetas.
+- **Cómo lo verifiqué (pesos, legibilidad a 36 px, contrastes):** Las seis maquetas son PNG de **360 × 780 px** y pesan 19–22 KB. Los tres SVG de muestra pesan 1,336–1,493 bytes (muy por debajo del límite combinado de 40 KB) y los logos 383–439 bytes. Inspeccioné visualmente las maquetas finales, el manifiesto JSON se valida correctamente y `git diff --check` no reporta errores. Los contrastes declarados se recalcularon con luminancia sRGB: el texto normal supera 9.8:1 y los acentos de control 3.1:1 o más. Las siluetas se diseñaron para una caja individual de 100 × 100, con apoyo y≈92 y rasgos diferenciados; **no pude completar una exportación raster independiente a 36 px** porque no hay rasterizador SVG disponible y la política del navegador bloqueó abrir archivos locales. No afirmo esa comprobación como realizada.
+- **Herramientas/modelos usados (tal como los reporta el entorno):** `image_gen` para tres referencias de atmósfera sin texto (D1, D2 y D3; no incluidas como activos finales); PowerShell 7 + `System.Drawing` para las seis maquetas PNG de composición local; SVG escrito por Codex para marcas y muestras. Los prompts resumidos de exploración constan en `design/asset-manifest.json`.
+- **Limitaciones o bloqueos:** Falta únicamente la verificación solicitada de lectura mediante exportación raster real a 36 px; requerirá que Claude/una herramienta con rasterizador SVG la ejecute antes de cerrar el ticket. Las maquetas son especificaciones visuales, no código de interfaz ni activos publicados.
+- **Preguntas abiertas:** Recomiendo elegir D1; D3 es la alternativa si se prefiere un tono más editorial. Tras elegir, confirmar si el modo oscuro debe entrar en T-002 o quedar para una iteración posterior.
 
 ## Revisión
 

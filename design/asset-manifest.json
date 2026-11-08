@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-07",
+  "assets": [
+    { "id": "d1-logo-mark", "path": "design/direcciones/D1-taller-de-fieltro/logo-mark.svg", "purpose": "Marca de exploración para Taller de fieltro", "tool": "SVG escrito por Codex", "prompt": null, "dimensions": "100x100", "bytes": 439 },
+    { "id": "d1-pieces-sample", "path": "design/direcciones/D1-taller-de-fieltro/pieces-sample.svg", "purpose": "Muestra de rey, dama, caballo y peón claros y oscuros", "tool": "SVG escrito por Codex", "prompt": null, "dimensions": "800x100; ocho símbolos con base y=92", "bytes": 1493 },
+    { "id": "d1-menu-mockup", "path": "design/direcciones/D1-taller-de-fieltro/mockup-menu.png", "purpose": "Maqueta móvil del menú", "tool": "PowerShell 7 + System.Drawing (composición vectorial local)", "prompt": null, "dimensions": "360x780", "bytes": 19282 },
+    { "id": "d1-chess-mockup", "path": "design/direcciones/D1-taller-de-fieltro/mockup-chess.png", "purpose": "Maqueta móvil de ajedrez en curso", "tool": "PowerShell 7 + System.Drawing (composición vectorial local)", "prompt": null, "dimensions": "360x780", "bytes": 22283 },
+    { "id": "d2-logo-mark", "path": "design/direcciones/D2-club-de-medianoche/logo-mark.svg", "purpose": "Marca de exploración para Club de medianoche", "tool": "SVG escrito por Codex", "prompt": null, "dimensions": "100x100", "bytes": 383 },
+    { "id": "d2-pieces-sample", "path": "design/direcciones/D2-club-de-medianoche/pieces-sample.svg", "purpose": "Muestra de rey, dama, caballo y peón claros y oscuros", "tool": "SVG escrito por Codex", "prompt": null, "dimensions": "800x100; ocho símbolos con base y=92", "bytes": 1340 },
+    { "id": "d2-menu-mockup", "path": "design/direcciones/D2-club-de-medianoche/mockup-menu.png", "purpose": "Maqueta móvil del menú", "tool": "PowerShell 7 + System.Drawing (composición vectorial local)", "prompt": null, "dimensions": "360x780", "bytes": 19092 },
+    { "id": "d2-chess-mockup", "path": "design/direcciones/D2-club-de-medianoche/mockup-chess.png", "purpose": "Maqueta móvil de ajedrez en curso", "tool": "PowerShell 7 + System.Drawing (composición vectorial local)", "prompt": null, "dimensions": "360x780", "bytes": 21010 },
+    { "id": "d3-logo-mark", "path": "design/direcciones/D3-papel-en-juego/logo-mark.svg", "purpose": "Marca de exploración para Papel en juego", "tool": "SVG escrito por Codex", "prompt": null, "dimensions": "100x100", "bytes": 402 },
+    { "id": "d3-pieces-sample", "path": "design/direcciones/D3-papel-en-juego/pieces-sample.svg", "purpose": "Muestra de rey, dama, caballo y peón claros y oscuros", "tool": "SVG escrito por Codex", "prompt": null, "dimensions": "800x100; ocho símbolos con base y=92", "bytes": 1336 },
+    { "id": "d3-menu-mockup", "path": "design/direcciones/D3-papel-en-juego/mockup-menu.png", "purpose": "Maqueta móvil del menú", "tool": "PowerShell 7 + System.Drawing (composición vectorial local)", "prompt": null, "dimensions": "360x780", "bytes": 19246 },
+    { "id": "d3-chess-mockup", "path": "design/direcciones/D3-papel-en-juego/mockup-chess.png", "purpose": "Maqueta móvil de ajedrez en curso", "tool": "PowerShell 7 + System.Drawing (composición vectorial local)", "prompt": null, "dimensions": "360x780", "bytes": 22049 }
+  ],
+  "explorationReferences": [
+    { "direction": "D1", "tool": "image_gen", "prompt": "text-free cozy tabletop game library with walnut, cream felt, forest green and coral" },
+    { "direction": "D2", "tool": "image_gen", "prompt": "text-free midnight arcade board-game club with indigo, cyan and magenta" },
+    { "direction": "D3", "tool": "image_gen", "prompt": "text-free layered paper-cut tabletop atelier with terracotta and cobalt" }
+  ]
+}
