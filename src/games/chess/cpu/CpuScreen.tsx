@@ -106,7 +106,7 @@ function Setup({
   }
 
   return (
-    <div class="screen">
+    <div class="screen wide">
       <header class="topbar">
         <button class="icon-btn" onClick={() => back('g/chess')} aria-label="Volver">←</button>
         <h1>Contra la computadora</h1>
@@ -492,57 +492,60 @@ function Review({ game, onBack }: { game: CpuGame; onBack: () => void }) {
     <div class="screen match">
       {topbar}
 
-      <div class="review-summary card enter">
-        <div class="accuracy">
-          <span class="accuracy-num">{accuracy(reviews)}%</span>
-          <span class="dim">precisión</span>
-        </div>
-        <ul class="verdicts">
-          <li class="v-best">{plural(counts('best') + counts('good'), 'buena', 'buenas')}</li>
-          <li class="v-inaccuracy">{plural(counts('inaccuracy'), 'imprecisión', 'imprecisiones')}</li>
-          <li class="v-mistake">{plural(counts('mistake'), 'error', 'errores')}</li>
-          <li class="v-blunder">{plural(counts('blunder'), 'error grave', 'errores graves')}</li>
-        </ul>
-      </div>
-
       <div class="board-wrap">
         <ChessBoard state={reviewState} viewSeat={game.seat} controls={null} onMove={() => {}} annotations={annotations} />
       </div>
 
-      {current ? (
-        <div class={`review-note card v-${current.verdict}`} key={current.ply}>
-          <p class="review-title">
-            <strong>{VERDICT_LABEL[current.verdict]}</strong> en la jugada {moveNumberLabel(current.ply)}
-          </p>
-          <p>
-            Jugaste <span class="san played">{replay.sans[current.ply]}</span>
-            {current.best !== current.played && (
-              <>
-                {' '}
-                y era mejor <span class="san best">{bestSan}</span>
-              </>
-            )}
-            . {lossText(current.loss)}
-          </p>
-          <div class="row">
-            <button class="btn btn-sm" disabled={index === 0} onClick={() => setIndex(index - 1)}>
-              ◀ Anterior
-            </button>
-            <span class="dim review-count">
-              {index + 1} de {flagged.length}
-            </span>
-            <button class="btn btn-sm" disabled={index >= flagged.length - 1} onClick={() => setIndex(index + 1)}>
-              Siguiente ▶
-            </button>
+      <div class="match-side">
+        <div class="review-summary card pre enter">
+          <div class="accuracy">
+            <span class="accuracy-num">{accuracy(reviews)}%</span>
+            <span class="dim">precisión</span>
           </div>
+          <ul class="verdicts">
+            <li class="v-best">{plural(counts('best') + counts('good'), 'buena', 'buenas')}</li>
+            <li class="v-inaccuracy">{plural(counts('inaccuracy'), 'imprecisión', 'imprecisiones')}</li>
+            <li class="v-mistake">{plural(counts('mistake'), 'error', 'errores')}</li>
+            <li class="v-blunder">{plural(counts('blunder'), 'error grave', 'errores graves')}</li>
+          </ul>
         </div>
-      ) : (
-        <div class="card center enter">
-          <p>
-            <strong>¡Sin errores!</strong> Todas tus jugadas fueron buenas.
-          </p>
-        </div>
-      )}
+
+        <div class="side-spacer" />
+        {current ? (
+          <div class={`review-note card v-${current.verdict}`} key={current.ply}>
+            <p class="review-title">
+              <strong>{VERDICT_LABEL[current.verdict]}</strong> en la jugada {moveNumberLabel(current.ply)}
+            </p>
+            <p>
+              Jugaste <span class="san played">{replay.sans[current.ply]}</span>
+              {current.best !== current.played && (
+                <>
+                  {' '}
+                  y era mejor <span class="san best">{bestSan}</span>
+                </>
+              )}
+              . {lossText(current.loss)}
+            </p>
+            <div class="row">
+              <button class="btn btn-sm" disabled={index === 0} onClick={() => setIndex(index - 1)}>
+                ◀ Anterior
+              </button>
+              <span class="dim review-count">
+                {index + 1} de {flagged.length}
+              </span>
+              <button class="btn btn-sm" disabled={index >= flagged.length - 1} onClick={() => setIndex(index + 1)}>
+                Siguiente ▶
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div class="card center enter">
+            <p>
+              <strong>¡Sin errores!</strong> Todas tus jugadas fueron buenas.
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

@@ -39,10 +39,6 @@ export function Match(p: MatchProps) {
         <h1>{p.title}</h1>
       </header>
 
-      {p.banner}
-
-      <PlayerBar game={game} state={state} seat={top} name={p.names[top]} active={!p.outcome && turn === top} isMe={p.me === top} thinking={p.thinkingSeat === top} />
-
       <div class="board-wrap">
         <Board state={state} viewSeat={viewSeat} controls={p.outcome ? null : p.controls} onMove={p.onMove} annotations={p.annotations} />
         {hint && (
@@ -52,19 +48,60 @@ export function Match(p: MatchProps) {
         )}
       </div>
 
-      <PlayerBar game={game} state={state} seat={viewSeat} name={p.names[viewSeat]} active={!p.outcome && turn === viewSeat} isMe={p.me === viewSeat} thinking={p.thinkingSeat === viewSeat} />
-
-      {p.actions && <div class="row match-actions">{p.actions}</div>}
+      {/* En vertical, .match-side se disuelve y cada parte vuelve arriba o abajo del tablero (.pre = arriba).
+          En horizontal es una columna a la derecha del tablero. */}
+      <div class="match-side">
+        {p.banner && <div class="pre">{p.banner}</div>}
+        <PlayerBar
+          class="pre"
+          game={game}
+          state={state}
+          seat={top}
+          name={p.names[top]}
+          active={!p.outcome && turn === top}
+          isMe={p.me === top}
+          thinking={p.thinkingSeat === top}
+        />
+        <div class="side-spacer" />
+        <PlayerBar
+          game={game}
+          state={state}
+          seat={viewSeat}
+          name={p.names[viewSeat]}
+          active={!p.outcome && turn === viewSeat}
+          isMe={p.me === viewSeat}
+          thinking={p.thinkingSeat === viewSeat}
+        />
+        {p.actions && <div class="row match-actions">{p.actions}</div>}
+      </div>
 
       {p.outcome && <ResultSheet outcome={p.outcome} game={game} names={p.names} me={p.me} actions={p.resultActions} />}
     </div>
   )
 }
 
-function PlayerBar({ game, state, seat, name, active, isMe, thinking }: { game: GameDef; state: unknown; seat: Seat; name: string; active: boolean; isMe: boolean; thinking?: boolean }) {
+function PlayerBar({
+  game,
+  state,
+  seat,
+  name,
+  active,
+  isMe,
+  thinking,
+  class: cls = '',
+}: {
+  game: GameDef
+  state: unknown
+  seat: Seat
+  name: string
+  active: boolean
+  isMe: boolean
+  thinking?: boolean
+  class?: string
+}) {
   const Extra = game.PlayerExtra
   return (
-    <div class={`player-bar seat-${seat}${active ? ' active' : ''}`}>
+    <div class={`player-bar seat-${seat}${active ? ' active' : ''} ${cls}`}>
       <div class="avatar" aria-hidden="true">{(name || '?').slice(0, 1).toUpperCase()}</div>
       <div class="player-info">
         <div class="player-name">

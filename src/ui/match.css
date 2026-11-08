@@ -299,3 +299,89 @@
     translate: 0 -4px;
   }
 }
+
+/* ---------- Disposición: vertical y horizontal ----------
+ * Las pantallas de partida (Match, retos, repaso) tienen: .topbar, .board-wrap y
+ * .match-side. En vertical .match-side se disuelve y cada pieza se ordena
+ * alrededor del tablero (.pre = arriba). En horizontal (tablets, celular
+ * acostado) es una columna a la derecha del tablero.
+ */
+.screen.match > .topbar {
+  order: 0;
+}
+.match-side {
+  display: contents;
+}
+.match-side > * {
+  order: 3;
+}
+.match-side > .pre {
+  order: 1;
+}
+.screen.match > .board-wrap {
+  order: 2;
+}
+.side-spacer {
+  display: none;
+}
+
+@media (orientation: landscape) and (min-width: 640px) {
+  .screen.match {
+    --pad-y: 14px;
+    --side: clamp(250px, 34vw, 380px);
+    --side-gap: 28px;
+    /* El tablero usa toda la altura (la barra de título va en la columna lateral). */
+    --board: min(calc(100dvh - 2 * var(--pad-y)), calc(100vw - var(--side) - var(--side-gap) - 2 * var(--gutter)), 900px);
+    display: grid;
+    grid-template-columns: var(--board) var(--side);
+    grid-template-rows: auto 1fr;
+    column-gap: var(--side-gap);
+    row-gap: 10px;
+    align-content: center;
+    width: calc(var(--board) + var(--side) + var(--side-gap) + 2 * var(--gutter));
+    max-width: none;
+    padding-top: var(--pad-y);
+    padding-bottom: var(--pad-y);
+    padding-left: max(env(safe-area-inset-left), var(--gutter));
+    padding-right: max(env(safe-area-inset-right), var(--gutter));
+  }
+  .screen.match > .topbar {
+    grid-column: 2;
+    grid-row: 1;
+    min-height: 44px;
+  }
+  .screen.match > .topbar h1 {
+    font-size: 18px;
+  }
+  .screen.match > .board-wrap {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    width: var(--board);
+    min-width: 0;
+    align-self: center;
+  }
+  .match-side {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    grid-column: 2;
+    grid-row: 2;
+    min-height: 0;
+    max-height: calc(var(--board) - 54px);
+    overflow-y: auto;
+  }
+  .side-spacer {
+    display: block;
+    flex: 1;
+  }
+  .match-side .match-actions {
+    flex-wrap: wrap;
+  }
+}
+
+/* Tablet en vertical: el tablero puede crecer más allá del ancho de celular. */
+@media (orientation: portrait) and (min-width: 700px) {
+  .screen.match {
+    max-width: 780px;
+  }
+}

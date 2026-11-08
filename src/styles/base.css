@@ -292,3 +292,12 @@ a.btn {
   background: var(--c-accent-2);
   transition: width var(--t-enter) var(--ease-out);
 }
+
+/* ---------- Pantallas anchas (tablets) ----------
+ * Los menús (.screen.wide) aprovechan el ancho; formularios y diálogos siguen angostos.
+ */
+@media (min-width: 900px) {
+  .screen.wide {
+    max-width: 1000px;
+  }
+}

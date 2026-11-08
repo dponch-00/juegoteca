@@ -49,7 +49,7 @@
 
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(min(160px, calc(50% - 6px)), 1fr));
   gap: 12px;
 }
 .game-card {

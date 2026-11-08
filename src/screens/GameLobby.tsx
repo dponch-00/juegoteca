@@ -21,7 +21,7 @@ export function GameLobby({ game }: { game: GameDef }) {
   }
 
   return (
-    <div class="screen">
+    <div class="screen wide">
       <header class="topbar">
         <button class="icon-btn" onClick={() => back()} aria-label="Volver">←</button>
         <h1>{game.name}</h1>
@@ -32,43 +32,45 @@ export function GameLobby({ game }: { game: GameDef }) {
         <p class="dim">{game.tagline}</p>
       </div>
 
-      {game.soloModes && game.soloModes.length > 0 && (
-        <section class="stack stagger">
-          <h2 class="section-title">Un jugador</h2>
-          {game.soloModes.map((m, i) => (
-            <button key={m.id} class={`btn btn-col${i === 0 ? ' btn-solo' : ''}`} onClick={() => navigate(`g/${game.id}/${m.id}`)}>
-              {m.label}
-              <span class="sub">{m.sub}</span>
-            </button>
-          ))}
-        </section>
-      )}
-
-      <section class="stack stagger">
-        <h2 class="section-title">En línea</h2>
-        <button class="btn btn-primary btn-col" onClick={createRoom}>
-          Crear sala
-          <span class="sub">Te damos un código para tu rival</span>
-        </button>
-        <button class="btn btn-col" onClick={() => navigate('unirse')}>
-          Unirme con código
-          <span class="sub">Tu rival ya creó la sala</span>
-        </button>
-      </section>
-
-      <section class="stack stagger">
-        <h2 class="section-title">En este dispositivo</h2>
-        {resumable && (
-          <button class="btn btn-col" onClick={() => navigate(`g/${game.id}/local`)}>
-            Continuar partida
-            <span class="sub">{savedPly} jugadas hechas</span>
-          </button>
+      <div class="lobby-grid">
+        {game.soloModes && game.soloModes.length > 0 && (
+          <section class="stack stagger">
+            <h2 class="section-title">Un jugador</h2>
+            {game.soloModes.map((m, i) => (
+              <button key={m.id} class={`btn btn-col${i === 0 ? ' btn-solo' : ''}`} onClick={() => navigate(`g/${game.id}/${m.id}`)}>
+                {m.label}
+                <span class="sub">{m.sub}</span>
+              </button>
+            ))}
+          </section>
         )}
-        <button class="btn btn-col" onClick={newLocal}>
-          {resumable ? 'Nueva partida (pasa y juega)' : 'Pasa y juega'}
-          <span class="sub">Dos personas, un mismo tablero</span>
-        </button>
-      </section>
+
+        <section class="stack stagger">
+          <h2 class="section-title">En línea</h2>
+          <button class="btn btn-primary btn-col" onClick={createRoom}>
+            Crear sala
+            <span class="sub">Te damos un código para tu rival</span>
+          </button>
+          <button class="btn btn-col" onClick={() => navigate('unirse')}>
+            Unirme con código
+            <span class="sub">Tu rival ya creó la sala</span>
+          </button>
+        </section>
+
+        <section class="stack stagger">
+          <h2 class="section-title">En este dispositivo</h2>
+          {resumable && (
+            <button class="btn btn-col" onClick={() => navigate(`g/${game.id}/local`)}>
+              Continuar partida
+              <span class="sub">{savedPly} jugadas hechas</span>
+            </button>
+          )}
+          <button class="btn btn-col" onClick={newLocal}>
+            {resumable ? 'Nueva partida (pasa y juega)' : 'Pasa y juega'}
+            <span class="sub">Dos personas, un mismo tablero</span>
+          </button>
+        </section>
+      </div>
 
       {st.played > 0 && (
         <p class="dim center enter">

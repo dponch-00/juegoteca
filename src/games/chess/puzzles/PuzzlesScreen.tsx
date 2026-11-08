@@ -68,7 +68,7 @@ export function PuzzlesScreen() {
   const solved = data?.categories.reduce((n, c) => n + c.puzzles.filter((p) => isSolved(progress, p[0])).length, 0) ?? 0
 
   return (
-    <div class="screen">
+    <div class="screen wide">
       <header class="topbar">
         <button class="icon-btn" onClick={() => back('g/chess')} aria-label="Volver">←</button>
         <h1>Retos</h1>
@@ -249,16 +249,6 @@ function PuzzlePlay({ category, onBack }: { category: Category; onBack: () => vo
         </span>
       </header>
 
-      <div class={`puzzle-goal card seat-${seat}`}>
-        <span class="goal-piece">
-          <PieceArt color={seat === 0 ? 'w' : 'b'} type="k" />
-        </span>
-        <span>
-          <strong>Juegan {side}.</strong> {goal}.
-          <span class="dim goal-rating"> Dificultad {p.rating}</span>
-        </span>
-      </div>
-
       <div class={`board-wrap${feedback?.tone === 'bad' && preview ? ' shake' : ''}`}>
         <ChessBoard
           state={preview?.state ?? attempt.state}
@@ -269,37 +259,50 @@ function PuzzlePlay({ category, onBack }: { category: Category; onBack: () => vo
         />
       </div>
 
-      <p class={`puzzle-feedback tone-${feedback?.tone ?? 'info'}`} key={feedback?.text} role="status">
-        {feedback?.text ?? (attempt.status === 'opponent' ? 'Mira la jugada de tu rival…' : 'Tu turno.')}
-      </p>
+      <div class="match-side">
+        <div class={`puzzle-goal card pre seat-${seat}`}>
+          <span class="goal-piece">
+            <PieceArt color={seat === 0 ? 'w' : 'b'} type="k" />
+          </span>
+          <span>
+            <strong>Juegan {side}.</strong> {goal}.
+            <span class="dim goal-rating"> Dificultad {p.rating}</span>
+          </span>
+        </div>
 
-      {finished ? (
-        <div class="stack">
-          <button class="btn btn-primary" onClick={() => load(index + 1)}>
-            Siguiente reto →
-          </button>
-          <div class="row">
-            <button class="btn btn-ghost btn-sm" onClick={() => load(index)}>
-              Repetir
+        <div class="side-spacer" />
+        <p class={`puzzle-feedback tone-${feedback?.tone ?? 'info'}`} key={feedback?.text} role="status">
+          {feedback?.text ?? (attempt.status === 'opponent' ? 'Mira la jugada de tu rival…' : 'Tu turno.')}
+        </p>
+
+        {finished ? (
+          <div class="stack">
+            <button class="btn btn-primary" onClick={() => load(index + 1)}>
+              Siguiente reto →
             </button>
-            <a class="btn btn-ghost btn-sm" href={`https://lichess.org/training/${p.id}`} target="_blank" rel="noopener">
-              Ver en Lichess
-            </a>
+            <div class="row">
+              <button class="btn btn-ghost btn-sm" onClick={() => load(index)}>
+                Repetir
+              </button>
+              <a class="btn btn-ghost btn-sm" href={`https://lichess.org/training/${p.id}`} target="_blank" rel="noopener">
+                Ver en Lichess
+              </a>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div class="row match-actions">
-          <button class="btn btn-sm" disabled={attempt.status !== 'solving' || attempt.hints >= 2} onClick={hint}>
-            💡 Pista
-          </button>
-          <button class="btn btn-sm" disabled={revealing} onClick={reveal}>
-            Ver solución
-          </button>
-          <button class="btn btn-sm" onClick={() => load(index + 1)}>
-            Saltar
-          </button>
-        </div>
-      )}
+        ) : (
+          <div class="row match-actions">
+            <button class="btn btn-sm" disabled={attempt.status !== 'solving' || attempt.hints >= 2} onClick={hint}>
+              💡 Pista
+            </button>
+            <button class="btn btn-sm" disabled={revealing} onClick={reveal}>
+              Ver solución
+            </button>
+            <button class="btn btn-sm" onClick={() => load(index + 1)}>
+              Saltar
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

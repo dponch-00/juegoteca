@@ -23,7 +23,7 @@ export function Home() {
   }
 
   return (
-    <div class="screen home">
+    <div class="screen wide home">
       <header class="brand enter">
         <img class="brand-logo" src={`${import.meta.env.BASE_URL}assets/brand/logo-mark.svg`} alt="" onError={(e) => ((e.currentTarget as HTMLImageElement).style.display = 'none')} />
         <h1 class="brand-name">Juegoteca</h1>

@@ -88,3 +88,18 @@
 .lobby-hero p {
   margin: 0;
 }
+
+/* Secciones del lobby: una columna en el celular, tres en tablet */
+.lobby-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+@media (min-width: 900px) {
+  .lobby-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    align-items: start;
+  }
+}

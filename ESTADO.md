@@ -41,12 +41,27 @@
   - La jugada del rival se hace sola. Una jugada incorrecta se muestra en rojo con sacudida y se deshace. Pista en dos pasos (pieza y luego flecha), "Ver solución" paso a paso y "Saltar".
   - Progreso por reto (a la primera, con ayuda, solución vista) y racha "🔥" de aciertos a la primera. En la última jugada vale cualquier mate, como en Lichess.
   - `ChessState` admite una FEN inicial; el tablero admite marcas de casilla.
+- **Celular y tablet, vertical y horizontal** (v0.3.1):
+  - El manifiesto ya no fija la orientación (`any`).
+  - Las pantallas de partida (Match, retos, repaso) tienen `.board-wrap` y `.match-side`. En vertical el panel se disuelve (`display: contents`) y se ordena alrededor del tablero (`.pre` = arriba). En horizontal el tablero ocupa toda la altura a la izquierda; a la derecha van el título, el rival arriba y tú con los botones abajo.
+  - Los menús (`.screen.wide`) se ensanchan a 1000 px en tablet, con rejillas automáticas; el lobby se reparte en tres columnas.
 - **Licencia GPL-3.0-or-later** (por Stockfish). Créditos y enlace al código en `#/acerca`.
 - Estadísticas por juego en `localStorage`.
 - `npm run pieces:sheet`: hoja de contacto PNG de las 12 piezas a 36/64 px en claro, oscuro y grises (`design/review/`, fuera de git), para revisar sin navegador.
 - Deploy automático a GitHub Pages (`.github/workflows/deploy.yml`), base `/juegoteca/`.
 
 ## Cómo se verificó
+
+**2026-11-08 (horizontal/tablet):** medidas en el navegador, sin desplazamiento en ningún caso:
+
+| Pantalla | Tablero |
+| --- | --- |
+| Celular vertical 375×812 | igual que antes |
+| Celular horizontal 812×375 | 347 px (antes 271) |
+| Tablet horizontal 1180×820 | 740 px |
+| Tablet vertical 820×1180 | 748 px |
+
+Lobby en tres columnas, retos y partida con panel lateral, inicio con los cuatro juegos en fila.
 
 **2026-11-08 (retos):** 30/30 pruebas, incluida una que reproduce los 600 retos completos sin jugadas inválidas y comprueba el orden de dificultad. En el navegador a 375 px:
 - Mate en 1: el rival juega solo; una jugada incorrecta se ve en rojo, sacude el tablero y se deshace; la pista marca la pieza; al resolver se guarda "con ayuda".
