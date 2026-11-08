@@ -5,3 +5,6 @@ dev-dist/
 .DS_Store
 # Variantes de imágenes de Codex (solo los masters van en git)
 design/raw/
+
+# Hojas de revisión generadas (npm run pieces:sheet)
+design/review/

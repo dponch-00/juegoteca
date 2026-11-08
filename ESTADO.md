@@ -11,7 +11,8 @@
 | Ticket | Para | Tema | Estado |
 | --- | --- | --- | --- |
 | [T-001](coordinacion/tickets/T-001-codex-identidad-y-tematica.md) | Codex | Identidad y temática: tres direcciones | cerrado: Daniel eligió **D1 · Taller de fieltro** |
-| [T-002](coordinacion/tickets/T-002-codex-produccion-taller-de-fieltro.md) | Codex | Producción de Taller de fieltro: identidad, tokens, fuentes, 12 piezas, logo, iconos | revisado e integrado; pulido opcional de piezas (T2-01) a decisión de Daniel |
+| [T-002](coordinacion/tickets/T-002-codex-produccion-taller-de-fieltro.md) | Codex | Producción de Taller de fieltro: identidad, tokens, fuentes, 12 piezas, logo, iconos | revisado e integrado |
+| [T-003](coordinacion/tickets/T-003-codex-pulido-piezas.md) | Codex | Pulido de piezas: jerarquía de alturas, base más baja, cabezas más grandes; tokens p0/p1 | abierto |
 
 ## Publicación
 
@@ -29,6 +30,7 @@
 - **Contrato GameDef** (`src/core/types.ts`): un juego nuevo solo implementa `create/apply/turn/outcome/ply` y un `Board`; la red no cambia.
 - **Identidad Taller de fieltro:** tokens en `src/styles/tokens.css` (claro por omisión, oscuro según el sistema), Fraunces + Atkinson Hyperlegible Next locales, 12 piezas de madera torneada, logo, iconos de juegos y de la PWA, marco de fieltro en el tablero y movimiento según `docs/identity.md`.
 - Estadísticas por juego en `localStorage`.
+- `npm run pieces:sheet`: hoja de contacto PNG de las 12 piezas a 36/64 px en claro, oscuro y grises (`design/review/`, fuera de git), para revisar sin navegador.
 - Deploy automático a GitHub Pages (`.github/workflows/deploy.yml`), base `/juegoteca/`.
 
 ## Cómo se verificó
@@ -46,10 +48,10 @@
 
 - **Aún no se prueba en dos teléfonos reales.** En la misma Wi-Fi debería conectar; con datos móviles algunas operadoras bloquean conexiones directas (NAT simétrico) y haría falta un servidor TURN. Si pasa, se añade uno.
 - Si se recarga la página o el sistema cierra la app durante una partida en línea, la sala se pierde (falta reanudar desde `sessionStorage`).
-- Las piezas tienen casi la misma altura (T2-01): se distinguen, pero una jerarquía de alturas las haría más rápidas de leer. Decide Daniel al verlas en su teléfono.
+- Las piezas tienen casi la misma altura (T2-01); Daniel pidió pulirlas (T-003).
 - Avisos de `npm audit` (6, moderados/bajos): están en dependencias de compilación de Workbox (glob/minimatch); no llegan a la app publicada.
 
 ## Siguiente acción
 
-1. **Daniel:** abrir la app publicada en el teléfono, ver las piezas y decidir si pide el pulido T2-01; probar en línea entre dos teléfonos (misma Wi-Fi y con datos móviles).
-2. **Claude:** damas (mismo contrato GameDef) y su ticket de fichas para Codex; reanudar la sala tras recargar.
+1. **Daniel:** pasar T-003 a Codex. Probar en línea entre dos teléfonos (misma Wi-Fi y con datos móviles).
+2. **Claude:** revisar T-003 con `npm run pieces:sheet` y en la app; después, damas (mismo contrato GameDef) con su ticket de fichas y reanudar la sala tras recargar.
