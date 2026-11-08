@@ -4,7 +4,7 @@
 | --- | --- |
 | Para | Codex |
 | De | Claude Code (a pedido de Daniel) |
-| Estado | abierto |
+| Estado | entregado |
 | Creado | 2026-11-08 |
 | Depende de | T-002 (identidad Taller de fieltro). **Reemplaza a T-003**, que queda cancelado. |
 
@@ -124,14 +124,14 @@ No edites `src/`, `scripts/`, `package.json` ni `ESTADO.md`.
 
 ## Entrega
 
-- **Ruta elegida (A SVG / B raster) y por qué:**
-- **Qué hice:**
-- **Archivos:**
-- **Qué vi en `pieces-sheet.png` (36/64 px, claro, oscuro, grises):**
-- **Pesos:**
-- **Herramientas/modelos usados:**
-- **Limitaciones o bloqueos:**
-- **Preguntas abiertas:**
+- **Ruta elegida (A SVG / B raster) y por qué:** **Ruta A, SVG volumétrico.** Permite transparencia real, mantiene el coste de animación y descarga bajo, y conserva la nitidez de los contornos a 36 px. Los degradados y trazos vectoriales dan volumen suficiente sin filtros pesados ni una familia de renders inconsistente.
+- **Qué hice:** Rediseñé las 12 piezas desde la silueta con una familia Staunton original, no a partir del cuerpo cónico previo. El rey empieza en y=8 con cruz grande; la dama en y=12 con cinco bolitas de corona; alfil y caballo comienzan alrededor de y=15–20; torre desde y=27; y el peón desde y=30 con bola dominante. Cada una tiene cuerpo propio, base baja de dos niveles, collarín de fieltro, sombra de contacto, veta tenue y sombreado cilíndrico con la misma luz desde arriba a la izquierda. El caballo ahora muestra oreja, hocico, cuello y crin en la silueta. Corregí además `light.p0` = `#FFF8E7` y `light.p1` = `#294536` (T2-02).
+- **Archivos:** 12 SVG reemplazados en `public/assets/chess/pieces/`; `design/generate-staunton-pieces.mjs` como fuente reproducible; `design/tokens.json`; y `design/asset-manifest.json` con 12 entradas `staunton-piece-*` actualizadas. `design/review/pieces-sheet.png` se generó para la revisión y queda ignorado por Git, como exige el ticket.
+- **Qué vi en `pieces-sheet.png` (36/64 px, claro, oscuro, grises):** Ejecuté primero la hoja con el set anterior y comprobé las alturas casi iguales y cabezas diminutas. Tras el rediseño, revisé la hoja final generada: a 36 px se mantiene la jerarquía rey > dama > alfil/caballo > torre > peón; cruz, corona de bolitas, mitra cortada, cabeza de caballo, almenas y bola se leen por contorno. A 64 px se distinguen collarines, veta y luz. En modo claro, oscuro y escala de grises los bandos siguen separados por luminosidad y por filete inverso; no dependen del verde o marrón para reconocerse.
+- **Pesos:** 12/12 piezas SVG: **1,464–1,746 bytes** (límite 15 KB). Validé 24 ids internos únicos, `viewBox="0 0 100 100"`, y ausencia de `<text>` e imágenes incrustadas. La hoja final mide 1,400 × 524 px y 184,101 bytes; no se adjunta ni se versiona.
+- **Herramientas/modelos usados:** Node.js 24 y SVG procedimental escrito por Codex (`design/generate-staunton-pieces.mjs`); `npm install` y `npm run pieces:sheet` (script existente de Claude) para la hoja de contacto. No se usó modelo de imagen ni activos externos.
+- **Limitaciones o bloqueos:** No hay masters raster porque corresponde a la ruta A. La vista es frontal/elevada sugerida por el sombreado y sombra de contacto, no un modelo 3D físico; se eligió así para proteger la lectura y el rendimiento móvil. Claude deberá dar la revisión cruzada en la interacción real, aunque la hoja replica sus tamaños, tableros y escala de grises.
+- **Preguntas abiertas:** Ninguna. No propongo cambiar el tablero: el fieltro bajo las bases conecta las piezas nuevas con el marco actual sin perder contraste.
 
 ## Revisión
 

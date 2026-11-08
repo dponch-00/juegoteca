@@ -111,126 +111,6 @@
       "bytes": 22049
     },
     {
-      "id": "taller-piece-wk",
-      "path": "public/assets/chess/pieces/wk.svg",
-      "purpose": "Pieza de ajedrez torneada wk",
-      "tool": "SVG escrito por Codex",
-      "prompt": null,
-      "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1053
-    },
-    {
-      "id": "taller-piece-wq",
-      "path": "public/assets/chess/pieces/wq.svg",
-      "purpose": "Pieza de ajedrez torneada wq",
-      "tool": "SVG escrito por Codex",
-      "prompt": null,
-      "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1068
-    },
-    {
-      "id": "taller-piece-wr",
-      "path": "public/assets/chess/pieces/wr.svg",
-      "purpose": "Pieza de ajedrez torneada wr",
-      "tool": "SVG escrito por Codex",
-      "prompt": null,
-      "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1007
-    },
-    {
-      "id": "taller-piece-wb",
-      "path": "public/assets/chess/pieces/wb.svg",
-      "purpose": "Pieza de ajedrez torneada wb",
-      "tool": "SVG escrito por Codex",
-      "prompt": null,
-      "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1075
-    },
-    {
-      "id": "taller-piece-wn",
-      "path": "public/assets/chess/pieces/wn.svg",
-      "purpose": "Pieza de ajedrez torneada wn",
-      "tool": "SVG escrito por Codex",
-      "prompt": null,
-      "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1094
-    },
-    {
-      "id": "taller-piece-wp",
-      "path": "public/assets/chess/pieces/wp.svg",
-      "purpose": "Pieza de ajedrez torneada wp",
-      "tool": "SVG escrito por Codex",
-      "prompt": null,
-      "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1010
-    },
-    {
-      "id": "taller-piece-bk",
-      "path": "public/assets/chess/pieces/bk.svg",
-      "purpose": "Pieza de ajedrez torneada bk",
-      "tool": "SVG escrito por Codex",
-      "prompt": null,
-      "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1054
-    },
-    {
-      "id": "taller-piece-bq",
-      "path": "public/assets/chess/pieces/bq.svg",
-      "purpose": "Pieza de ajedrez torneada bq",
-      "tool": "SVG escrito por Codex",
-      "prompt": null,
-      "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1069
-    },
-    {
-      "id": "taller-piece-br",
-      "path": "public/assets/chess/pieces/br.svg",
-      "purpose": "Pieza de ajedrez torneada br",
-      "tool": "SVG escrito por Codex",
-      "prompt": null,
-      "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1008
-    },
-    {
-      "id": "taller-piece-bb",
-      "path": "public/assets/chess/pieces/bb.svg",
-      "purpose": "Pieza de ajedrez torneada bb",
-      "tool": "SVG escrito por Codex",
-      "prompt": null,
-      "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1076
-    },
-    {
-      "id": "taller-piece-bn",
-      "path": "public/assets/chess/pieces/bn.svg",
-      "purpose": "Pieza de ajedrez torneada bn",
-      "tool": "SVG escrito por Codex",
-      "prompt": null,
-      "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1095
-    },
-    {
-      "id": "taller-piece-bp",
-      "path": "public/assets/chess/pieces/bp.svg",
-      "purpose": "Pieza de ajedrez torneada bp",
-      "tool": "SVG escrito por Codex",
-      "prompt": null,
-      "date": "2026-11-08",
-      "dimensions": "100x100; transparente; base y≈92",
-      "bytes": 1011
-    },
-    {
       "id": "taller-logo-mark",
       "path": "public/assets/brand/logo-mark.svg",
       "purpose": "Marca de Juegoteca",
@@ -389,6 +269,126 @@
       "date": "2026-11-08",
       "dimensions": "texto",
       "bytes": 4431
+    },
+    {
+      "id": "staunton-piece-wk",
+      "path": "public/assets/chess/pieces/wk.svg",
+      "purpose": "Pieza Staunton volumétrica wk",
+      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1550
+    },
+    {
+      "id": "staunton-piece-wq",
+      "path": "public/assets/chess/pieces/wq.svg",
+      "purpose": "Pieza Staunton volumétrica wq",
+      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1746
+    },
+    {
+      "id": "staunton-piece-wr",
+      "path": "public/assets/chess/pieces/wr.svg",
+      "purpose": "Pieza Staunton volumétrica wr",
+      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1465
+    },
+    {
+      "id": "staunton-piece-wb",
+      "path": "public/assets/chess/pieces/wb.svg",
+      "purpose": "Pieza Staunton volumétrica wb",
+      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1567
+    },
+    {
+      "id": "staunton-piece-wn",
+      "path": "public/assets/chess/pieces/wn.svg",
+      "purpose": "Pieza Staunton volumétrica wn",
+      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1552
+    },
+    {
+      "id": "staunton-piece-wp",
+      "path": "public/assets/chess/pieces/wp.svg",
+      "purpose": "Pieza Staunton volumétrica wp",
+      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1539
+    },
+    {
+      "id": "staunton-piece-bk",
+      "path": "public/assets/chess/pieces/bk.svg",
+      "purpose": "Pieza Staunton volumétrica bk",
+      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1549
+    },
+    {
+      "id": "staunton-piece-bq",
+      "path": "public/assets/chess/pieces/bq.svg",
+      "purpose": "Pieza Staunton volumétrica bq",
+      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1745
+    },
+    {
+      "id": "staunton-piece-br",
+      "path": "public/assets/chess/pieces/br.svg",
+      "purpose": "Pieza Staunton volumétrica br",
+      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1464
+    },
+    {
+      "id": "staunton-piece-bb",
+      "path": "public/assets/chess/pieces/bb.svg",
+      "purpose": "Pieza Staunton volumétrica bb",
+      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1566
+    },
+    {
+      "id": "staunton-piece-bn",
+      "path": "public/assets/chess/pieces/bn.svg",
+      "purpose": "Pieza Staunton volumétrica bn",
+      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1551
+    },
+    {
+      "id": "staunton-piece-bp",
+      "path": "public/assets/chess/pieces/bp.svg",
+      "purpose": "Pieza Staunton volumétrica bp",
+      "tool": "Node.js 24; SVG procedimental escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "100x100; transparente; base y≈92",
+      "bytes": 1538
     }
   ],
   "explorationReferences": [
