@@ -1,0 +1,200 @@
+.chess-board {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-2), 0 0 0 4px var(--c-surface-2);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  container-type: inline-size;
+}
+
+.squares {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+}
+.sq {
+  position: relative;
+}
+.sq.light {
+  background: var(--c-sq-light);
+}
+.sq.dark {
+  background: var(--c-sq-dark);
+}
+.coord {
+  position: absolute;
+  font: 600 2.2cqw/1 var(--f-ui);
+  color: var(--c-coord);
+  pointer-events: none;
+}
+.coord.rank {
+  top: 4%;
+  left: 5%;
+}
+.coord.file {
+  bottom: 3%;
+  right: 6%;
+}
+
+/* Capas: marcas y piezas comparten el sistema de traslado por casilla */
+.mark,
+.piece {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12.5%;
+  height: 12.5%;
+  pointer-events: none;
+}
+.mark-last {
+  background: var(--c-sq-last);
+}
+.mark-select {
+  background: var(--c-sq-select);
+}
+.mark-check {
+  background: radial-gradient(circle, var(--c-sq-check) 0%, transparent 72%);
+  animation: check-pulse 900ms var(--ease-out) infinite alternate;
+}
+.mark-hint::after {
+  content: '';
+  position: absolute;
+  inset: 37%;
+  border-radius: 50%;
+  background: var(--c-sq-hint);
+  animation: pop-in var(--t-fast) var(--ease-spring) both;
+}
+.mark-capture {
+  z-index: 3;
+}
+.mark-capture::after {
+  content: '';
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  border: 0.9cqw solid var(--c-sq-hint);
+  animation: pop-in var(--t-fast) var(--ease-spring) both;
+}
+
+.piece {
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  transition: transform var(--t-move) var(--ease-out);
+  animation: piece-in var(--t-enter) var(--ease-spring) both;
+  will-change: transform;
+}
+.piece.dragging {
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.35));
+}
+.piece-captured {
+  z-index: 1;
+  animation: piece-out 260ms var(--ease-out) forwards;
+}
+.piece-img {
+  width: 92%;
+  height: 92%;
+  display: block;
+}
+
+/* Glifos provisionales (se reemplazan con el arte de Codex) */
+.piece-glyph {
+  display: grid;
+  font-size: 10.4cqw;
+  line-height: 1;
+  font-family: 'Segoe UI Symbol', 'Noto Sans Symbols 2', 'DejaVu Sans', 'Apple Symbols', serif;
+  transform: translateY(-2%);
+  filter: drop-shadow(0 0.4cqw 0.3cqw rgba(0, 0, 0, 0.35));
+}
+.piece-glyph > span {
+  grid-area: 1 / 1;
+  text-align: center;
+}
+.glyph-w .glyph-fill {
+  color: var(--c-p0);
+}
+.glyph-w .glyph-line {
+  color: #3b2d1a;
+}
+.glyph-b .glyph-fill {
+  color: var(--c-p1);
+}
+.glyph-b .glyph-line {
+  color: #6f6488;
+}
+
+/* Coronación */
+.promo-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  background: rgba(10, 6, 24, 0.55);
+  animation: fade-in var(--t-fast) ease both;
+}
+.promo {
+  background: var(--c-surface);
+  border-radius: var(--r-md);
+  padding: 12px 14px 14px;
+  box-shadow: var(--shadow-2);
+  text-align: center;
+  animation: pop-in var(--t-enter) var(--ease-spring) both;
+}
+.promo p {
+  margin: 0 0 8px;
+  color: var(--c-text-dim);
+  font-size: 14px;
+}
+.promo-row {
+  display: flex;
+  gap: 8px;
+}
+.promo-btn {
+  width: 16cqw;
+  height: 16cqw;
+  min-width: 52px;
+  min-height: 52px;
+  border-radius: var(--r-sm);
+  border: 0;
+  background: var(--c-sq-light);
+  display: grid;
+  place-items: center;
+  container-type: inline-size;
+  cursor: pointer;
+}
+.promo-btn .piece-glyph {
+  font-size: 78cqw;
+}
+.promo-btn .piece-img {
+  width: 86%;
+  height: 86%;
+}
+
+@keyframes piece-in {
+  from {
+    opacity: 0;
+    scale: 0.4;
+  }
+}
+@keyframes piece-out {
+  to {
+    opacity: 0;
+    scale: 1.5;
+    rotate: 14deg;
+  }
+}
+@keyframes check-pulse {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}

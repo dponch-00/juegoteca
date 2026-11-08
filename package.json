@@ -1,0 +1,26 @@
+{
+  "name": "juegoteca",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Juegoteca: PWA de juegos de mesa offline con salas en línea",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "chess.js": "^1.4.0",
+    "peerjs": "^1.5.5",
+    "preact": "^11.2.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.6",
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.6",
+    "vite-plugin-pwa": "^2.0.0",
+    "vitest": "^5.1.0"
+  }
+}

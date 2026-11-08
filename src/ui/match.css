@@ -1,0 +1,268 @@
+.match {
+  gap: 10px;
+}
+
+.board-wrap {
+  position: relative;
+  width: min(100%, calc(100dvh - 290px));
+  min-width: min(100%, 280px);
+  align-self: center;
+}
+
+.board-hint {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  z-index: 8;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: var(--c-danger);
+  color: #fff;
+  font: 800 20px/1 var(--f-display);
+  pointer-events: none;
+  box-shadow: var(--shadow-2);
+  animation: hint-flash 1300ms var(--ease-out) forwards;
+}
+@keyframes hint-flash {
+  0% {
+    opacity: 0;
+    scale: 0.5;
+  }
+  15% {
+    opacity: 1;
+    scale: 1.08;
+  }
+  25% {
+    scale: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 0.9;
+  }
+}
+
+/* ---------- Jugadores ---------- */
+.player-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+  box-shadow: inset 0 0 0 2px transparent;
+  transition:
+    box-shadow var(--t-enter) var(--ease-out),
+    background var(--t-enter);
+  min-height: 56px;
+}
+.player-bar.active {
+  box-shadow: inset 0 0 0 2px var(--c-accent);
+  background: color-mix(in srgb, var(--c-accent) 10%, var(--c-surface));
+}
+.avatar {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: 800 18px/1 var(--f-display);
+}
+.seat-0 .avatar {
+  background: var(--c-p0);
+  color: var(--c-p1);
+}
+.seat-1 .avatar {
+  background: var(--c-p1);
+  color: var(--c-p0);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
+.player-info {
+  min-width: 0;
+}
+.player-name {
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.me-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--c-accent-2);
+  color: var(--c-bg);
+}
+.player-seat {
+  font-size: 13px;
+  color: var(--c-text-dim);
+}
+.turn-dot {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  margin-left: auto;
+  border-radius: 50%;
+  background: var(--c-accent);
+  animation: turn-pulse 1100ms ease-in-out infinite;
+}
+@keyframes turn-pulse {
+  50% {
+    scale: 0.6;
+    opacity: 0.55;
+  }
+}
+
+.captured {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: auto;
+  min-width: 0;
+  container-type: inline-size;
+  max-width: 55%;
+  justify-content: flex-end;
+}
+.captured-piece {
+  width: 18px;
+  height: 18px;
+  margin-left: -4px;
+  display: grid;
+  place-items: center;
+  container-type: inline-size;
+  animation: pop-in var(--t-enter) var(--ease-spring) both;
+}
+.captured-piece .piece-glyph {
+  font-size: 100cqw;
+}
+.captured-piece .piece-img {
+  width: 100%;
+  height: 100%;
+}
+.captured-diff {
+  margin-left: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-text-dim);
+}
+.player-bar.active .captured {
+  margin-left: auto;
+}
+.player-bar.active .turn-dot {
+  margin-left: 8px;
+}
+
+.match-actions {
+  margin-top: 2px;
+}
+
+/* ---------- Avisos de la sala ---------- */
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--c-accent) 18%, var(--c-surface));
+  font-size: 14px;
+  animation: rise-in var(--t-enter) var(--ease-out) both;
+}
+.banner.bad {
+  background: color-mix(in srgb, var(--c-danger) 22%, var(--c-surface));
+}
+.spinner {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  border-radius: 50%;
+  border: 3px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 800ms linear infinite;
+}
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+/* ---------- Resultado ---------- */
+.result-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: end center;
+  padding: var(--gutter);
+  padding-bottom: max(env(safe-area-inset-bottom), 20px);
+  background: rgba(10, 6, 24, 0.45);
+  animation: fade-in var(--t-enter) ease both;
+}
+.result {
+  width: min(100%, 420px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: sheet-up 420ms var(--ease-spring) both;
+}
+.result h2 {
+  font-size: 30px;
+}
+.result p {
+  margin: 0 0 6px;
+}
+@keyframes sheet-up {
+  from {
+    translate: 0 60px;
+    opacity: 0;
+  }
+}
+.result-reopen {
+  position: fixed;
+  bottom: max(env(safe-area-inset-bottom), 16px);
+  left: 50%;
+  translate: -50% 0;
+  z-index: 30;
+  background: var(--c-accent);
+  color: var(--c-accent-ink);
+}
+
+.confetti {
+  position: fixed;
+  left: 50%;
+  top: 45%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.confetti i {
+  position: absolute;
+  width: 9px;
+  height: 14px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: confetti 1400ms cubic-bezier(0.15, 0.7, 0.3, 1) forwards;
+}
+@keyframes confetti {
+  0% {
+    opacity: 1;
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    translate: var(--dx) calc(var(--dy) + 260px);
+    rotate: var(--rot);
+  }
+}
