@@ -32,6 +32,12 @@ Las piezas no son iconos dibujados encima de un tablero: son pequeños objetos t
 
 Las fichas futuras siguen el mismo principio: discos con canto torneado y anillo de fieltro, nunca plástico brillante ni ilustración plana.
 
+## Iconos
+
+Los controles usan los SVG de `public/assets/ui/`, nunca emoji ni glifos de la fuente. Cada icono es un lienzo de 24 × 24, usa `currentColor`, trazo de 2 px con extremos y uniones redondeados, y se dibuja a 20 o 24 px dentro de un botón con área táctil mínima de 44 × 44 px. La familia es deliberadamente sobria: líneas suaves y abiertas, como las marcas funcionales de una caja de juegos bien hecha; el color procede del estado del control, no del archivo.
+
+`design/revision/T-006/iconos.png` documenta los veinte iconos en claro y oscuro, a ambos tamaños. Los nombres funcionales son `back`, `undo`, `restart`, `hint`, `dice`, `erase`, `notes`, `auto-notes`, `pause`, `play`, `prev`, `next`, `streak`, `join`, `check`, `warning`, `flag`, `share` y `copy`. Si un control necesita explicación, conserva una etiqueta HTML accesible: la silueta no sustituye al nombre en acciones ambiguas.
+
 ## Movimiento
 
 - Selección: aro coral de 120 ms, `cubic-bezier(.2,.8,.2,1)`.

@@ -278,7 +278,7 @@
       "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 270847
+      "bytes": 124106
     },
     {
       "id": "staunton-piece-wk",
@@ -288,7 +288,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 11716
+      "bytes": 10692
     },
     {
       "id": "staunton-master-wq",
@@ -298,7 +298,7 @@
       "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 271939
+      "bytes": 114270
     },
     {
       "id": "staunton-piece-wq",
@@ -308,7 +308,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 10936
+      "bytes": 10084
     },
     {
       "id": "staunton-master-wr",
@@ -318,7 +318,7 @@
       "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 256941
+      "bytes": 104675
     },
     {
       "id": "staunton-piece-wr",
@@ -328,7 +328,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 8920
+      "bytes": 8114
     },
     {
       "id": "staunton-master-wb",
@@ -338,7 +338,7 @@
       "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 270049
+      "bytes": 118008
     },
     {
       "id": "staunton-piece-wb",
@@ -348,7 +348,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 10988
+      "bytes": 9956
     },
     {
       "id": "staunton-master-wn",
@@ -358,7 +358,7 @@
       "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 314095
+      "bytes": 169528
     },
     {
       "id": "staunton-piece-wn",
@@ -368,7 +368,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 14714
+      "bytes": 13504
     },
     {
       "id": "staunton-master-wp",
@@ -378,7 +378,7 @@
       "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 255777
+      "bytes": 99769
     },
     {
       "id": "staunton-piece-wp",
@@ -388,7 +388,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 9034
+      "bytes": 8218
     },
     {
       "id": "staunton-master-bk",
@@ -398,7 +398,7 @@
       "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 268259
+      "bytes": 124732
     },
     {
       "id": "staunton-piece-bk",
@@ -408,7 +408,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 12138
+      "bytes": 10774
     },
     {
       "id": "staunton-master-bq",
@@ -418,7 +418,7 @@
       "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 267922
+      "bytes": 120754
     },
     {
       "id": "staunton-piece-bq",
@@ -428,7 +428,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 12234
+      "bytes": 10992
     },
     {
       "id": "staunton-master-br",
@@ -438,7 +438,7 @@
       "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 256195
+      "bytes": 114868
     },
     {
       "id": "staunton-piece-br",
@@ -448,7 +448,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 9734
+      "bytes": 8982
     },
     {
       "id": "staunton-master-bb",
@@ -458,7 +458,7 @@
       "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 267258
+      "bytes": 120380
     },
     {
       "id": "staunton-piece-bb",
@@ -468,7 +468,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 11694
+      "bytes": 10430
     },
     {
       "id": "staunton-master-bn",
@@ -478,7 +478,7 @@
       "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 318625
+      "bytes": 177282
     },
     {
       "id": "staunton-piece-bn",
@@ -488,7 +488,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 16378
+      "bytes": 14088
     },
     {
       "id": "staunton-master-bp",
@@ -498,7 +498,7 @@
       "prompt": "Hoja 3×2 de piezas Staunton originales, vista frontal elevada, luz suave desde arriba a la izquierda, arce claro o nogal oscuro, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 244701
+      "bytes": 94906
     },
     {
       "id": "staunton-piece-bp",
@@ -508,7 +508,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 9382
+      "bytes": 8164
     },
     {
       "id": "tabletop-master-wman",
@@ -518,7 +518,7 @@
       "prompt": "Cuatro fichas de damas de arce/nogal: normales y coronadas con dos discos e inlay coral, luz suave arriba-izquierda, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 294308
+      "bytes": 293564
     },
     {
       "id": "tabletop-wman",
@@ -528,7 +528,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 19512
+      "bytes": 17426
     },
     {
       "id": "tabletop-master-bman",
@@ -538,7 +538,7 @@
       "prompt": "Cuatro fichas de damas de arce/nogal: normales y coronadas con dos discos e inlay coral, luz suave arriba-izquierda, fondo transparente",
       "date": "2026-11-08",
       "dimensions": "512x512 RGBA",
-      "bytes": 311645
+      "bytes": 310793
     },
     {
       "id": "tabletop-bman",
@@ -548,7 +548,7 @@
       "prompt": null,
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
-      "bytes": 19968
+      "bytes": 18392
     },
     {
       "id": "tabletop-master-wking",
@@ -749,6 +749,196 @@
       "date": "2026-11-08",
       "dimensions": "256x256 WebP con alfa",
       "bytes": 12072
+    },
+    {
+      "id": "ui-back",
+      "path": "public/assets/ui/back.svg",
+      "purpose": "Icono de interfaz back de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 222
+    },
+    {
+      "id": "ui-undo",
+      "path": "public/assets/ui/undo.svg",
+      "purpose": "Icono de interfaz undo de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 237
+    },
+    {
+      "id": "ui-restart",
+      "path": "public/assets/ui/restart.svg",
+      "purpose": "Icono de interfaz restart de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 232
+    },
+    {
+      "id": "ui-hint",
+      "path": "public/assets/ui/hint.svg",
+      "purpose": "Icono de interfaz hint de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 283
+    },
+    {
+      "id": "ui-dice",
+      "path": "public/assets/ui/dice.svg",
+      "purpose": "Icono de interfaz dice de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 312
+    },
+    {
+      "id": "ui-erase",
+      "path": "public/assets/ui/erase.svg",
+      "purpose": "Icono de interfaz erase de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 256
+    },
+    {
+      "id": "ui-notes",
+      "path": "public/assets/ui/notes.svg",
+      "purpose": "Icono de interfaz notes de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 274
+    },
+    {
+      "id": "ui-auto-notes",
+      "path": "public/assets/ui/auto-notes.svg",
+      "purpose": "Icono de interfaz auto-notes de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 279
+    },
+    {
+      "id": "ui-pause",
+      "path": "public/assets/ui/pause.svg",
+      "purpose": "Icono de interfaz pause de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 215
+    },
+    {
+      "id": "ui-play",
+      "path": "public/assets/ui/play.svg",
+      "purpose": "Icono de interfaz play de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 215
+    },
+    {
+      "id": "ui-prev",
+      "path": "public/assets/ui/prev.svg",
+      "purpose": "Icono de interfaz prev de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 222
+    },
+    {
+      "id": "ui-next",
+      "path": "public/assets/ui/next.svg",
+      "purpose": "Icono de interfaz next de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 221
+    },
+    {
+      "id": "ui-streak",
+      "path": "public/assets/ui/streak.svg",
+      "purpose": "Icono de interfaz streak de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 320
+    },
+    {
+      "id": "ui-join",
+      "path": "public/assets/ui/join.svg",
+      "purpose": "Icono de interfaz join de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 313
+    },
+    {
+      "id": "ui-check",
+      "path": "public/assets/ui/check.svg",
+      "purpose": "Icono de interfaz check de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 220
+    },
+    {
+      "id": "ui-warning",
+      "path": "public/assets/ui/warning.svg",
+      "purpose": "Icono de interfaz warning de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 231
+    },
+    {
+      "id": "ui-flag",
+      "path": "public/assets/ui/flag.svg",
+      "purpose": "Icono de interfaz flag de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 241
+    },
+    {
+      "id": "ui-share",
+      "path": "public/assets/ui/share.svg",
+      "purpose": "Icono de interfaz share de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 346
+    },
+    {
+      "id": "ui-copy",
+      "path": "public/assets/ui/copy.svg",
+      "purpose": "Icono de interfaz copy de Taller de fieltro",
+      "tool": "SVG escrito por Codex",
+      "prompt": null,
+      "date": "2026-11-08",
+      "dimensions": "24x24; currentColor; trazo 2 px",
+      "bytes": 304
     }
   ],
   "explorationReferences": [

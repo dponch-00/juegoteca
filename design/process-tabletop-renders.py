@@ -39,6 +39,26 @@ def normalize(cell: Image.Image, target_width: int, baseline: int = 470) -> Imag
     return canvas
 
 
+def remove_detached_floor_reflection(image: Image.Image) -> Image.Image:
+    """Elimina solo un reflejo separado por aire, nunca la base de la ficha."""
+    image = image.copy()
+    alpha = image.getchannel("A")
+    occupied = [any(alpha.getpixel((x, y)) >= 20 for x in range(image.width)) for y in range(image.height)]
+    gap_start = None
+    for y in range(1, image.height - 8):
+        if occupied[y - 1] and not occupied[y]:
+            gap_start = y
+        if gap_start is not None and y - gap_start >= 8 and occupied[y]:
+            for clear_y in range(gap_start, image.height):
+                for x in range(image.width):
+                    alpha.putpixel((x, clear_y), 0)
+            image.putalpha(alpha)
+            return image
+        if occupied[y]:
+            gap_start = None
+    return image
+
+
 def export(image: Image.Image, master: Path, webp: Path) -> None:
     master.parent.mkdir(parents=True, exist_ok=True)
     webp.parent.mkdir(parents=True, exist_ok=True)
@@ -75,7 +95,10 @@ def main() -> None:
     outputs: list[tuple[str, Image.Image, Path, Path, str, str]] = []
     # Orden de la hoja de damas: man clara, man oscura, king clara, king oscura.
     for ident, cell in zip(("wman", "bman", "wking", "bking"), grid(checkers, 2, 2), strict=True):
-        outputs.append((ident, normalize(cell, 430), ROOT / "design/masters/checkers" / f"{ident}.png", ROOT / "public/assets/checkers" / f"{ident}.webp", "ficha de damas 3D de madera", "Cuatro fichas de damas de arce/nogal: normales y coronadas con dos discos e inlay coral, luz suave arriba-izquierda, fondo transparente"))
+        image = normalize(cell, 430)
+        if ident in {"wman", "bman"}:
+            image = remove_detached_floor_reflection(image)
+        outputs.append((ident, image, ROOT / "design/masters/checkers" / f"{ident}.png", ROOT / "public/assets/checkers" / f"{ident}.webp", "ficha de damas 3D de madera", "Cuatro fichas de damas de arce/nogal: normales y coronadas con dos discos e inlay coral, luz suave arriba-izquierda, fondo transparente"))
     # Orden: checker claro, checker oscuro.
     for ident, cell in zip(("w-checker", "b-checker"), grid(backgammon, 2, 1), strict=True):
         outputs.append((ident, normalize(cell, 430), ROOT / "design/masters/backgammon" / f"{ident}.png", ROOT / "public/assets/backgammon" / f"{ident}.webp", "ficha cenital de backgammon 3D de madera", "Dos fichas cenitales de backgammon, arce claro y nogal oscuro, surcos concéntricos, luz arriba-izquierda, fondo transparente"))

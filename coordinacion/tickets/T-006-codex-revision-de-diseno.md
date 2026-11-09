@@ -4,7 +4,7 @@
 | --- | --- |
 | Para | Codex |
 | De | Claude Code (a pedido de Daniel) |
-| Estado | abierto |
+| Estado | entregado |
 | Creado | 2026-11-08 |
 | Depende de | T-002, T-004, T-005 (cerrados) |
 
@@ -144,12 +144,12 @@ No edites `src/`, `scripts/`, `package.json`, `AGENTS.md` ni `ESTADO.md`. Si nec
 
 ## Entrega
 
-- **Qué hice:**
-- **Archivos:**
-- **Cómo lo verifiqué (pesos, legibilidad, tamaños, contrastes):**
-- **Herramientas/modelos usados:**
-- **Limitaciones o bloqueos:**
-- **Preguntas abiertas (para Daniel o Claude):**
+- **Qué hice:** Generé las 42 capturas antes de la revisión y redacté la auditoría completa con diez hallazgos accionables y un Top 10 para v0.8. Entregué tres comparativas antes/después (Inicio, backgammon en tableta y sudoku), dos alternativas de marca solo como propuesta, y el sistema completo de iconos. Corregí T4-04: las doce piezas de ajedrez se regeneran ahora centradas y con una base común. Corregí T5-01: eliminé el reflejo/arco separado bajo las fichas simples de damas sin afectar las coronadas ni backgammon. No cambié tokens: la paleta documentada ya cumple los contrastes de texto AA y las propuestas no requieren un nuevo valor de token.
+- **Archivos:** `design/revision/T-006-auditoria.md`; `design/revision/T-006/{inicio-ritmo,backgammon-panel,sudoku-acciones,iconos,logo-ribete,logo-ficha}.png`; `design/generate-t6-revision.mjs`; los 19 SVG de `public/assets/ui/`; `docs/identity.md` (sección Iconos); `design/process-piece-renders.py`, `design/process-tabletop-renders.py`, masters y WebP de ajedrez/damas, y `design/asset-manifest.json`.
+- **Cómo lo verifiqué (pesos, legibilidad, tamaños, contrastes):** Revisé las 42 capturas generadas, tanto claras/oscuras como móvil/horizontal/tableta. Las tres comparativas pesan 159,980–225,990 bytes y las dos propuestas de logo 18,086–21,518 bytes (límite 400 KB). La lámina `iconos.png` muestra los 19 a 20 y 24 px en ambos modos; cada SVG tiene `viewBox 0 0 24 24`, `currentColor`, trazo coherente de 2 px y pesa 215–346 bytes (límite 1.5 KB). Ejecuté `npm run pieces:sheet` y `npm run pieces:sheet -- checkers`: las hojas finales miden 1,400 × 524 (258,715 bytes) y 600 × 524 (179,483 bytes); los masters Staunton terminan todos en y=470, con eje x=255–256, y ya no hay arco desprendido bajo `wman`/`bman`. `npm run build` pasó correctamente. Los ratios de texto y de acciones propuestos se apoyan en los ratios AA ya documentados en `docs/identity.md`; para los nuevos estados, la auditoría pide además una señal no cromática y borde ≥3:1.
+- **Herramientas/modelos usados:** Node.js 24, `@resvg/resvg-js` para las láminas e iconos, Pillow 3.14 para el proceso reproducible de masters/WebP y los scripts de revisión existentes de Claude. No usé modelos de imagen ni recursos externos.
+- **Limitaciones o bloqueos:** El capturador no cubre sala WebRTC ni repaso de ajedrez, por lo que esos flujos se señalan como no revisados. Las comparativas son propuestas visuales, no cambios en `src/`; su implementación queda explícitamente asignada a Claude en la auditoría.
+- **Preguntas abiertas (para Daniel o Claude):** Daniel debe elegir si desea probar `logo-ribete` (recomendado) o conservar la marca actual; no reemplacé ningún logo ni icono PWA. Claude puede tomar el Top 10 sin decisiones adicionales, salvo esa elección de marca.
 
 ## Revisión
 

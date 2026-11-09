@@ -26,13 +26,33 @@ def clean_alpha(image: Image.Image) -> Image.Image:
     return image
 
 
+def normalize_position(image: Image.Image, scale: float = 0.925, baseline: int = 470) -> Image.Image:
+    """Centra la silueta y alinea su apoyo, dejando aire bajo la sombra.
+
+    La escala común conserva la jerarquía de alturas de la hoja original y evita
+    recortar la cruz del rey, que antes tocaba el borde inferior del lienzo.
+    """
+    image = clean_alpha(image)
+    alpha = image.getchannel("A").point(lambda value: 0 if value < 20 else 255)
+    bbox = alpha.getbbox()
+    if bbox is None:
+        raise ValueError("Celda sin píxeles opacos")
+    crop = image.crop(bbox)
+    size = (round(crop.width * scale), round(crop.height * scale))
+    crop = crop.resize(size, Image.Resampling.LANCZOS)
+    canvas = Image.new("RGBA", (512, 512), (0, 0, 0, 0))
+    canvas.alpha_composite(crop, ((512 - crop.width) // 2, baseline - crop.height))
+    return clean_alpha(canvas)
+
+
 def split_sheet(path: Path, color: str) -> None:
     image = Image.open(path).convert("RGBA")
     if image.size != (1536, 1024):
         raise ValueError(f"Se esperaba 1536×1024, se recibió {image.size}: {path}")
     for index, piece in enumerate(PIECES):
         col, row = index % 3, index // 3
-        crop = clean_alpha(image.crop((col * 512, row * 512, (col + 1) * 512, (row + 1) * 512)))
+        cell = image.crop((col * 512, row * 512, (col + 1) * 512, (row + 1) * 512))
+        crop = normalize_position(cell)
         master = MASTER_DIR / f"{color}{piece}.png"
         crop.save(master, "PNG", optimize=True)
         mobile = crop.resize((256, 256), Image.Resampling.LANCZOS)
