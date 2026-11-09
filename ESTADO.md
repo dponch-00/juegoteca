@@ -4,7 +4,7 @@
 
 ## Fase actual
 
-**Fase 2 — Ajedrez para aprender.** Hecho: contra la computadora (Stockfish) con 8 niveles, pistas, deshacer y repaso de errores; **retos** (600 problemas de Lichess en 8 categorías). Sigue: lecciones.
+**Fase 3 — Los cuatro juegos completos** (v0.7.0): ajedrez, damas y backgammon (pasa y juega, en línea y contra la computadora) y **sudoku** (un jugador). Sigue: lecciones de ajedrez y robustez en línea.
 
 ## Tickets
 
@@ -25,7 +25,7 @@
 ## Qué existe
 
 - PWA con Preact + TypeScript + Vite 8, instalable y offline (`vite-plugin-pwa`, aviso de "versión nueva").
-- **Inicio:** nombre del jugador, unirse con código, tarjetas de juegos (damas, backgammon y sudoku como "Próximamente").
+- **Inicio:** nombre del jugador, unirse con código, tarjetas de los cuatro juegos.
 - **Ajedrez** (`src/games/chess/`): reglas con `chess.js`; tocar o arrastrar; animación de desplazamiento por pieza (ids estables), captura, jaque, coronación, piezas capturadas y ventaja de material.
 - **Pasa y juega:** se guarda sola en el dispositivo; deshacer y reiniciar.
 - **En línea** (`src/net/session.ts`): código de 4 caracteres, conexión directa WebRTC con PeerJS (su servidor público solo presenta a los dos dispositivos). El anfitrión reparte colores al azar y es la autoridad. Rendirse, revancha con cambio de colores, reconexión automática y resincronización.
@@ -57,6 +57,15 @@
   - **Negras ven el tablero espejado en vertical** (casa abajo a la derecha, como blancas).
   - Pasa y juega, en línea (cada jugador tira sus dados: suficiente entre amigos) y contra la computadora: 4 niveles, heurística de pips, puntas, primas, anclas y riesgo de golpe; Experto promedia las 21 tiradas del rival. Corre en un worker.
   - Simplificación: empiezan blancas, sin tirada inicial.
+- **Sudoku** (v0.7.0, `src/games/sudoku/`): juego de un jugador con su propia pantalla (contrato `SoloGameDef` en `src/core/types.ts`, lista `SOLO_GAMES` en el registro; ruta `#/g/sudoku` y `#/g/sudoku/jugar`).
+  - Generador propio con semilla: llena un tablero al azar y quita pistas en pares simétricos mientras la solución siga siendo única (menos de 30 ms; no necesita worker).
+  - Califica cada sudoku con un resolvedor "humano": 1 = basta con únicos, 2 = pide bloqueo de candidatos o pares/tríos, 3 = pide técnicas más avanzadas. Niveles: Fácil (únicos, ≥38 pistas), Medio (únicos, ≥30), Difícil (nivel 2), Experto (nivel 3).
+  - **Reto del día:** misma semilla para la fecha (Medio entre semana, Difícil viernes a domingo), racha de días seguidos.
+  - Notas a lápiz, "Anotar todo" (candidatos), deshacer, borrar; poner un número borra esa nota en su fila, columna y bloque. Los números correctos quedan fijos; los incorrectos se ven en rojo y cuentan como error.
+  - **Pista que enseña:** primero señala un error; si no hay, ilumina el bloque/fila/columna y explica el "único" ("En este bloque, el 4 solo cabe aquí"); si el sudoku pide técnicas avanzadas, revela la casilla más restringida. Segundo toque o "Ponerlo" la aplica.
+  - Resaltado de fila/columna/bloque y del mismo número; teclado con cuántos faltan de cada dígito; destello en onda al completar una fila, columna o bloque; ola diagonal y confeti al terminar.
+  - Reloj que solo corre con la app a la vista, pausa que tapa los números, récord y resueltos por nivel; teclado físico (números, flechas, N, retroceso, Ctrl+Z).
+  - Vertical: teclado de 9 bajo el tablero; horizontal: teclado 3×3 en la columna lateral.
 - **Contra la computadora genérico** (v0.5.0, `src/ui/AiScreen.tsx`): cualquier juego con `game.ai` (contrato `GameAI` en `src/core/types.ts`: niveles, `move`, `hint`, `hintAnnotations`) obtiene sin código extra el modo en el lobby, la elección de nivel y color, la partida con "pensando…", pista, deshacer, rendirse, partida guardada y estadísticas por nivel. **Regla de Daniel: todo juego de dos tiene modo contra la computadora** (también en `AGENTS.md`). El ajedrez conserva su pantalla propia (Stockfish y repaso).
 - **Damas contra la computadora** (`src/games/checkers/ai.ts`): negamax con alfa-beta y profundización iterativa. Evalúa material, avance, fila de atrás, bordes y damas al centro; no corta la búsqueda a mitad de una captura. Corre en un Web Worker (`ai.worker.ts`, 4.6 KB, offline). Seis niveles, de Aprendiz (azar 60 %, profundidad 1) a Experto (profundidad 14, 2 s).
 - **Celular y tablet, vertical y horizontal** (v0.3.1):
@@ -69,6 +78,12 @@
 - Deploy automático a GitHub Pages (`.github/workflows/deploy.yml`), base `/juegoteca/`.
 
 ## Cómo se verificó
+
+**2026-11-08 (sudoku):** 78/78 pruebas; 12 de sudoku (resolver, unicidad, cada nivel genera la dificultad pedida con solución única, misma semilla = mismo reto, notas, deshacer, errores, la pista de "único" lleva a resolver el clásico sin errores). Generación medida: Fácil/Medio ≤3 ms, Difícil ≤22 ms, Experto ≤6 ms en escritorio. En el navegador:
+- 375×812 oscuro: lobby, partida Fácil, notas, número incorrecto en rojo con contador, pista que señala el error, "Borrarlo", pista de único con su bloque iluminado, y partida completa hasta "¡Resuelto!" con récord guardado y "1 resuelto" en el inicio.
+- 360×640 claro (celular chico): todo cabe sin desplazar; seleccionar un 1 ilumina todos los 1 y su fila, columna y bloque.
+- 812×375 y 1180×820: tablero a toda la altura y teclado 3×3 al lado.
+- El panel del navegador reportaba la página como oculta, así que **no se vio correr el reloj ni las animaciones en vivo**; el reloj se comprobó por código.
 
 **2026-11-08 (backgammon):** 66/66 pruebas; 13 de reglas y 5 del motor, que en la apertura 3-1 elige solo 8/5 6/5. En el navegador:
 - Posición inicial correcta (8 pilas, 167 pips).
@@ -125,5 +140,5 @@ Lobby en tres columnas, retos y partida con panel lateral, inicio con los cuatro
 
 1. **Daniel:** ver las piezas 3D en su teléfono (v0.2.1). Probar en línea entre dos teléfonos (misma Wi-Fi y con datos móviles).
 2. **Codex (opcional):** normalizar línea de base y centrado de las piezas (T4-04).
-3. **Claude:** sudoku (un jugador, con niveles y notas). Lecciones de ajedrez después. Pendiente de backgammon: tirada inicial y, si Daniel lo pide, cubo de doblar.
-4. Después: damas, reanudar la sala tras recargar.
+3. **Claude:** lecciones de ajedrez (textos de Claude, ilustraciones de Codex). Reanudar la sala en línea tras recargar. Pendiente de backgammon: tirada inicial y, si Daniel lo pide, cubo de doblar.
+4. **Daniel:** probar el sudoku en el celular (v0.7.0): reloj, pausa y reto del día.

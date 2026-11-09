@@ -160,7 +160,7 @@ function ResultSheet({ outcome, game, names, me, actions }: { outcome: Outcome; 
   )
 }
 
-function Confetti() {
+export function Confetti() {
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const el = ref.current

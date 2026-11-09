@@ -1,6 +1,6 @@
 import { applyUpdate, usePwa } from './core/pwa'
 import { useRoute } from './core/router'
-import { getGame } from './games/registry'
+import { getGame, getSoloGame } from './games/registry'
 import { GameLobby } from './screens/GameLobby'
 import { Home } from './screens/Home'
 import { Join } from './screens/Join'
@@ -38,6 +38,8 @@ function Screen({ path }: { path: string }) {
       if (parts[2] === 'cpu' && game.ai) return <AiScreen game={game} />
       return <GameLobby game={game} />
     }
+    const solo = getSoloGame(parts[1])
+    if (solo) return <solo.Screen sub={parts[2]} />
   }
   if (parts[0] === 'unirse') return <Join initial={parts[1]} />
   if (parts[0] === 'sala') return <Room />

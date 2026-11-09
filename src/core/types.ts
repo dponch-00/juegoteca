@@ -82,6 +82,20 @@ export interface GameAI<S = any, M = any> {
   hintAnnotations?(state: S, move: M): unknown
 }
 
+/**
+ * Juego de un jugador (sudoku y los que vengan): no usa turnos ni red,
+ * trae su propia pantalla. `sub` es lo que sigue a #/g/<id>/ en la ruta.
+ */
+export interface SoloGameDef {
+  id: string
+  name: string
+  tagline: string
+  glyph: string
+  Screen: ComponentType<{ sub?: string }>
+  /** Texto de la tarjeta del inicio cuando ya se jugó (p. ej. "12 resueltos"). */
+  progressLabel?: () => string | null
+}
+
 export interface ComingSoon {
   id: string
   name: string

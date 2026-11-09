@@ -1,6 +1,6 @@
 # Juegoteca
 
-Juegos de mesa para el celular y la tablet: ajedrez (y pronto damas, backgammon y sudoku). Funciona sin internet, guarda todo en el dispositivo y permite jugar contra otra persona:
+Juegos de mesa para el celular y la tablet: ajedrez, damas, backgammon y sudoku. Funciona sin internet, guarda todo en el dispositivo y permite jugar contra la computadora o contra otra persona:
 
 - **Pasa y juega:** dos personas en el mismo dispositivo.
 - **En línea:** uno crea una sala, el otro escribe el código de 4 letras. La partida va directo entre los dos dispositivos.

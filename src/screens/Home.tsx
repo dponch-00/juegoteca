@@ -2,7 +2,7 @@ import { useState } from 'preact/hooks'
 import { navigate } from '../core/router'
 import { getProfile, getStats, setProfile } from '../core/storage'
 import { install, usePwa } from '../core/pwa'
-import { COMING_SOON, GAMES } from '../games/registry'
+import { COMING_SOON, GAMES, SOLO_GAMES } from '../games/registry'
 import { getSession } from '../net/session'
 import { GameIcon } from '../ui/GameIcon'
 import './home.css'
@@ -68,6 +68,13 @@ export function Home() {
               </button>
             )
           })}
+          {SOLO_GAMES.map((g) => (
+            <button key={g.id} class="game-card" onClick={() => navigate(`g/${g.id}`)}>
+              <GameIcon id={g.id} glyph={g.glyph} />
+              <span class="game-name">{g.name}</span>
+              <span class="game-tag">{g.progressLabel?.() ?? g.tagline}</span>
+            </button>
+          ))}
           {COMING_SOON.map((g) => (
             <div key={g.id} class="game-card soon" aria-disabled="true">
               <GameIcon id={g.id} glyph={g.glyph} />
