@@ -46,6 +46,8 @@ Rutas fijas; si un archivo no existe, la app usa un sustituto provisional.
 | Fichas de damas | `public/assets/checkers/{w,b}{man,king}.webp` | WebP 256×256 (masters en `design/masters/checkers/`) |
 | Fichas de backgammon y dados | `public/assets/backgammon/{w,b}-checker.webp`, `dice-{1..6}.webp` | WebP 256×256 (masters en `design/masters/backgammon/`) |
 | Hoja de contacto | `npm run pieces:sheet [-- checkers\|backgammon]` → `design/review/*-sheet.png` | Verificación a 36/64 px, claro, oscuro y grises |
+| Iconos de interfaz | `public/assets/ui/<nombre>.svg` (back, undo, hint, dice, notes…; inventario en T-006) | SVG 24×24, `currentColor`, ≤ 1.5 KB |
+| Capturas de la app | `npm run app:screens [-- filtro]` → `design/review/app/*.png` + `INDICE.md` | Celular claro/oscuro; partidas también en horizontal y tablet |
 | Iconos de juegos (menú) | `public/assets/games/{chess,checkers,backgammon,sudoku}.svg` | SVG |
 | Logo | `public/assets/brand/logo.svg`, `logo-mark.svg` | SVG |
 | Iconos PWA | `public/icons/icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png` (180), `favicon.svg` | PNG/SVG |

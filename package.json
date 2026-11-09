@@ -10,6 +10,7 @@
     "preview": "vite preview --host",
     "test": "vitest run",
     "pieces:sheet": "node scripts/piece-sheet.mjs",
+    "app:screens": "node scripts/app-screens.mjs",
     "predev": "node scripts/copy-engine.mjs",
     "prebuild": "node scripts/copy-engine.mjs"
   },

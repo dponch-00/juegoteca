@@ -15,6 +15,7 @@
 | [T-003](coordinacion/tickets/T-003-codex-pulido-piezas.md) | Codex | Pulido de piezas | cancelado: reemplazado por T-004 |
 | [T-004](coordinacion/tickets/T-004-codex-piezas-3d-staunton.md) | Codex | Piezas con aspecto 3D realista, estilo Staunton | cerrado: ronda 2 (render WebP) aceptada y publicada en v0.2.1; pendiente menor T4-04 (alinear base y centrado) |
 | [T-005](coordinacion/tickets/T-005-codex-fichas-damas-backgammon.md) | Codex | Fichas de damas (con dama coronada), fichas de backgammon, dados y colores del tablero de backgammon | cerrado: aceptado; damas con fichas 3D en v0.4.1; menor T5-01 (arco bajo la ficha simple) |
+| [T-006](coordinacion/tickets/T-006-codex-revision-de-diseno.md) | Codex | Revisión de diseño de toda la app: auditoría con Top 10, maquetas antes/después, juego de iconos de interfaz, T4-04, T5-01 y alternativas de logo | **abierto** |
 
 ## Publicación
 
@@ -74,10 +75,13 @@
   - Los menús (`.screen.wide`) se ensanchan a 1000 px en tablet, con rejillas automáticas; el lobby se reparte en tres columnas.
 - **Licencia GPL-3.0-or-later** (por Stockfish). Créditos y enlace al código en `#/acerca`.
 - Estadísticas por juego en `localStorage`.
+- `npm run app:screens [-- filtro]` (`scripts/app-screens.mjs`): levanta Vite, abre Chrome/Edge sin ventana por el protocolo DevTools (sin dependencias nuevas), siembra `localStorage` por escena y guarda 42 capturas en `design/review/app/` (fuera de git): 17 escenas en celular claro y oscuro, y las cuatro partidas también en horizontal y tablet. Movimiento reducido para no capturar a medio animar. Sirve para que Codex revise la app real.
 - `npm run pieces:sheet`: hoja de contacto PNG de las 12 piezas a 36/64 px en claro, oscuro y grises (`design/review/`, fuera de git), para revisar sin navegador.
 - Deploy automático a GitHub Pages (`.github/workflows/deploy.yml`), base `/juegoteca/`.
 
 ## Cómo se verificó
+
+**2026-11-08 (capturas para T-006):** `npm run app:screens` generó las 42 capturas sin fallos; revisé cuatro a mano: selección de alfil con destinos, backgammon oscuro con dados, sudoku con pista de error y hoja de resultado oscura con confeti.
 
 **2026-11-08 (sudoku):** 78/78 pruebas; 12 de sudoku (resolver, unicidad, cada nivel genera la dificultad pedida con solución única, misma semilla = mismo reto, notas, deshacer, errores, la pista de "único" lleva a resolver el clásico sin errores). Generación medida: Fácil/Medio ≤3 ms, Difícil ≤22 ms, Experto ≤6 ms en escritorio. En el navegador:
 - 375×812 oscuro: lobby, partida Fácil, notas, número incorrecto en rojo con contador, pista que señala el error, "Borrarlo", pista de único con su bloque iluminado, y partida completa hasta "¡Resuelto!" con récord guardado y "1 resuelto" en el inicio.
@@ -138,6 +142,7 @@ Lobby en tres columnas, retos y partida con panel lateral, inicio con los cuatro
 
 ## Siguiente acción
 
+0. **Codex: T-006** (revisión de diseño). Daniel le pasa el prompt; al entregar, Claude revisa y Daniel elige qué cambios del Top 10 se implementan.
 1. **Daniel:** ver las piezas 3D en su teléfono (v0.2.1). Probar en línea entre dos teléfonos (misma Wi-Fi y con datos móviles).
 2. **Codex (opcional):** normalizar línea de base y centrado de las piezas (T4-04).
 3. **Claude:** lecciones de ajedrez (textos de Claude, ilustraciones de Codex). Reanudar la sala en línea tras recargar. Pendiente de backgammon: tirada inicial y, si Daniel lo pide, cubo de doblar.
