@@ -8,6 +8,9 @@ import { LocalMatch } from './screens/LocalMatch'
 import { Room } from './screens/Room'
 import { About } from './screens/About'
 import { AiScreen } from './ui/AiScreen'
+import { OrientationButton, restoreOrientation } from './ui/OrientationButton'
+
+restoreOrientation()
 
 export function App() {
   const path = useRoute()
@@ -15,6 +18,7 @@ export function App() {
   return (
     <>
       <Screen key={path} path={path} />
+      <OrientationButton />
       {pwa.needRefresh && (
         <div class="toast" role="status">
           Hay una versión nueva

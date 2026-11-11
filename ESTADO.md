@@ -69,6 +69,7 @@
   - Vertical: teclado de 9 bajo el tablero; horizontal: teclado 3×3 en la columna lateral.
 - **Contra la computadora genérico** (v0.5.0, `src/ui/AiScreen.tsx`): cualquier juego con `game.ai` (contrato `GameAI` en `src/core/types.ts`: niveles, `move`, `hint`, `hintAnnotations`) obtiene sin código extra el modo en el lobby, la elección de nivel y color, la partida con "pensando…", pista, deshacer, rendirse, partida guardada y estadísticas por nivel. **Regla de Daniel: todo juego de dos tiene modo contra la computadora** (también en `AGENTS.md`). El ajedrez conserva su pantalla propia (Stockfish y repaso).
 - **Damas contra la computadora** (`src/games/checkers/ai.ts`): negamax con alfa-beta y profundización iterativa. Evalúa material, avance, fila de atrás, bordes y damas al centro; no corta la búsqueda a mitad de una captura. Corre en un Web Worker (`ai.worker.ts`, 4.6 KB, offline). Seis niveles, de Aprendiz (azar 60 %, profundidad 1) a Experto (profundidad 14, 2 s).
+- **Botón de orientación** (v0.7.1, `src/ui/OrientationButton.tsx`): círculo fijo arriba a la derecha en celulares y tablets (`pointer: coarse` y `screen.orientation.lock`). Cambia Automático → Horizontal (H) → Vertical (V) y lo recuerda; al abrir la app lo vuelve a aplicar. Motivo: Android fija la orientación del manifiesto al instalar, y quien instaló cuando estaba en vertical se quedaba así. En el navegador sin instalar pide pantalla completa (con límite de 1.5 s); si no se puede, avisa "Instala la app para fijar la orientación". Los `.topbar` reservan 52 px. Ícono provisional dibujado por Claude (falta `rotate.svg` en el set de Codex).
 - **Celular y tablet, vertical y horizontal** (v0.3.1):
   - El manifiesto ya no fija la orientación (`any`).
   - Las pantallas de partida (Match, retos, repaso) tienen `.board-wrap` y `.match-side`. En vertical el panel se disuelve (`display: contents`) y se ordena alrededor del tablero (`.pre` = arriba). En horizontal el tablero ocupa toda la altura a la izquierda; a la derecha van el título, el rival arriba y tú con los botones abajo.
@@ -80,6 +81,8 @@
 - Deploy automático a GitHub Pages (`.github/workflows/deploy.yml`), base `/juegoteca/`.
 
 ## Cómo se verificó
+
+**2026-11-10 (orientación):** en el navegador con emulación táctil: el botón aparece en vertical y horizontal sin tapar el título ni el panel; en escritorio (sin bloqueo) muestra el aviso de instalar. **No verificado en la tablet real**: el bloqueo solo funciona en Android con la app instalada o en pantalla completa.
 
 **2026-11-08 (capturas para T-006):** `npm run app:screens` generó las 42 capturas sin fallos; revisé cuatro a mano: selección de alfil con destinos, backgammon oscuro con dados, sudoku con pista de error y hoja de resultado oscura con confeti.
 
