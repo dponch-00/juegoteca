@@ -6,16 +6,35 @@ import type { Outcome, Seat } from '../../../core/types'
 import { ConfirmButton, Match } from '../../../ui/Match'
 import { ChessBoard, type ChessAnnotations } from '../ChessBoard'
 import { engine as sf } from '../engine/engine'
-import { getLevel, LEVELS, pickMove } from '../engine/levels'
+import { chooseHint, getLevel, hintNote, hintSearch, LEVELS, pickMove } from '../engine/levels'
 import { scoreValue } from '../engine/uci'
 import { chessBase as chessGame } from '../def'
-import { apply, engine as position, outcome as chessOutcome, turn as chessTurn, type ChessState } from '../logic'
+import { apply, outcome as chessOutcome, turn as chessTurn, type ChessState } from '../logic'
 import { moveNumberLabel, toSpanishSan } from '../notation'
 import { PieceArt } from '../pieces'
 import { accuracy, reviewMoves, VERDICT_LABEL, type MoveReview, type PositionEval } from '../review'
 import '../../../ui/match.css'
 import '../../../ui/cpu.css'
 import './cpu.css'
+
+const START_FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
+
+/** ¿La jugada lleva a una posición que ya ocurrió en la partida? (solo piezas, turno, enroques y al paso) */
+function repeatsPosition(moves: string[], uci: string): boolean {
+  const c = new Chess()
+  const key = () => c.fen().split(' ').slice(0, 4).join(' ')
+  const seen = new Set([key()])
+  for (const m of moves) {
+    c.move({ from: m.slice(0, 2), to: m.slice(2, 4), promotion: m[4] })
+    seen.add(key())
+  }
+  try {
+    c.move({ from: uci.slice(0, 2), to: uci.slice(2, 4), promotion: uci[4] })
+  } catch {
+    return false
+  }
+  return seen.has(key())
+}
 
 /* ---------- Datos guardados ---------- */
 
@@ -215,7 +234,7 @@ function CpuMatch({
 
   const [thinking, setThinking] = useState(false)
   const [error, setError] = useState('')
-  const [hint, setHint] = useState<{ ply: number; from: string; to: string } | null>(null)
+  const [hint, setHint] = useState<{ ply: number; from: string; to: string; note: string } | null>(null)
   const [hintBusy, setHintBusy] = useState(false)
   const token = useRef(0)
   const gameRef = useRef(game)
@@ -228,7 +247,8 @@ function CpuMatch({
     const started = performance.now()
     setThinking(true)
     setError('')
-    sf.search(position(state).fen(), {
+    sf.search(START_FEN, {
+      moves: game.moves,
       skill: level.skill,
       depth: level.depth,
       movetime: level.movetime,
@@ -299,9 +319,11 @@ function CpuMatch({
     setHintBusy(true)
     const ply = game.moves.length
     try {
-      const res = await sf.search(position(state).fen(), { skill: 20, depth: 14, movetime: 1200 })
-      if (res.best && gameRef.current.moves.length === ply) {
-        setHint({ ply, from: res.best.slice(0, 2), to: res.best.slice(2, 4) })
+      const res = await sf.search(START_FEN, { ...hintSearch(level), moves: game.moves })
+      const top = chooseHint(res.lines, (uci) => repeatsPosition(game.moves, uci))
+      const move = top?.pv[0] ?? res.best
+      if (move && gameRef.current.moves.length === ply) {
+        setHint({ ply, from: move.slice(0, 2), to: move.slice(2, 4), note: hintNote(top?.score, move) })
         setGame({ ...gameRef.current, hints: gameRef.current.hints + 1 })
       }
     } catch (e) {
@@ -328,6 +350,8 @@ function CpuMatch({
         </button>
       </div>
     )
+  } else if (hint && hint.ply === game.moves.length) {
+    banner = <div class="banner hint-note">💡 {hint.note}</div>
   } else if (status === 'loading') {
     banner = (
       <div class="banner">

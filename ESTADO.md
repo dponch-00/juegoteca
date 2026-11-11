@@ -69,6 +69,11 @@
   - Vertical: teclado de 9 bajo el tablero; horizontal: teclado 3×3 en la columna lateral.
 - **Contra la computadora genérico** (v0.5.0, `src/ui/AiScreen.tsx`): cualquier juego con `game.ai` (contrato `GameAI` en `src/core/types.ts`: niveles, `move`, `hint`, `hintAnnotations`) obtiene sin código extra el modo en el lobby, la elección de nivel y color, la partida con "pensando…", pista, deshacer, rendirse, partida guardada y estadísticas por nivel. **Regla de Daniel: todo juego de dos tiene modo contra la computadora** (también en `AGENTS.md`). El ajedrez conserva su pantalla propia (Stockfish y repaso).
 - **Damas contra la computadora** (`src/games/checkers/ai.ts`): negamax con alfa-beta y profundización iterativa. Evalúa material, avance, fila de atrás, bordes y damas al centro; no corta la búsqueda a mitad de una captura. Corre en un Web Worker (`ai.worker.ts`, 4.6 KB, offline). Seis niveles, de Aprendiz (azar 60 %, profundidad 1) a Experto (profundidad 14, 2 s).
+- **Pista de ajedrez más fuerte** (v0.7.2, `hintSearch`/`chooseHint`/`hintNote` en `src/games/chess/engine/levels.ts`):
+  - Antes se cortaba en profundidad 14 (más débil que Maestro y Gran maestro) y Stockfish recibía solo la FEN, sin historia: no veía las repeticiones y caía en tablas.
+  - Ahora piensa sin tope de profundidad, 2.5× el tiempo del rival (entre 1.5 y 4 s), se detiene al encontrar mate y recibe la partida completa (`moves` en `SearchOptions`; la computadora también).
+  - MultiPV 3: si la mejor repite una posición ya vista, prefiere otra que no repita y sea casi igual de buena (≤ 0.5 peones peor y no peor que −0.3), para buscar ganar en vez de tablas.
+  - Bajo el tablero explica la jugada: "Con esta jugada das mate en 3", "Ventaja decisiva (+3.2)", "Posición pareja", "La mejor defensa", corona a caballo…
 - **Botón de orientación** (v0.7.1, `src/ui/OrientationButton.tsx`): círculo fijo arriba a la derecha en celulares y tablets (`pointer: coarse` y `screen.orientation.lock`). Cambia Automático → Horizontal (H) → Vertical (V) y lo recuerda; al abrir la app lo vuelve a aplicar. Motivo: Android fija la orientación del manifiesto al instalar, y quien instaló cuando estaba en vertical se quedaba así. En el navegador sin instalar pide pantalla completa (con límite de 1.5 s); si no se puede, avisa "Instala la app para fijar la orientación". Los `.topbar` reservan 52 px. Ícono provisional dibujado por Claude (falta `rotate.svg` en el set de Codex).
 - **Celular y tablet, vertical y horizontal** (v0.3.1):
   - El manifiesto ya no fija la orientación (`any`).
@@ -81,6 +86,8 @@
 - Deploy automático a GitHub Pages (`.github/workflows/deploy.yml`), base `/juegoteca/`.
 
 ## Cómo se verificó
+
+**2026-11-11 (pista de ajedrez):** 83/83 pruebas (6 nuevas de la pista). Simulación con Stockfish en Node jugando SOLO las pistas contra cada nivel de la app (tiempos ÷4 para emular el celular), 4 partidas por nivel alternando color, 96 en total: **ninguna derrota**. Niveles 1–5: siempre gana. Pista nueva: nivel 7 4/4 (antes 3/4); niveles 6 y 8 casi siempre tablas, todas en posiciones iguales (evaluación 0). Contra Gran maestro no se puede garantizar ganar: es el mismo motor. En el navegador: la pista responde en ~1.6 s con flecha y texto.
 
 **2026-11-10 (orientación):** en el navegador con emulación táctil: el botón aparece en vertical y horizontal sin tapar el título ni el panel; en escritorio (sin bloqueo) muestra el aviso de instalar. **No verificado en la tablet real**: el bloqueo solo funciona en Android con la app instalada o en pantalla completa.
 

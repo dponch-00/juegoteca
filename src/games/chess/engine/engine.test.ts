@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { parseBestMove, parseInfo, scoreValue } from './uci'
-import { LEVELS, pickMove } from './levels'
+import { chooseHint, hintNote, hintSearch, LEVELS, pickMove } from './levels'
 import { accuracy, classify, reviewMoves } from '../review'
 import { toSpanishSan, moveNumberLabel } from '../notation'
 
@@ -80,5 +80,41 @@ describe('notación', () => {
     expect(moveNumberLabel(0)).toBe('1.')
     expect(moveNumberLabel(1)).toBe('1…')
     expect(moveNumberLabel(4)).toBe('3.')
+  })
+})
+
+describe('pista', () => {
+  it('siempre piensa más que el rival y sin tope de profundidad', () => {
+    for (const l of LEVELS) {
+      const h = hintSearch(l)
+      expect(h.skill).toBe(20)
+      expect('depth' in h).toBe(false)
+      expect(h.movetime).toBeGreaterThanOrEqual(1500)
+      if (l.movetime) expect(h.movetime).toBeGreaterThan(l.movetime)
+    }
+  })
+
+  it('explica la jugada en palabras', () => {
+    expect(hintNote({ mate: 1 }, 'd8h4')).toBe('¡Es mate!')
+    expect(hintNote({ mate: 3 }, 'e2e4')).toBe('Con esta jugada das mate en 3.')
+    expect(hintNote({ cp: 450 }, 'e2e4')).toMatch(/^Ventaja decisiva \(\+4\.5\)/)
+    expect(hintNote({ cp: 20 }, 'e2e4')).toMatch(/^Posición pareja/)
+    expect(hintNote({ cp: -180 }, 'e2e4')).toMatch(/^La mejor defensa: vas peor/)
+    expect(hintNote({ cp: 900 }, 'e7e8n')).toMatch(/Corona a caballo\.$/)
+  })
+})
+
+describe('pista que no se conforma con tablas', () => {
+  const line = (m: string, cp: number) => ({ pv: [m], score: { cp } })
+  it('si la mejor repite, prefiere una casi igual de buena que no repite', () => {
+    const lines = [line('a1a2', 0), line('b1b2', -20), line('c1c2', -10)]
+    expect(chooseHint(lines, (m) => m === 'a1a2')!.pv[0]).toBe('b1b2')
+  })
+  it('no se arriesga a quedar peor por evitar la repetición', () => {
+    const lines = [line('a1a2', 0), line('b1b2', -120)]
+    expect(chooseHint(lines, (m) => m === 'a1a2')!.pv[0]).toBe('a1a2')
+  })
+  it('si la mejor no repite, es la pista', () => {
+    expect(chooseHint([line('a1a2', 300), line('b1b2', 290)], () => false)!.pv[0]).toBe('a1a2')
   })
 })

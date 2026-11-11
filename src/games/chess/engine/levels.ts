@@ -1,3 +1,4 @@
+import { scoreValue } from './uci'
 /**
  * Niveles contra la computadora.
  *
@@ -50,4 +51,47 @@ export function pickMove(candidates: string[], level: Level, rand: () => number 
     if (r <= 0) return candidates[i]
   }
   return candidates[candidates.length - 1]
+}
+
+/* ---------- Pista ----------
+ * La pista debe ser MÁS fuerte que el rival, para que seguirla siempre lleve a ganar
+ * o, contra los niveles más altos, al menos a no perder. Antes se cortaba en
+ * profundidad 14: más débil que Maestro y Gran maestro, que piensan por tiempo y sin tope.
+ * Ahora piensa sin tope de profundidad y con más tiempo que el rival (2.5×),
+ * entre 1.5 y 4 s, y se detiene antes si ya encontró un mate.
+ */
+export function hintSearch(level: Level): { skill: number; movetime: number; stopOnMate: boolean; multipv: number } {
+  const rival = level.movetime ?? 0
+  return { skill: 20, movetime: Math.min(4000, Math.max(1500, Math.round(rival * 2.5))), stopOnMate: true, multipv: 3 }
+}
+
+const PROMO: Record<string, string> = { q: 'dama', r: 'torre', b: 'alfil', n: 'caballo' }
+
+/** Qué significa la jugada sugerida, en palabras (evaluación desde quien pide la pista). */
+export function hintNote(score: { cp?: number; mate?: number } | undefined, uci: string): string {
+  const promo = uci.length > 4 && uci[4] !== 'q' ? ` Corona a ${PROMO[uci[4]]}.` : ''
+  if (!score) return `La mejor jugada.${promo}`
+  if (score.mate !== undefined) {
+    if (score.mate > 0) return score.mate === 1 ? `¡Es mate!${promo}` : `Con esta jugada das mate en ${score.mate}.${promo}`
+    return `La mejor defensa: el rival tiene mate, pero aguanta lo más posible.${promo}`
+  }
+  const cp = score.cp ?? 0
+  const pawns = (Math.abs(cp) / 100).toFixed(1)
+  if (cp >= 300) return `Ventaja decisiva (+${pawns}). Sigue así y ganas.${promo}`
+  if (cp >= 100) return `Vas mejor (+${pawns}).${promo}`
+  if (cp > -100) return `Posición pareja: la jugada más sólida.${promo}`
+  return `La mejor defensa: vas peor (−${pawns}).${promo}`
+}
+
+/**
+ * Elige la pista entre las variantes del motor. La mejor, salvo que repita una posición
+ * ya vista (camino a tablas por repetición): entonces, si hay otra que no repite y es casi
+ * igual de buena (≤ 0.5 peones peor) y no nos deja peor, se prefiere esa, para seguir
+ * buscando la victoria en vez de conformarse con tablas.
+ */
+export function chooseHint<L extends { pv: string[]; score: { cp?: number; mate?: number } }>(lines: L[], repeats: (uci: string) => boolean): L | undefined {
+  const best = lines[0]
+  if (!best || !repeats(best.pv[0])) return best
+  const v = (l: L) => scoreValue(l.score)
+  return lines.slice(1).find((l) => l.pv[0] && !repeats(l.pv[0]) && v(l) >= v(best) - 50 && v(l) >= -30) ?? best
 }

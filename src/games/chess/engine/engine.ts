@@ -16,6 +16,13 @@ export interface SearchOptions {
   multipv?: number
   /** Skill Level 0–20 (20 = fuerza completa). */
   skill?: number
+  /** Cortar la búsqueda en cuanto la mejor variante ve un mate a favor (profundidad ≥ 8). */
+  stopOnMate?: boolean
+  /**
+   * Jugadas desde la posición `fen` hasta la actual. Con ellas Stockfish conoce la historia
+   * y detecta repeticiones (sin historia no ve que repetir lleva a tablas).
+   */
+  moves?: string[]
 }
 
 export interface SearchResult {
@@ -126,12 +133,18 @@ class StockfishEngine {
       await this.waitFor((l) => l === 'readyok')
 
       const lines = new Map<number, PvLine>()
+      let stopped = false
       const collect = (line: string) => {
         const info = parseInfo(line)
-        if (info) lines.set(info.multipv, info)
+        if (!info) return
+        lines.set(info.multipv, info)
+        if (opts.stopOnMate && !stopped && info.multipv === 1 && (info.score.mate ?? 0) > 0 && info.depth >= 8) {
+          stopped = true
+          this.send('stop')
+        }
       }
       this.listeners.add(collect)
-      this.send(`position fen ${fen}`)
+      this.send(opts.moves?.length ? `position fen ${fen} moves ${opts.moves.join(' ')}` : `position fen ${fen}`)
       const limits = [opts.depth ? `depth ${opts.depth}` : '', opts.movetime ? `movetime ${opts.movetime}` : '']
         .filter(Boolean)
         .join(' ')
